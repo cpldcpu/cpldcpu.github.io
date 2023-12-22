@@ -1,0 +1,95 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you: 
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+domain: cpldcpu.github.io
+title: Tim's Blog
+email: 
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: /blog # the subpath of your site, e.g. /blog
+url: https://cpldcpu.github.io # the base hostname & protocol for your site, e.g. http://example.com
+# twitter_username: jekyllrb
+github_username:  cpldcpu
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-toc
+
+# Build settings
+remote_theme: jekyll/minima
+# theme: minima
+
+minima:
+  # skin: solarized-dark
+  skin: dark
+ 
+markdown: kramdown
+
+permalink: pretty
+
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  gfm_emojis: false
+  auto_id_prefix: 
+  auto_id_stripping: false
+  auto_ids: true
+  entity_output: as_char
+  footnote_backlink: "&#8617;"
+  footnote_backlink_inline: "false"
+  footnote_nr: 1
+  footnote_prefix: 
+  header_offset: 0
+  html_to_native: false
+  latex_headers: section,subsection,subsubsection,paragraph,subparagraph,subparagraph
+  line_width: 72
+  math_engine: mathjax
+  parse_block_html: false
+  parse_span_html: true
+  remove_block_html_tags: true
+  remove_line_breaks_for_cjk: false
+  remove_span_html_tags: false
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  syntax_highlighter: rouge
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
