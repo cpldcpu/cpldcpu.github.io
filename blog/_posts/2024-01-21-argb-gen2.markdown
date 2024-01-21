@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "ARGB Gen2 - protocol analysis"
+title:  "ARGB Gen2 - Protocol Analysis"
 date:   2024-01-21 16:30:02 +0200
 categories: RGB LED, reverse engineering, ARGB Gen2
 ---
@@ -15,30 +15,33 @@ categories: RGB LED, reverse engineering, ARGB Gen2
 	- [Configuration Mode](#configuration-mode)
 		- [Interpretation of 24 bit configuration word](#interpretation-of-24-bit-configuration-word)
 	- [Bidirectional mode / Readout mode](#bidirectional-mode--readout-mode)
-	- [Y-Cable Mode](#y-cable-mode)
+	- [Multi-Layer Mode / Y-Cable Mode](#multi-layer-mode--y-cable-mode)
 		- [Substring control commands](#substring-control-commands)
 			- [Command Details](#command-details)
 		- [Substring initialization and identification](#substring-initialization-and-identification)
+			- [Arbitration procedure](#arbitration-procedure)
+			- [Substring identification](#substring-identification)
+- [Summary and Conclusions](#summary-and-conclusions)
 
 # Introduction
 
-The WS2812 has been around for a decade and remains highly popular, alongside its numerous clones. Despite being in existence for a significant amount of time, the protocol and fundamental features of the device have only undergone minimal changes. While there have been some iterative improvements, such as introducing 4 channels, higher PWM frequency, redundant bus, or 16-bit color, the majority of the system still relies on a single wire and 8-bit RGB pixels.
+The WS2812 has been around for a decade and remains highly popular, alongside its numerous clones. Despite the WS2812 being in existence for a significant amount of time, the protocol and fundamental features of the device have only undergone minimal changes. While there have been some iterative improvements, such as introducing 4 channels, higher PWM frequency, redundant bus, or 16-bit color, the majority of the system still relies on a single wire and 8-bit RGB pixels.
 
 What about bidirectional communication to autodetect LEDs and monitor their health? Allowing to send configuration data to the LEDs to fine tune their behavior? Or even supporting more complex topologies beyond serial strings?
 
-Enter "ARGB Gen2". I first learned of it in a [an issue posted to the WLED project](https://github.com/Aircoookie/WLED/issues/2675). This new controller type is an extension of the WS2812 concept, which was introduced by companies in the gaming PC space to allow for more flexible control of RGB lighting in PC cases. Major supporters of ARGB Gen2 include Coolermaster and Asus.
+Enter "ARGB Gen2". I first learned of it in  [an issue posted to the WLED project](https://github.com/Aircoookie/WLED/issues/2675). This new controller type is an extension of the WS2812 concept, which was introduced by companies in the gaming PC space to allow for more flexible control of RGB lighting in PC cases. Major supporters of ARGB Gen2 include Coolermaster and Asus.
 
 What is quite curious is that they do not seem to be too eager to market their improvements. Although some hardware seems to support Gen2, information about its benefits and functionality is scarce. Most search results are from forums where people are trying to understand what Gen2 is and how to use it.
 
 Reason enough to take a closer look. This article summarizes my research on ARGB Gen2, which includes information gathered from various sources on the web, as well as observations made through reverse engineering the protocol and analyzing the behavior of a Gen2 controller.
 
-I will not go through all the steps i went through to reverse engineer the protocol and discover information as this was quite a nonlinear process spread out over the last 2 years. Instead, a condensed summary of the findings is presented below.
+I will not go through all the steps I went through to analyze the protocol and discover information, as this was quite a nonlinear process spread out over the last 2 years. Instead, a condensed summary of the findings is presented below.
 
 # The companies behind ARGB Gen2
 
 The company promoting ARGB Gen2 the most seems to be Coolermaster. Their technology promotion page is [here](https://landing.coolermaster.com/pages/addressable-gen-2-rgb-led-controller/). They sell controllers for ARGB Gen2 LED strings and accessories, such as RGB lit coolers and light strips that can be attached to the controllers. 
 
-It appears that the technology itself originated at two small IC design houses: Polywell and Anapex. Polywell first [announced the technology already in 2019](https://www.polywell.com.tw/index.php/2019-05-31-14-19-25/74-new-2nd-generation-addressable-rgb-led-demoed-in-computex-taipei-2019.html)and they also have a page [promoting RGB-LED driver ICs](https://www.polywell.com.tw/index.php/lighting-products/lighting-products-ic.html). The ICs themselves seem to have been developed by Anapex where you can find a [summary of their line of ARGB LED driver ICs](http://www.anapex.com.tw/en/product_4) that lists a number of intriguing features without explaining what they are.
+It appears that the technology itself originated at two small IC design houses: Polywell and Anapex. Polywell first [announced the technology already in 2019](https://www.polywell.com.tw/index.php/2019-05-31-14-19-25/74-new-2nd-generation-addressable-rgb-led-demoed-in-computex-taipei-2019.html) and they also have a page [promoting RGB-LED driver ICs](https://www.polywell.com.tw/index.php/lighting-products/lighting-products-ic.html). The ICs themselves seem to have been developed by Anapex where you can find a [summary of their line of ARGB LED driver ICs](http://www.anapex.com.tw/en/product_4) that lists a number of intriguing features without explaining what they are.
 
 In case you looked at the links above and were confused about how ARGB2 Gen2 is different from the WS2812 - well, I was too.  
 
@@ -68,7 +71,7 @@ ARGB2 GEN2 is an extension of the WS2812 protocol and fully compatible to it. If
 
 - **Configuration:** A special mode allows writing configuration data to the LEDs, which allows to change PWM frequency, driving current, and other parameters.
 - **Bidirectional communication:** Enables automatic detection of the number of LEDs on the bus and allows reading information from the LEDs.
-- **Y-Cable mode:** Allows to connect multiple LEDs strings in parallel to the controller using a single wire. There are mechanisms to detect individual strings, uniquely identify them, and control them independently. 
+- **Y-Cable mode aka "Multi-Layer Mode":** Allows to connect multiple LEDs strings in parallel to the controller using a single wire. There are mechanisms to detect individual strings, uniquely identify them, and control them independently. 
 
 While the first two items are somewhat logical extension of the WS2812 protocol, the Y-Cable is the most curious feature. It allows for easy connection of multiple ARGB GEN2 devices to a single controller port. 
 
@@ -86,9 +89,9 @@ Since the WS2812 protocol does not allows to transmit additional commands, the A
 
 The configuration mode allows to write information to a configuration register within each LED to change its behavior. The mode is initiated by sending a 20 $\pm$ 5 µs long "Hi" pulse directly after a reset (bus was low for >100 µs).
 
-![Startpulse](../_images/GEN2_startpulse.png)
+The oscilloscope image below shows a series of pulses of different length being sent to a chain of LEDs. Pulses between 15µs and 25µs are forwarded within the LED chain and are re-timed to 20µs. _dout1_ corresponds to the output of the first LED in the chain, _dout12_ to the output of the 12th LED.
 
-The oscilloscope image below shows a series of pulses of different length being sent to a chain of LEDs. Pulses between 15µs and 25µs are forwarded within the LED chain and are re-timed to 20µs. _dout1_ corresponds to the output of the first LED in the chain, _dout12_ to the output of the 12th LED. 
+![Startpulse](../_images/GEN2_startpulse.png)
 
 After sending the start pulse the LEDs are in "configuration" mode. The controller waits for ~300µs and then sends a series of 24 bit words in the WS2812 protocol to the LEDs. Instead of interpreting these as RGB values, they are stored in a 24bit internal configuration register. After the the configuration data has been sent, the LEDs will automatically turn to "normal" mode after the next reset.
 
@@ -195,7 +198,7 @@ uint8_t ARGB2_readoutstring(void) {
 }
 ```
 
-## Y-Cable Mode
+## Multi-Layer Mode / Y-Cable Mode
 
 The Y-cable mode is the most curious and most complex extension. It allows controlling multiple LED strings in parallel using a single wire. The controller can address individual strings and control them independently.
 
@@ -219,7 +222,7 @@ Each substring command consists of the following sequence:
 
 1. 40µs "Hi"
 2. 12µs "Lo"
-3. Eight bits (the command) transmitted in the WS2812 protocol.
+3. Eight bits (the command) transmitted in the WS2812 protocol, MSB first.
 
 The following table provides an overview of the commands used in Y-Cable mode. The commands names were assigned by me and may be different from the official documentation, which is not accessible to me. The commands are represented in hexadecimal format, where X is a 4-bit field (bits 0-3) used for addressing and the first four bits encode the command type.
 
@@ -241,3 +244,51 @@ In these commands, X represents the address of the sub-string. 1-F are 15 possib
 
 ### Substring initialization and identification
 
+Initially all substrings are in an uninitialized state and receive exactly the same data from the MCU at their input. How can we control them individually and, even more curious, how can they be identified?
+
+#### Arbitration procedure
+
+The first phase of the initialization is to assign addresses to each substring. A special arbitration procedure is used for that with the following sequence.
+
+1. Send command 0x20 to reset the addresses of all substrings.
+2. Send command 0x11 to assign address one to one substring. 
+3. After sending the command, pull the dataoutput low and put in it Hi-Z state.
+4. Wait if a high pulse is received from a substring, confirming the address assignment.
+
+When an uninitialized substring receives the command 0x11, it will wait for a random time between 10 µs and 60 µs, test whether the input is still low. If the input is still low, it means that no other substring has claimed address 0x01. It will then pull high Din, and store the address 0x01 internally. 
+
+![Substring initialization](../_images/GEN2_initializestring.png)
+
+The oscilloscope image above shows the timing of the sequence. Note that the string does not react to the second command because it already had an address assigned (It will also not respond to other address assignment commands). Also note, that the commands are not forwarded to the second device in the string. Only the "gateway device" takes part in the address assignment procedure.
+
+The successful address assignment can be verified with the ping command 0x31. The string will respond with a high pulse if it has been initialized with 0x11 before. 
+
+5. Send command 0x31 to verify assignment of address 0x01.
+6. Send command 0x41 to activate the string with address 0x01.
+
+After this sequence has been completed and the string was activated, we can send or receive data from the substring with the designed address 0x01.
+
+#### Substring identification
+
+One question remains: How do we identify each substring after we assigned addresses? To do that, we have to read out the ID bit of each LED in the substring. Concatenating the ID bits of all LEDs in the substring will give us a unique ID.
+
+This can be done with the following sequence
+
+1. Send configuration word 0x002000 to all LEDs in the substring to active ID readout.
+2. Use the readout mode to read all ID bits.
+
+It appears that the ID bits are assigned randomly at manufacture time to the LEDs. The length of the ID depends on the number of LED used in each device. In case of the fan I investigated, 12 LEDs are used. Therefore the ID is 12 bits long, allowing for 4096 unique combinations. 
+
+This does not appear to be a very large number and there is a residual probability (0.00024) that, for example, two RGB fans with the same ID are installed in the same system. In that case, the substring assignment may switch randomly between the two fans whenever the system is powered on. Either this is deemed an acceptable risk, or I have overlooked additional mechanisms.
+
+# Summary and Conclusions
+
+The ARGB Gen2 represents a notable improvement over the vanilla WS2812, introducing features such as bidirectional communication, configuration mode, and Y-Cable mode. These enhancements significantly expand the capabilities of the classic WS2812 protocol, addressing some of its inherent limitations. 
+
+However, the ARGB GEN2 extensions to the WS2812 protocol are also quite purpose defined and do not offer hooks for additional features. For example, adding more configuration options would require an additional protocol extension.
+
+It seems that ARGB GEN2 does not yet have caught on outside of products for enthusiast PC builders. However, the availability of the SK6112 LEDs provides access to at least some of the features in discrete LEDs.
+
+I hope this protocol analysis is useful. Be aware that it is not based on official documentation. Use the information provided here at your own risk.
+
+If you have additional remarks, please let me know (or even submit a pull request to this article). Of course, it would also be great if more official documentation became available.
