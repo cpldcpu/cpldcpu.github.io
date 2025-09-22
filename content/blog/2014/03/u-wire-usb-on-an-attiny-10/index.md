@@ -9,20 +9,25 @@ aliases:
   - /2014/03/19/u-wire-usb-on-an-attiny-10/
   # - /?p=269
 categories:
-  - AVR
-  - Hack
-  - Hardware
-  - LED
-  - USB
+  - Microcontroller
+  # - AVR
+  # - Hack
+  # - Hardware
+  # - LED
+  # - USB
 summary: "Implementing a stripped down version of V-USB including a WS2812 controller on a minimal ATtiny10 MCUs with only 1kb of flash."
 tags:
-  - ATtiny10
+  - Addressable RGB
   - AVR
-  - Bitbanging
-  - Light Emitting Diode
-  - RGB LED
-  - V-USB
-  - WS2812
+  # - LED > Addressable RGB
+  # - Microcontroller > AVR
+  # - Microcontroller
+  # - ATtiny10
+  # - Bitbanging
+  # - Light Emitting Diode
+  # - RGB LED
+  # - V-USB
+  # - WS2812
 ---
 
 Atmels AVR [ATtiny10](http://www.atmel.com/devices/attiny10.aspx) are surprisingly powerful devices that come in an extremely tiny SOT23 package with only 6 pins. The have 1kb of flash, 32 bytes of SRAM and use the reduced AVR core which only supports 16 instead of 32 register. It seems like Atmels idea of these devices is to use them as [an advanced blinker](http://atmelcorporation.wordpress.com/2013/09/17/avr-attiny10-runs-led-blinker-for-6-months/), and to replace tiny logic circuits. But other people have shown that much more is possible. For example the [noiseplug](https://github.com/dop3j0e/noiseplug) [(video)](http://vimeo.com/47380710), a chiptune player, and a [Simon Says game](http://hackaday.com/2011/09/24/attiny-hacks-attiny10-game-doing-more-with-less/).

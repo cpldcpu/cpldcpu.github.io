@@ -8,16 +8,19 @@ url: /2014/02/18/new-member-of-the-ws2812-family/
 aliases:
   # - /?p=4
 categories:
-  - AVR
   - LED
-  - Uncategorized
+  # - AVR
+  # - Uncategorized
 summary: "A look at the diffuse 8 mm WS2812 through-hole LED, analyzing its mechanical quirks, and timing compatibility with WS2812B."
 showTableOfContents: false
 tags:
-  - Light Emitting Diode
-  - RGB LED
-  - WS2812
-  - WS2812B
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
+  # - Light Emitting Diode
+  # - RGB LED
+  # - WS2812
+  # - WS2812B
 ---
 
 There is a new addition to the popular WS2812 family of RGB LEDs with integrated controller: A 8mm through hole version. Right now they seem to be in pilot production stage. The only place that has them is [Soldering Sunday](http://solderingsunday.com) where they are called [PixelBits](http://solderingsunday.com/shop/components/pixelbits-bakers-dozen/). My understanding is that they will also be available at the usual sources later this year. I got a couple of them to test for compatibility with my [light_ws2812 library](https://github.com/cpldcpu/light_ws2812).

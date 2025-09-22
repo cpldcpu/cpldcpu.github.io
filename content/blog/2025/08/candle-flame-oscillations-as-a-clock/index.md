@@ -7,20 +7,35 @@ url: /2025/08/13/candle-flame-oscillations-as-a-clock/
 aliases:
   # - /?p=1764
 categories:
-  - candle
-  - Hack
-  - Hardware
-  - RISC-V
+  - Candles
+  # - LED
+  - Microcontroller
+  - Science
+  # - candle
+  # - Hack
+  # - Hardware
+  # - RISC-V
 tags:
-  - Candle Oscillations
-  - Candleflicker
-  - CH32V003
-  - electronics
-  - science
-  - writing
+  - Candle flicker
+  - RISC-V
+  # - LED > Candle flicker
+  # - Microcontroller > RISC-V
+  # - Candles
+  # - LED
+  # - Microcontroller
+  # - Science
+  # - Candle Oscillations
+  # - Candleflicker
+  # - CH32V003
+  # - electronics
+  # - science
+  # - writing
 summary: "Todays candles have been optimized not to flicker. But it turns out when we bundle three of them together, the resulting triplet will start to naturally oscillate. Amazingly, the frequency is rather stable at ~9.9 Hz as it mainly depends on gravity and diameter of the flame.
 We detect the oscillation with a suspended wire and divide it down to 1 Hz."
 showTableOfContents: true
+
+
+
 ---
 
 <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start; margin-bottom: 2rem;">

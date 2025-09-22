@@ -7,18 +7,24 @@ url: /2013/12/08/hacking-a-candleflicker-led/
 aliases:
   # - /?p=33
 categories:
-  - Hack
+  - Candles
   - LED
-  - Reverse engineering
+  - Reverse Engineering
+  # - Hack
+  # - Reverse engineering
 summary: "Reverse-engineering the algorithm of a candle flicker LED by statistical analysis of its light output pattern."
 showTableOfContents: false
 tags:
-  - Candleflicker
-  - Electronics and Electrical
-  - LED
-  - Light Emitting Diode
-  - Pulse-width modulation
-  - reverse engineering
+  - Candle flicker
+  # - LED > Candle flicker
+  # - Candles
+  # - LED
+  # - Reverse Engineering
+  # - Candleflicker
+  # - Electronics and Electrical
+  # - Light Emitting Diode
+  # - Pulse-width modulation
+  # - reverse engineering
 ---
 
 *Let's reverse-engineer a LED, pedantic mode.*

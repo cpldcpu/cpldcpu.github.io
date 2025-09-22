@@ -7,17 +7,20 @@ url: /2014/04/25/the-nanite-85/
 aliases:
   # - /?p=182
 categories:
-  - AVR
-  - Hack
-  - Hardware
-  - Micronucleus
-  - USB
-  - Uncategorized
+  - Microcontroller
+  # - AVR
+  # - Hack
+  # - Hardware
+  # - Micronucleus
+  # - USB
+  # - Uncategorized
 summary: "The Nanite 85 ATtiny85 board, a very tiny breadboardable development board with USB bootloader and reset button."
 showTableOfContents: false
 tags:
   - AVR
-  - Micronucleus
+  # - Microcontroller > AVR
+  # - Microcontroller
+  # - Micronucleus
 ---
 
 *Possibly the smallestest ATtiny85 based 'duino derivative.*

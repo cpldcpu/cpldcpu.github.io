@@ -7,16 +7,21 @@ url: /2015/05/24/plexingplus/
 aliases:
   # - /?p=412
 categories:
-  - AVR
-  - Hack
   - LED
-  - Multiplexing
+  # - AVR
+  # - Hack
+  # - Multiplexing
 summary: "Driving the seven LEDs of a dice using only two GPIO pins and clever multiplexing."
 tags:
-  - ATtiny10
-  - LED
-  - Light Emitting Diode
+  - Electronic Dice
+  # - Discrete Logic > Electronic Dice
+  # - LED
+  # - ATtiny10
+  # - Light Emitting Diode
 showTableOfContents: false
+
+
+
 ---
 
 I recently bought a very low cost electronic dice kit on an impulse. Assembling it was good retro-fun for a while. The circuit design is was purely 70ies style: A CD4017, a NE555 and a couple of transistors. Of course, this got me thinking: How would it be done today in a most efficient way? Of course this means using a microcontroller, and, of course this means using as few resources as possible. Will an ATiny10 with 3 I/Os pins do?

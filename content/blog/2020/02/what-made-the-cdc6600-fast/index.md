@@ -7,14 +7,21 @@ url: /2020/02/14/what-made-the-cdc6600-fast/
 aliases:
   # - /?p=623
 categories:
+  - Computer Architecture
   - Discrete Logic
+  - Science
 summary: "Revisits the CDC6600’s resistor-transistor logic to explain how clever circuit tricks delivered 36 MHz performance." 
 tags:
-  - CDC6600
-  - Discrete Logic
-  - PMBT2369
-  - RTL
+  # - Computer Architecture
+  # - Discrete Logic
+  # - Science
+  # - CDC6600
+  # - PMBT2369
+  # - RTL
 showTableOfContents: true
+
+
+
 ---
 
 Anybody who has ever taken an advanced computer architecture class has heard of the [CDC6600](https://en.wikipedia.org/wiki/CDC_6600), which was the world's fastest computer from 1964 to 1969. It was the machine that put [Seymour Cray](https://en.wikipedia.org/wiki/Seymour_Cray) on the map as a supercomputer architect. The design of the machine is well documented in [a book by James Thornton](https://archive.computerhistory.org/resources/text/CDC/cdc.6600.thornton.design_of_a_computer_the_control_data_6600.1970.102630394.pdf), the lead designer, and is therefore publically accessible. Among several architectural concepts that later found use in RISC, the CDC6600 is known for introducing the [Scoreboard](https://en.wikipedia.org/wiki/Scoreboarding). Which is, along with [Tomasulo's algorithm](https://en.wikipedia.org/wiki/Tomasulo_algorithm), one of the earliest concepts for out-of-order processing.

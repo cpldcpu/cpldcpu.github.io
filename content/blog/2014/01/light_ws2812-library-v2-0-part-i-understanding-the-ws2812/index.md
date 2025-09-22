@@ -7,17 +7,21 @@ url: /2014/01/14/light_ws2812-library-v2-0-part-i-understanding-the-ws2812/
 aliases:
   # - /?p=85
 categories:
-  - Hardware
   - LED
-  - Reverse engineering
+  - Reverse Engineering
+  # - Hardware
+  # - Reverse engineering
 summary: "Analyzing and understanding the WS2812 timing, protocol tolerances, and hardware behavior to enable a reliable driver implementation."
 showTableOfContents: false
 tags:
-  - Bitbanging
-  - LED
-  - Light Emitting Diode
-  - reverse engineering
-  - WS2812
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
+  # - Reverse Engineering
+  # - Bitbanging
+  # - Light Emitting Diode
+  # - reverse engineering
+  # - WS2812
 ---
 
 WS2812 LEDs are amazing devices - they combine a programmable constant current controller chip with a RGB LED in a single package. Each LED has one data input and one data output pin. By connecting the data output pin to the data input pin of the next device, it is possible to daisy chain the LEDs to theoretically arbitrary length.

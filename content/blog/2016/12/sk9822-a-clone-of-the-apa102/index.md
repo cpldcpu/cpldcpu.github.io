@@ -7,15 +7,21 @@ url: /2016/12/13/sk9822-a-clone-of-the-apa102/
 aliases:
   # - /?p=549
 categories:
-  - Hardware
-  - Intelligent LED
   - LED
-  - Reverse engineering
+  # - Hardware
+  # - Intelligent LED
+  # - Reverse engineering
 summary: "Analyzing the SK9822 addressable RGB-LED, a clone of the SPI based APA102." 
 tags:
-  - APA102
-  - SK9822
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
+  # - APA102
+  # - SK9822
 showTableOfContents: true
+
+
+
 ---
 
 Two years ago I took a deeper look into the [APA102](http://cpldcpu.com/2014/08/27/apa102/). Although it was more expensive than the common WS2812, and harder to come by, it had some intriguing properties. The main benefits are a timing-insensitive  SPI interface, allowing easy interfacing to standard periphery, and a much higher PWM frequency of >19kHz, making the APA102 almost flicker free.

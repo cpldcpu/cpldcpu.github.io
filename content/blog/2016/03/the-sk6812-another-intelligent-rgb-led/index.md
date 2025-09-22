@@ -7,9 +7,14 @@ url: /2016/03/09/the-sk6812-another-intelligent-rgb-led/
 aliases:
   # - /?p=480
 categories:
-  - Uncategorized
+  - LED
+  # - Uncategorized
 summary: "Analyzing a new addressable RGB LED: The SK6812."
 showTableOfContents: false
+tags:
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
 ---
 
 During the last months, a new WS2812 alternative appeared on the market: The SK6812. I finally managed to get my hands on some of them to take a closer look. In most aspects these devices are basically clones of the WS2812. What is interesting however, is that the manufacturer came up with a couple of new variations of the stock 5050 RGB LED.

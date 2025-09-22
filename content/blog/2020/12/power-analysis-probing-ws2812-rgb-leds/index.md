@@ -7,16 +7,24 @@ url: /2020/12/19/power-analysis-probing-ws2812-rgb-leds/
 aliases:
   # - /?p=778
 categories:
-  - Hack
-  - Hardware
-  - Intelligent LED
   - LED
-  - Reverse engineering
+  - Reverse Engineering
+  # - Hack
+  # - Hardware
+  # - Intelligent LED
+  # - Reverse engineering
 summary: "Whenever a logic gate in an integrated circuit switches, it will cause a tiny current spike that can be measured in the supply current. By inspecting the temporal variation it is often possible to deduce information about the construction of the IC. Let's take a closer look at the WS2812 RGB LED."
 tags:
-  - WS2812B
-  - WS2812S
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
+  # - Reverse Engineering
+  # - WS2812B
+  # - WS2812S
 showTableOfContents: true
+
+
+
 ---
 
 ![Dut](dut.jpg)

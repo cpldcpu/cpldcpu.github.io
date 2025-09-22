@@ -7,24 +7,36 @@ url: /2024/05/02/machine-learning-mnist-inference-on-the-3-cent-microcontroller/
 aliases:
   # - /?p=1674
 categories:
-  - Hack
-  - Hardware
-  - Padauk
-  - PFS154
-  - PMS150C
-  - Uncategorized
+  - ML & AI
+  - Microcontroller
+  # - Hack
+  # - Hardware
+  # - Padauk
+  # - PFS154
+  # - PMS150C
+  # - Uncategorized
 tags:
-  - 3 cent mcu
-  - data-science
-  - Hack
-  - machine learning
-  - MNIST
+  - Edge ML
+  - Machine Learning
   - Padauk
-  - PMS150C
-  - size optimization
-  - technology
+  # - ML & AI > Edge ML
+  # - ML & AI > Machine Learning
+  # - Microcontroller > Padauk
+  # - ML & AI
+  # - Microcontroller
+  # - 3 cent mcu
+  # - data-science
+  # - Hack
+  # - machine learning
+  # - MNIST
+  # - PMS150C
+  # - size optimization
+  # - technology
 summary: "Is it possible to implement reasonably accurate inference of MNIST, the handwritten numbers dataset, on a \"3 cent\" Microcontroller with only 64 bytes of RAM and 1K of instruction memory?"
 showTableOfContents: true
+
+
+
 ---
 Bouyed by the surprisingly good performance of neural networks with quantization aware training [on the CH32V003](/2024/04/24/implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier/), I wondered how far this can be pushed. How much can we compress a neural network while still achieving good test accuracy on the MNIST dataset? When it comes to absolutely low-end microcontrollers, there is hardly a more compelling target than the [Padauk 8-bit microcontrollers](/2019/08/12/the-terrible-3-cent-mcu/). These are microcontrollers optimized for the simplest and lowest cost applications there are. The smallest device of the portfolio, the PMS150C, sports 1024 13-bit word one-time-programmable memory and 64 bytes of ram, more than an order of magnitude smaller than the CH32V003. In addition, it has a proprieteray accumulator based 8-bit architecture, as opposed to a much more powerful RISC-V instruction set.
 

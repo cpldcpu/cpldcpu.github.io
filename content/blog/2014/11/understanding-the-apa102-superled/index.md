@@ -7,16 +7,21 @@ url: /2014/11/30/understanding-the-apa102-superled/
 aliases:
   # - /?p=398
 categories:
-  - Hardware
   - LED
-  - Reverse engineering
+  - Reverse Engineering
+  # - Hardware
+  # - Reverse engineering
 summary: "Dissects APA102 timing details to explain start frames, data forwarding, and reliable end-frame clocking."
 tags:
-  - APA102
-  - Light Emitting Diode
-  - reverse engineering
-  - RGB LED
-  - WS2812
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
+  # - Reverse Engineering
+  # - APA102
+  # - Light Emitting Diode
+  # - reverse engineering
+  # - RGB LED
+  # - WS2812
 ---
 
 A couple of weeks ago I reported about a new type of RGB-LED with integrated controller, the [APA102](/2014/08/27/apa102/). One of the interesting new features of this device is a two-wire SPI interface instead of the proprietary [one-wire protocol of the more common WS2812](/2014/01/14/light_ws2812-library-v2-0-part-i-understanding-the-ws2812/). Many microcontrollers have hardware SPI functions, which allow easy control of these LEDs, as opposed to timing critical bit banging. But it turned out this was not the end of the story. As pointed out by Bernd in a [comment](/2014/08/27/apa102/comment-page-1/#comment-345), there is some discrepancy between the datasheet and the actual behavior of the devices when it comes to the "end frame". Reason enough to subject the APA102 to more scrutiny.

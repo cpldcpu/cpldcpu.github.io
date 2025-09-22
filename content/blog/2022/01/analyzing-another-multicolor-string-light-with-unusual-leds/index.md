@@ -8,12 +8,17 @@ aliases:
   # - /?p=1332
 categories:
   - LED
-  - Reverse engineering
+  - Reverse Engineering
+  # - Reverse engineering
 summary: "Dissects a cheap multicolor LED string and its phosphor-converted LEDs, revealing shared driver quirks." 
 tags:
-  - LED
-  - Light Emitting Diode
+  # - LED
+  # - Reverse Engineering
+  # - Light Emitting Diode
 showTableOfContents: false
+
+
+
 ---
 
 <img src="bluebulb2.jpg" alt="One of the blue LEDs" style="max-width: 50%; height: auto; display: block; margin: 0 auto;" />

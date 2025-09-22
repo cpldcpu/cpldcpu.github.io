@@ -7,17 +7,25 @@ url: /2014/03/01/follow-up-on-candle-flicker-leds/
 aliases:
   # - /?p=198
 categories:
-  - Hack
-  - Hardware
+  - Candles
   - LED
-  - Reverse engineering
-  - Uncategorized
+  - Reverse Engineering
+  - Science
+  # - Hack
+  # - Hardware
+  # - Reverse engineering
+  # - Uncategorized
 summary: "Die shots of the candle flicker LED controller chip and a look at another flicker LED variant."
 tags:
-  - Candleflicker
-  - LED
-  - Light Emitting Diode
-  - reverse engineering
+  - Candle flicker
+  # - LED > Candle flicker
+  # - Candles
+  # - LED
+  # - Reverse Engineering
+  # - Science
+  # - Candleflicker
+  # - Light Emitting Diode
+  # - reverse engineering
 ---
 
 I [previously reported](/2013/12/08/hacking-a-candleflicker-led/) on reverse engineering a candle flicker LED. My approach was to extract the "flicker" pattern from the input current variation and to deduce the algorithm from statistical analysis.

@@ -7,15 +7,18 @@ url: /2013/11/23/breadboardable-break-out-board-for-the-nxp-lpc812/
 aliases:
   # - /?p=6
 categories:
-  - ARM
-  - Hardware
+  - Microcontroller
+  # - ARM
+  # - Hardware
 summary: "A breakout board for the LPC812 with USB power, reset and bootloader access for breadboard prototyping."
 showTableOfContents: false
 tags:
   - ARM
-  - Breakout-Board
-  - Cortex-M0+
-  - LPC800
+  # - Microcontroller > ARM
+  # - Microcontroller
+  # - Breakout-Board
+  # - Cortex-M0+
+  # - LPC800
 ---
 
 The NXP LPC800 series is an interesting entry in the Cortex M0+ microcontroller market, aiming to replace

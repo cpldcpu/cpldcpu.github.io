@@ -7,19 +7,29 @@ url: /2024/01/14/revisiting-candle-flicker-leds-now-with-integrated-timer/
 aliases:
   # - /?p=1547
 categories:
-  - candle
-  - Hardware
-  - Intelligent LED
+  - Candles
   - LED
-  - Uncategorized
+  - Reverse Engineering
+  # - candle
+  # - Hardware
+  # - Intelligent LED
+  # - Uncategorized
 tags:
-  - Candleflicker
-  - electronics
-  - Hardware
-  - Light Emitting Diode
-  - reverse engineering
+  - Candle flicker
+  # - LED > Candle flicker
+  # - Candles
+  # - LED
+  # - Reverse Engineering
+  # - Candleflicker
+  # - electronics
+  # - Hardware
+  # - Light Emitting Diode
+  # - reverse engineering
 summary: "Analyzing a battery powered LED tea light with 24h timer functionality. Discovering that it is surprisingly based on a low-cost 8-bit microcontroller integrated into the LED package."
 showTableOfContents: true
+
+
+
 ---
 Years ago I spent some time [analyzing Candle-Flicker LEDs](/2013/12/08/hacking-a-candleflicker-led/) that contain an integrated circuit to mimic the flickering nature of real candles. Artificial candles have evolved quite a bit since then, now including magnetically actuated “flames”, an even better candle-emulation. However, at the low end, there are still simple candles with candle-flicker LEDs to emulate tea-lights.
 

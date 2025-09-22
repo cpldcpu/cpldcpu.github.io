@@ -8,20 +8,29 @@ url: /2024/11/25/a-surprising-ic-in-a-led-light-chain/
 aliases:
   # - /?p=1734
 categories:
-  - Hardware
+  - Candles
   - LED
-  - Reverse engineering
-  - Uncategorized
+  - Microcontroller
+  - Reverse Engineering
+  # - Hardware
+  # - Reverse engineering
+  # - Uncategorized
 tags:
-  - copper string light
-  - electronics
-  - LED
-  - led string
-  - lighting
-  - tech
-  - technology
+  # - Candles
+  # - LED
+  # - Microcontroller
+  # - Reverse Engineering
+  # - copper string light
+  # - electronics
+  # - led string
+  # - lighting
+  # - tech
+  # - technology
 summary: "Dissects a sub-twenty-cent copper wire light string whose 'controller' is a die molded into an LED can, documenting the minimalist PCB, the 1.2 kHz duty-cycle modulation, and the penny-pinching tradeoffs."
 showTableOfContents: false
+
+
+
 ---
 LED-based festive decorations are a fascinating subject for exploration of ingenuity in low-cost electronics. New products appear every year and often [very surprising technology approaches](/2022/01/23/controlling-rgb-leds-with-only-the-powerlines-anatomy-of-a-christmas-light-string/) are used to achieve some differentiation while adding minimal cost.
 

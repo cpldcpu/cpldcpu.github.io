@@ -8,10 +8,16 @@ aliases:
   # - /?p=1005
 categories:
   - LED
-  - Padauk
-  - PFS154
+  - Microcontroller
+  # - Padauk
+  # - PFS154
 summary: "Flashing a LED is certainly among the first set of problems any burgeoning electronics specialist is tackling, may it be by using an ancient NE555 or, more recently, a microcontroller to control the LED. As it turns out, we can turn any trivial problem into a harder one by changing its constraints."
 showTableOfContents: true
+tags:
+  - Padauk
+  # - Microcontroller > Padauk
+  # - LED
+  # - Microcontroller
 ---
 
 ![Grafik](grafik.png)

@@ -7,17 +7,25 @@ url: /2014/08/27/apa102/
 aliases:
   # - /?p=357
 categories:
-  - Hardware
+  - Candles
   - LED
+  # - Hardware
 summary: "Investigation the SPI based the APA102/APA102C LEDs, outlining their SPI protocol, global brightness control, and fast PWM behavior." 
 tags:
-  - APA102
-  - Light Emitting Diode
-  - RGB LED
-  - RGB LEDs
-  - WS2812
-  - WS2812B
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - Candles
+  # - LED
+  # - APA102
+  # - Light Emitting Diode
+  # - RGB LED
+  # - RGB LEDs
+  # - WS2812
+  # - WS2812B
 showTableOfContents: false
+
+
+
 ---
 
 After [clones](/2014/06/16/timing-of-ws2812-clones-pd9823/) and [variations](/2014/02/18/new-member-of-the-ws2812-family/) of the venerable [WS2812](/2014/01/14/light_ws2812-library-v2-0-part-i-understanding-the-ws2812/), there finally seems to be a new RGB-LED with integrated controller that actually improves on several characteristics: The APA102, also known as "Superled". There are two versions on the market, the APA102 and the APA102C, as shown below.

@@ -7,16 +7,18 @@ url: /2014/03/31/external-usb-battery/
 aliases:
   # - /?p=288
 categories:
-  - Hack
-  - Reverse engineering
-  - USB
-  - Uncategorized
+  - Reverse Engineering
+  # - Hack
+  # - Reverse engineering
+  # - USB
+  # - Uncategorized
 summary: "Tear down of a simple external USB battery, identifying key ICs."
 showTableOfContents: false
 tags:
-  - liIon battery
-  - tear down
-  - usb battery
+  # - Reverse Engineering
+  # - liIon battery
+  # - tear down
+  # - usb battery
 ---
 
 I recently received an external USB battery as a promotional gift (see image below). While I always thought of these as a superfluous gimmick, I realized that these devices could be quite useful as mobile power source for various projects. After all, dealing with lithium ion batteries in your own projects can be dangerous and you need additional circuitry to ensure charging and voltage conversion.

@@ -7,16 +7,28 @@ url: /2019/09/28/a-led-candle-based-on-the-3-cent-mcu/
 aliases:
   # - /?p=667
 categories:
-  - candle
+  - Candles
   - LED
-  - Padauk
-  - PFS154
-  - PMS150C
+  - Microcontroller
+  # - candle
+  # - Padauk
+  # - PFS154
+  # - PMS150C
 summary: "Attempting to build a LED candle with integrated light sensing using the '3‑cent MCU'" 
 tags:
-  - 3 cent mcu
-  - Candleflicker
+  - Candle flicker
+  - Padauk
+  # - LED > Candle flicker
+  # - Microcontroller > Padauk
+  # - Candles
+  # - LED
+  # - Microcontroller
+  # - 3 cent mcu
+  # - Candleflicker
 showTableOfContents: false
+
+
+
 ---
 
 ![Candles 1](candles-1.jpg)

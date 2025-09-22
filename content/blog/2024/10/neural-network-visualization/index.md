@@ -7,9 +7,14 @@ url: /2024/10/31/neural-network-visualization/
 aliases:
   # - /?p=1727
 categories:
-  - machine learning
+  - ML & AI
+  # - machine learning
 summary: "A browser based interactive application that visualizes simple multi-layer perception (MLP) neural networks for the inference of 8x8 pixel images."
 showTableOfContents: false
+tags:
+  - Machine Learning
+  # - ML & AI > Machine Learning
+  # - ML & AI
 ---
 ![](grafik.png)
 

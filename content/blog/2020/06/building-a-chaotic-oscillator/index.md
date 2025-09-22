@@ -7,12 +7,21 @@ url: /2020/06/15/building-a-chaotic-oscillator/
 aliases:
   # - /?p=932
 categories:
-  - Hardware
+  - Discrete Logic
+  - LED
+  - Science
+  # - Hardware
 summary: "Explores analog chaos with Schmitt triggers, filters, and feedback to create Chua-like oscillations on breadboard." 
 tags:
-  - analog
-  - oscillator
+  # - Discrete Logic
+  # - LED
+  # - Science
+  # - analog
+  # - oscillator
 showTableOfContents: true
+
+
+
 ---
 
 ![Grafik](grafik.png)

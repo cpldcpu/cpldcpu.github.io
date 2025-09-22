@@ -8,19 +8,25 @@ url: /2014/06/16/timing-of-ws2812-clones-pd9823/
 aliases:
   # - /?p=327
 categories:
-  - Hardware
   - LED
-  - Uncategorized
+  # - Hardware
+  # - Uncategorized
 summary: "Analyzing a new addressable RGB LED: The PD9823."
 tags:
-  - Light Emitting Diode
-  - PD9823
-  - RGB LED
-  - RGB LEDs
-  - WS2811
-  - WS2812
-  - WS2812B
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
+  # - Light Emitting Diode
+  # - PD9823
+  # - RGB LED
+  # - RGB LEDs
+  # - WS2811
+  # - WS2812
+  # - WS2812B
 showTableOfContents: false
+
+
+
 ---
 
 The WS2812 RGB LEDs with integrated controller are fairly successful devices that come in a variety of packages. Recently, similar devices by other manufacturers started to appear.

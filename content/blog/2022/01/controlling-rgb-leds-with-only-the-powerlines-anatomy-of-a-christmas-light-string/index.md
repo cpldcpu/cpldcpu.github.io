@@ -7,17 +7,25 @@ url: /2022/01/23/controlling-rgb-leds-with-only-the-powerlines-anatomy-of-a-chri
 aliases:
   # - /?p=1216
 categories:
-  - Hardware
-  - Intelligent LED
   - LED
-  - Reverse engineering
+  - Reverse Engineering
+  # - Hardware
+  # - Intelligent LED
+  # - Reverse engineering
 summary: "Reverse-engineers a whole-wire LED Christmas string that encodes data on the supply rails, mapping its protocol."
 tags:
-  - Bitbanging
-  - Light Emitting Diode
-  - reverse engineering
-  - RGB LED
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
+  # - Reverse Engineering
+  # - Bitbanging
+  # - Light Emitting Diode
+  # - reverse engineering
+  # - RGB LED
 showTableOfContents: true
+
+
+
 ---
 
 ![Wiremess](wiremess.jpg)The RGB curtain predictably turns into a mess of wires when not used according to instructions.

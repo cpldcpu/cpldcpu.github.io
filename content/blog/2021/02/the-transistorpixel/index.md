@@ -8,14 +8,20 @@ aliases:
   # - /?p=1108
 categories:
   - Discrete Logic
-  - Hardware
-  - Intelligent LED
   - LED
+  # - Hardware
+  # - Intelligent LED
 summary: "What would it take to build an addressable LED like the WS2812 (aka Neopixel) using only discrete transistors? Time for a small “1960 style logic meets modern application” technology fusion project." 
 tags:
-  - Discrete Logic
-  - Intelligent LED
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - Discrete Logic
+  # - LED
+  # - Intelligent LED
 showTableOfContents: true
+
+
+
 ---
 
 ![State Generator](state-generator.jpg)

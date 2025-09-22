@@ -7,13 +7,21 @@ url: /2016/11/26/dice10-electronic-dice-controlled-by-two-gpio/
 aliases:
   # - /?p=557
 categories:
-  - AVR
-  - Hardware
   - LED
-  - Multiplexing
-  - Uncategorized
+  - Microcontroller
+  # - AVR
+  # - Hardware
+  # - Multiplexing
+  # - Uncategorized
 summary: "Implementing a touch controller electronic dice on an ATtiny10 using PlexingPlus."
 showTableOfContents: false
+tags:
+  - Electronic Dice
+  - AVR
+  # - Discrete Logic > Electronic Dice
+  # - Microcontroller > AVR
+  # - LED
+  # - Microcontroller
 ---
 
 Yay,  another mini-project with the ATtiny10!

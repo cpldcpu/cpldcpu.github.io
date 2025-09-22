@@ -8,9 +8,14 @@ url: /2016/05/21/gluon-developing-a-bootloader-for-the-attiny104/
 aliases:
   # - /?p=547
 categories:
-  - Uncategorized
+  - Microcontroller
+  # - Uncategorized
 summary: "Introducing the gluon bootloader work-in-progress for ATtiny104 parts, reusing Tiny Program Loader building blocks."
 showTableOfContents: false
+tags:
+  - AVR
+  # - Microcontroller > AVR
+  # - Microcontroller
 ---
 
 The ATtiny102 and ATtiny104 are Atmels newest addition to the AVR ATtiny family. They are a bit different to most of the other devices in that family, since they are based on the AVRTINY CPU core, which was so far only used in the ATtiny4/5/9/10/20/40. I have previously done [several](https://cpldcpu.wordpress.com/2014/03/19/%c2%b5-wire-usb-on-an-attiny-10/)[projects](https://github.com/cpldcpu/TinyTouchButton) on the ATtiny10, so I was naturally excited to see another addition to this family. Both new devices are clearly targeted at the lower end, with only 1kb of flash.

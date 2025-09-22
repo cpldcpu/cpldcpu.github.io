@@ -7,15 +7,25 @@ url: /2020/04/05/addressable-7-segment-display/
 aliases:
   # - /?p=720
 categories:
-  - Hardware
-  - Intelligent LED
-  - Padauk
-  - PFS154
+  - LED
+  - Microcontroller
+  # - Hardware
+  # - Intelligent LED
+  # - Padauk
+  # - PFS154
 summary: "Builds an addressable seven-segment display module using Padauk MCUs, covering protocol details and firmware." 
 tags:
-  - 3 cent mcu
+  - Addressable RGB
   - Padauk
+  # - LED > Addressable RGB
+  # - Microcontroller > Padauk
+  # - LED
+  # - Microcontroller
+  # - 3 cent mcu
 showTableOfContents: true
+
+
+
 ---
 
 ![Display In Operation](display_in_operation.jpg)

@@ -7,14 +7,23 @@ url: /2014/11/16/ws2812_length/
 aliases:
   # - /?p=370
 categories:
-  - Hardware
   - LED
+  - Microcontroller
+  # - Hardware
 summary: "How to estimate WS2812 string length by measuring supply-voltage sag from the LEDs' current draw." 
 tags:
-  - LED
-  - RGB LED
-  - WS2812
+  - Addressable RGB
+  - AVR
+  # - LED > Addressable RGB
+  # - Microcontroller > AVR
+  # - LED
+  # - Microcontroller
+  # - RGB LED
+  # - WS2812
 showTableOfContents: false
+
+
+
 ---
 
 Recently, I encountered an interesting problem: How do you measure the length of a WS2812 programmable RGB-LED string electronically? That is, just using signals that are already there. This can be useful if you want a LED controller to adapt its pattern according to the string that is connected to it, or simply for diagnostic reasons.

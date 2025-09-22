@@ -8,16 +8,24 @@ url: /2024/01/21/analysis-of-the-gen2-addressable-rgb-led-protocol/
 aliases:
   # - /?p=1576
 categories:
-  - Hardware
-  - Intelligent LED
   - LED
-  - Reverse engineering
+  - Reverse Engineering
+  # - Hardware
+  # - Intelligent LED
+  # - Reverse engineering
 tags:
-  - Gen2 ARGB
-  - RGB LED
-  - WS2812
+  - Addressable RGB
+  # - LED > Addressable RGB
+  # - LED
+  # - Reverse Engineering
+  # - Gen2 ARGB
+  # - RGB LED
+  # - WS2812
 summary: "Summarizes the research into the PC-focused Gen2 addressable RGB extension to the WS2812 protocol, covering the motivation for parallel string drive, basic signaling additions, and the diagnostic readback channel. The post introduces the newly available SK6112 LEDs, links to the full GitHub write-up, and includes a topology diagram that shows how Gen2 controllers fan out power, data, and return lines to multiple fixtures."
 showTableOfContents: false
+
+
+
 ---
 The WS2812 has been around for a decade and remains highly popular, alongside its numerous clones. The protocol and fundamental features of the device have only undergone minimal changes during that time.
 

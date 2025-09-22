@@ -7,18 +7,25 @@ url: /2019/08/12/the-terrible-3-cent-mcu/
 aliases:
   # - /?p=632
 categories:
-  - Hardware
-  - Padauk
-  - PFS154
+  - Microcontroller
+  # - Hardware
+  # - Padauk
+  # - PFS154
 summary: "Review of the sub $0.10 Microcontroller segment." 
 tags:
-  - 3 cent mcu
-  - MCU
-  - microcontroller
-  - PFS154
-  - PFS173
-  - PMC150
+  - Padauk
+  # - Microcontroller > Padauk
+  # - Microcontroller
+  # - 3 cent mcu
+  # - MCU
+  # - microcontroller
+  # - PFS154
+  # - PFS173
+  # - PMC150
 showTableOfContents: true
+
+
+
 ---
 
 Like many others, I was quite amazed to learn about a microcontroller sold for only 0.03 USD [via the EEVblog](https://www.eevblog.com/forum/blog/eevblog-1132-the-3-cent-microcontroller!/) last year. How was this possible? Many assumed this was a fire sale of an old product. Digging a bit further, it became apparent that there is an entire market segment of ultra-low-cost microcontrollers. Almost all of them are products of rather unknown companies from China or Taiwan. This write up summarizes my findings in this rather peculiar niche.

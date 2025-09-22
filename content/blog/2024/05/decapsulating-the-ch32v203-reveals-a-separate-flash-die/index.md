@@ -8,17 +8,24 @@ url: /2024/05/01/decapsulating-the-ch32v203-reveals-a-separate-flash-die/
 aliases:
   # - /?p=1622
 categories:
-  - Hack
-  - Hardware
-  - RISC-V
+  - Microcontroller
+  # - Hack
+  # - Hardware
+  # - RISC-V
 tags:
-  - CH32V203
-  - Decapsulation
-  - Die photo
-  - MCU
-  - technology
+  - RISC-V
+  # - Microcontroller > RISC-V
+  # - Microcontroller
+  # - CH32V203
+  # - Decapsulation
+  # - Die photo
+  # - MCU
+  # - technology
 summary: "Opens a CH32V203 package to document its two-die construction: a logic die plus a serial flash companion, mapping datasheet quirks, showing die photos, and outlining how the extra 224 KB space behaves and why it enables 144 MHz operation without wait states."
 showTableOfContents: true
+
+
+
 ---
 The CH32V203 is a 32bit RISC-V microcontroller. In the produt portfolio of WCH it is the next step up from the CH32V003, sporting a much higher clock rate of 144 MHz and a more powerful RISC-V core with RV32IMAC instruction set architecture. The CH32V203 is also extremely affordable, starting at around 0.40 USD (>100 bracket), depending on configuration.
 

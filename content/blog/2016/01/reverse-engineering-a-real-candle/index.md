@@ -7,14 +7,25 @@ url: /2016/01/05/reverse-engineering-a-real-candle/
 aliases:
   # - /?p=488
 categories:
+  - Candles
   - LED
-  - Reverse engineering
+  - Reverse Engineering
+  - Science
+  # - Reverse engineering
 summary: "Can we reverse engineer the flickering pattern of a real candle to improve artificial candle LEDs? Measuring and analyzing the temporal light output of a real candle."
 tags:
-  - candle
-  - Candleflicker
-  - LED
+  - Candle flicker
+  # - LED > Candle flicker
+  # - Candles
+  # - LED
+  # - Reverse Engineering
+  # - Science
+  # - candle
+  # - Candleflicker
 showTableOfContents: false
+
+
+
 ---
 
 Two years ago, I spent some time [analyzing the algorithm used in a candle flicker LED](/2013/12/08/hacking-a-candleflicker-led/) as  commonly found in cheap artificial candles. I reverse engineered the  algorithm from the flickering pattern and recreated the algorithm in software. Turns out this is of interest for many people who are searching for artificial candle algorithms - there is a surge of traffic every year around December. However, I just reverse engineered one of the controller ICs - this does not mean that this is a good approximation of a real candle.

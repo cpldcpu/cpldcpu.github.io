@@ -7,18 +7,24 @@ url: /2014/01/19/light_ws2812-library-v2-0/
 aliases:
   # - /?p=151
 categories:
-  - AVR
   - LED
+  - Microcontroller
+  # - AVR
 summary: "Implementation of the optimized light_ws2812 driver with hand crafted assembly inner loop that bit-bangs LEDs even at 4 MHz without timing violations on an AVR."
 showTableOfContents: false
 tags:
+  - Addressable RGB
   - AVR
-  - Bitbanging
-  - inner loop
-  - software implementation
-  - WS2811
-  - WS2812
-  - WS2812B
+  # - LED > Addressable RGB
+  # - Microcontroller > AVR
+  # - LED
+  # - Microcontroller
+  # - Bitbanging
+  # - inner loop
+  # - software implementation
+  # - WS2811
+  # - WS2812
+  # - WS2812B
 ---
 
 After investigating the timing of the WS2812 protocol in the [previous part](/2014/01/14/light_ws2812-library-v2-0-part-i-understanding-the-ws2812/), the question is now how to use this knowledge for an optimized software implementation of a controller. An obvious approach would be to use an inner loop that uses a switch statement to branch into separate functions to emit either a "0" symbol or a "1" symbol. But as it is often, there is another solution that is both more elegant and more simple.

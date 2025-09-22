@@ -7,17 +7,20 @@ url: /2014/03/02/interrupt-free-v-usb/
 aliases:
   # - /?p=171
 categories:
-  - AVR
-  - Hack
-  - Hardware
-  - Micronucleus
+  - Microcontroller
+  # - AVR
+  # - Hack
+  # - Hardware
+  # - Micronucleus
 summary: "Background and implementation of an interrupt-free V-USB variant that allows to shrink the Micronucleus V2 bootloader while boosting USB throughput."
 showTableOfContents: false
 tags:
   - AVR
-  - Bitbanging
-  - Micronucleus
-  - V-USB
+  # - Microcontroller > AVR
+  # - Microcontroller
+  # - Bitbanging
+  # - Micronucleus
+  # - V-USB
 ---
 
 Starting with V2.0, [Micronucleus](https://github.com/micronucleus/) is going to use an interrupt free modification of the software USB implementation [V-USB](http://www.obdev.at/products/vusb/index-de.html). This provides significant benefits for the bootloader, as it is not necessary anymore to patch the interrupt vector of the user program. A surprising side effect was a speed up of the V-USB data transmission, which may also be helpful in other applications. Here, I try to give a rough overview about the meandering work that led to this achievement.
