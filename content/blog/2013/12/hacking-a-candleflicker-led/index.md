@@ -63,9 +63,9 @@ Plotting the histogram reveals the full picture: Only 12 brightness levels are u
 
 How could this be realized in hardware? It seems likely that there is a source of evenly distributed random numbers that are fed through a simple signal shaping function. To generate the observed distribution at least 12*2=24 discrete input levels are required. Half of them are mapped to 1. This is quite curious, since the random number generator will most likely generate a binary number. The most logical random number size would be 5 bit, 32 states. Mapping a 32 state discrete random  variable with a homogeneous distribution to 24 states without altering the distribution is not as simple as it seems. Let's also not forget that this is a completely uncritical circuit and the design was most likely rushed. So the designer  picked the most simple solution or a hack of sorts.
 
-The only simple way that comes to mind would be to simply discard unwanted values and try the next random value.  Unwanted values can be easily identified by a bitmask. Since this is a clocked circuit, only a finite number of attempts are possible until the next frame arrives. If the number of attempts is exceeded, we are stuck with an unwanted value.*Remember the glitches above?*This is how an implementation in Ansi-C could look like:
+The only simple way that comes to mind would be to simply discard unwanted values and try the next random value.  Unwanted values can be easily identified by a bitmask. Since this is a clocked circuit, only a finite number of attempts are possible until the next frame arrives. If the number of attempts is exceeded, we are stuck with an unwanted value. *Remember the glitches above?* This is how an implementation in Ansi-C could look like:
 
-```
+```c
     char attempts=0;
     char out;
     while(attempts++<MAX_ATTEMPTS) 
@@ -97,7 +97,11 @@ I calculated the autocorrelation of the entire sequence of brightness values. No
 
 To conclude with the questions from the beginning: The flicker LED circuit is far more complex than I anticipated (I had also not expected to spend 4 hours on this). Many of the microcontroller candle implementations only push a LFSR bit directly to the LED output. This commercial flicker-LED uses a more sophisticated PWM output and a brightness shaping algorithm. It seems that definitely some care went into the algorithm design and more than the absolute minimum of chip area was invested. A fraction of a cent well spent.
 
-What is the best candle-algorithm? Can this be improved?**Edit:**I finally got around emulating the LED. You can find an emulation of the LED behavior in ANSI-C [here](https://github.com/cpldcpu/CandleLEDhack/blob/master/Emulator/CandeflickerLED.c). It is written for AVR-Microcontrollers, but can easily be ported to other controllers. The [github repository](https://github.com/cpldcpu/CandleLEDhack) contains all the data and code I have written to reverse engineer the flicker-LED.**Edit 2:** For reference, I added the specifications that came with the LED below. You can find several vendors sellings these on ebay and other auction sites by searching for "candle LED 5 mm" or "kerze LED 5 mm" (german).
+What is the best candle-algorithm? Can this be improved? 
+
+**Edit:** I finally got around emulating the LED. You can find an emulation of the LED behavior in ANSI-C [here](https://github.com/cpldcpu/CandleLEDhack/blob/master/Emulator/CandeflickerLED.c). It is written for AVR-Microcontrollers, but can easily be ported to other controllers. The [github repository](https://github.com/cpldcpu/CandleLEDhack) contains all the data and code I have written to reverse engineer the flicker-LED. 
+
+**Edit 2:** For reference, I added the specifications that came with the LED below. You can find several vendors sellings these on ebay and other auction sites by searching for "candle LED 5 mm" or "kerze LED 5 mm" (german).
 
 ```
 Material: AlGaInP

@@ -189,7 +189,9 @@ Finally, let's marvel at the result again in full frame rate glory! You can see 
 
 That's all for our journey from undoing millennia of candle-flicker-mitigation work to turning this into a clock source that can be sensed with a bare wire and a microcontroller. Back to the decade-long quest to build a perfect electronic candle emulation...
 
-All data and code is published in [this repository](https://github.com/cpldcpu/CandleSense). *This is an entry to the [HaD.io "One Hertz Challenge"](https://hackaday.io/contest/203248-one-hertz-challenge)* **(Update: And it was one of the three [winners!](https://hackaday.io/contest/203248-one-hertz-challenge/log/243233-congratulations-to-the-winners))**
+All data and code is published in [this repository](https://github.com/cpldcpu/CandleSense). 
+
+*This is an entry to the [HaD.io "One Hertz Challenge"](https://hackaday.io/contest/203248-one-hertz-challenge)* **(Update: And it was one of the three [winners!](https://hackaday.io/contest/203248-one-hertz-challenge/log/243233-congratulations-to-the-winners))**
 
 ## References
 
