@@ -25,31 +25,25 @@ Years ago I spent some time [analyzing Candle-Flicker LEDs](/2013/12/08/hacking-
 
 I was recently [tipped off](https://www.mikrocontroller.net/topic/482929) to an upgraded variant that includes a timer that turns off the candle after it was active for 6h and turns it on again 18h later. E.g. when you turn it on at 7 pm on one day, it would stay active till 1 am and deactive itself until 7 pm on the next day. Seems quite useful, actually. The question is, how is it implemented? I bought a couple of these tea lights and took a closer look.
 
-{{< gallery >}}
-<img src="pxl_20240113_190315239-1.jpg" alt="" />
-{{< /gallery >}}
+<img src="pxl_20240113_190315239-1.jpg" alt="" class="w-full md:w-3/5 mx-auto" />
 
 Nothing special on the outside. This is a typical LED tea light with CR2023 battery and a switch.
 
 {{< gallery >}}
-<img src="grafik.png" alt="" />
-<img src="sideview.jpg" alt="" />
-<img src="sideview_detail.jpg" alt="" />
+<img src="grafik.png" alt="Internal view of LED tea light" class="grid-w66" />
+<img src="sideview.jpg" alt="Side view of internal components" class="grid-w33" />
+<img src="sideview_detail.jpg" alt="Detailed side view of LED and IC" class="grid-w33" />
 {{< /gallery >}}
 
 On the inside there is not much – a single 5mm LED and a black plastic part for the switch. Amazingly, the switch does now only move one of the LED legs so that it touches the battery. No additional metal parts required beyond the LED. As prevously, there is an IC integrated together with a small LED die in the LED package.
 
-{{< gallery >}}
 <img src="microscope.png" alt="" />
-{{< /gallery >}}
 
 Looking top down through the lens with a microscope we can see the dies from the top. What is curious about the IC is that it rather large, has plenty of unused pads (3 out of 8 used) and seems to have relatively small structures. There are rectangular regular areas that look like memory, there is a large area in the center with small random looking structure, looking like synthesized logic and some part that look like hand-crafted analog. Could this be a microcontroller?
 
 Interestingly, also the positions of the used pads look quite familiar.
 
-{{< gallery >}}
 <img src="grafik-1.png" alt="" />
-{{< /gallery >}}
 
 The pad-positions correspond exactly to that of the PIC12F508/9, VDD/VSS are bonded for the power supply and GP0 connects to the LED. This pinout has been adopted by the ubiqitous [low-cost 8bit OTP controller](/2019/08/12/the-terrible-3-cent-mcu/)s that can be found in every cheap piece of chinese electronics nowadays.
 
@@ -58,8 +52,8 @@ Quite curious, so it appears that instead of designing another ASIC with candle 
 ## Electrical characterization
 
 {{< gallery >}}
-<img src="pwm.png" alt="" />
-<img src="activity.png" alt="" />
+<img src="pwm.png" alt="PWM signal from LED" class="grid-w50" />
+<img src="activity.png" alt="Current transients from MCU" class="grid-w50" />
 {{< /gallery >}}
 
 For some quick electrical characterization is connected the LED in series with a 220 Ohm resistor to measure the current transients. This allows for some insight into the internal operation. We can see that the LED is driven in PWM mode with a frequency of around 125Hz. (left picture)
@@ -68,9 +62,7 @@ When synchronizing to the rising edge of the PWM signal we can see the current
 
 ## Sleep mode
 
-{{< gallery >}}
 <img src="activity2.png" alt="" />
-{{< /gallery >}}
 
 To gain more insights, I measured that LED after it was on for more than 6h and had entered sleep mode. Naturally, the PWM signal from the LED disappeared, but the current transients from the MCU remained the same, suggesting that it still operates at 1 MHz.
 

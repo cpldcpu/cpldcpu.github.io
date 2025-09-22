@@ -28,17 +28,13 @@ showTableOfContents: true
 ---
 Bouyed by the surprisingly good performance of neural networks with quantization aware training [on the CH32V003](/2024/04/24/implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier/), I wondered how far this can be pushed. How much can we compress a neural network while still achieving good test accuracy on the MNIST dataset? When it comes to absolutely low-end microcontrollers, there is hardly a more compelling target than the [Padauk 8-bit microcontrollers](/2019/08/12/the-terrible-3-cent-mcu/). These are microcontrollers optimized for the simplest and lowest cost applications there are. The smallest device of the portfolio, the PMS150C, sports 1024 13-bit word one-time-programmable memory and 64 bytes of ram, more than an order of magnitude smaller than the CH32V003. In addition, it has a proprieteray accumulator based 8-bit architecture, as opposed to a much more powerful RISC-V instruction set.
 
-{{< gallery >}}
-  <img src="banner-1.png" alt="" />
-{{< /gallery >}}
+<img src="banner-1.png" alt="" />
 
 Is it possible to implement an MNIST inference engine, which can classify handwritten numbers, also on a PMS150C?
 
 On the CH32V003 I used MNIST samples that were downscaled from 28x28 to 16x16, so that every sample take 256 bytes of storage. This is quite acceptable if there is 16kb of flash available, but with only 1 kword of rom, this is too much. Therefore I started with downscaling the dataset to 8x8 pixels.
 
-{{< gallery >}}
-  <img src="samplescompared-1.png" alt="" />
-{{< /gallery >}}
+{{< figure src="samplescompared-1.png" alt="MNIST samples comparison at different resolutions" class="bg-white rounded p-4" >}}
 
 The image above shows a few samples from the dataset at both resolutions. At 16x16 it is still easy to discriminate different numbers. At 8x8 it is still possible to guess most numbers, but a lot of information is lost.
 
@@ -46,9 +42,7 @@ Suprisingly, it is still possible to train a machine learning model to recognize
 
 ## Parameter Exploration
 
-{{< gallery >}}
   <img src="nnexploration.png" alt="" />
-{{< /gallery >}}
 
 The plot above shows the result of my hyperparameter exploration experiments, comparing models with different configurations of weights and quantization levels from 1 to 4 bit for input images of 8x8 and 16x16. The smallest models had to be trained without data augmentation, as they would not converge otherwise.
 
@@ -64,28 +58,26 @@ Since the RAM is limited to 64 bytes, the model structure had to use a minimum n
 
 Furthermore, I used 2-bit weights with irregular spacing of (-2, -1, 1, 2) to allow for a simplified implementation of the inference code. I also skipped layer normalization and instead used a constant shift to rescale activations. These changes slightly reduced accuracy. The resulting model structure is shown below.
 
-{{< gallery >}}
-  <img src="model_mcu.drawio.png" alt="" />
-{{< /gallery >}}
+<img src="model_mcu.drawio.png" alt="" />
 
 All things considered, I ended up with a model with 90.07% accuracy and a total of 3392 bits (0.414 kilobytes) in 1696 weights, as shown in the log below. The panel on the right displays the first layer weights of the trained model, which directly mask features in the test images. In contrast to the higher accuracy models, each channel seems to combine many features at once, and no discernible patterns can be seen.
 
-
-
-{{< gallery >}}
-  <img src="grafik-9.webp" alt="" />
-  <img src="firstlayer-1.png" alt="" />
-{{< /gallery >}}
-
-
+<div class="flex items-start gap-4">
+  <figure class="flex-shrink-0">
+    <img src="grafik-9.webp" alt="Console output showing model training results" class="h-64 w-auto" />
+    <figcaption class="text-sm text-center mt-2">Model training results and statistics</figcaption>
+  </figure>
+  <figure class="flex-shrink-0">
+    <img src="firstlayer-1.png" alt="First layer visualization showing learned weight patterns" class="h-64 w-auto" />
+    <figcaption class="text-sm text-center mt-2">First layer weight visualization</figcaption>
+  </figure>
+</div>
 
 ## Implementation on the Microntroller
 
 In the first iteration, I used a slightly larger variant of the Padauk Microcontrollers, the PFS154. This device has twice the ROM and RAM and can be reflashed, which tremendously simplifies software development. The C versions of the inference code, including the debug output, worked almost out of the box. Below, you can see the predictions and labels, including the last layer output.
 
-{{< gallery >}}
   <img src="grafik-10.png" alt="" />
-{{< /gallery >}}
 
 Squeezing everything down to fit into the smaller PMS150C was a different matter. One major issue when programming these devices in C is that every function call consumes RAM for the return stack and function parameters. This is unavoidable because the architecture has only a single register (the accumulator), so all other operations must occur in RAM.
 
@@ -125,9 +117,7 @@ __endasm;
 
 In the end, I managed to fit the entire inference code into 1 kilowords of memory and reduced sram usage to 59 bytes, as seen below. (Note that the output from SDCC is assuming 2 bytes per instruction word, while it is only 13 bits).
 
-{{< gallery >}}
   <img src="grafik-11.png" alt="" />
-{{< /gallery >}}
 
 Success! Unfortunately, there was no rom space left for the soft UART to output debug information. However, based on the verificaiton on PFS154, I trust that the code works, and since I don't have any specific application in mind, I left it at that stage.
 

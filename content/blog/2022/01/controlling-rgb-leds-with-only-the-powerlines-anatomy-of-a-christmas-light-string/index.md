@@ -26,7 +26,7 @@ As should be obvious from this blog, I am somewhat drawn to clever and minimalis
 
 The product I found is shown below. It is a remote controlled RGB curtain. There are many similar products out there. What is special about this one, is that there are groups of LEDs with individual color control, allowing not only to set the color globally but also supporting animated color effects. The control groups are randomly distributed across the curtain.
 
-![H73f8e43f295e4e7dbd131030f234ed5ae](H73f8e43f295e4e7dbd131030f234ed5ae.jpg)Remote controlled RGB curtain (vendor image)
+![vendor_image](vendor_image.jpg)Remote controlled RGB curtain (vendor image)
 
 The same type of LEDs also seems to be used in different products, like "rope-light" for outside usage. A common indication for this LED type seems to be the type of remote control being used, that has both color and animation options (see above).
 
@@ -34,25 +34,27 @@ There seems to be an [earlier version of similar LEDs](https://www.youtube.com/w
 
 ## Physical analysis
 
-![20220121 150545 8 1](20220121-150545-8-1.jpg)
-
-![20220121 150706 688 1](20220121-150706-688-1.jpg)
+{{< gallery >}}
+<img src="20220121-150545-8-1.jpg" class="grid-w50" />
+<img src="20220121-150706-688-1.jpg" class="grid-w50" />
+{{< /gallery >}}
 
 Let's first take a quick look at the controller. The entire device is USB powered. There is a single 8 pin microcontroller with a 32.768kHz quarz. Possibly to enable reliable timing (there is a timer option on the remote controler) and low power operation when the curtain is turned off. The pinout of the MCU seems to follow the PIC12F50x scheme which is also used by many similar devices (e.g. Padauk, Holtek, MDT). The marking "MF2523E" is unfamiliar though and it was not possible to identify the controller. Luckily this is not necessary to analyze the operation. There are two power mosfets which are obviously used to control the LED string. Only two lines connect to the entire string, named L- (GND) and L+.
 
 All 100 (up to 300 in larger versions) LEDs are connected to the same two lines.  These types of strings are known as "copper string lights" and you can see [how they are made here](https://youtu.be/wCKlCUBsaT4) (Thanks to Harald from uC.net for the link!). It's obvious that it is easier to change the LED than the string manufacturing process, so any improvement that does not require additional wires (or even a daisy chain connection like WS2812) is much easier to introduce.
 
-![Led Large](led_large.jpg)
-
-![20220121 114437 738 1](20220121-114437-738-1.jpg)
-
-![20220121 114334 146](20220121-114334-146.jpg)
+{{< gallery >}}
+<img src="led_large.jpg" alt="LED large view" class="grid-w66" />
+<img src="20220121-114437-738-1.jpg" alt="LED close up view 1" class="grid-w30" />
+<img src="20220121-114334-146.jpg" alt="LED close up view 2" class="grid-w30" />
+{{< /gallery >}}
 
  Close up images of a single LED are shown above. We can clearly see that there is a small integrated circuit in every lightsource, and three very tiny LED chips.
 
-![20220121 225115 324](20220121-225115-324.jpg)
-
-![20220121 225233 868](20220121-225233-868.jpg)
+{{< gallery >}}
+<img src="20220121-225115-324.jpg" alt="LED component left side" class="grid-w50" />
+<img src="20220121-225233-868.jpg" alt="LED component right side" class="grid-w50" />
+{{< /gallery >}}
 
 Trying to break the LED apart to get a better look at the IC surface was not successful, as the package always delaminated between carrer (The tiny pcb on the left) and chips (still embedded in the epoxy diffusor on the right). What can be deduced however, is that the IC is approximatly 0.4 x 0.6 = 0.24 mm^2 in area. That is actually around the size of a more complex WS2812 controller IC.
 
@@ -60,7 +62,7 @@ Trying to break the LED apart to get a better look at the IC surface was not suc
 
 Hooking up the LEDs directly to a power supply caused them to turn on white. Curiously there does not seem to be any kind of constant current source in the LEDs. The current changes direclty in proportion to the applied voltage, as shown below. The internal resistance is around 35 Ohms.
 
-![Plot](plot.png)
+{{< figure src="plot.png" alt="LED current vs voltage plot" class="bg-white rounded p-4" >}}
 
 This does obviously simplify the  IC a lot, since it basically only has to provide a switch instead of a current source like in the WS2812. It also appears that this allows to regulate the overall current consumption of the LED chain from the string controller  by changing the string voltage and control settings. The overall current consumption of the curtain is between 300-450 mA, right up to the allowable maximum of power draw of USB2.0. Maybe this seemingly "low quality" solution is a bit more clever than it looks at the first glance. There is a danger of droop of course, if too much voltage is lost over the length of the string.
 
@@ -76,17 +78,33 @@ The scope image above shows the entire control signal sequence when setting all 
 2. We can directly read from the string voltage whether LEDs are turned on or off.
 3. The first half of the sequence obviously turns all LEDs off (indeed, the string flickers when changing color settings), while the second half of the sequence turns all LEDs on with the desired color setting.
 
-![SIngle data frame](single-data-frame-trace.png)
+![Single data frame](single-data-frame-trace.png)
 
 Some more experimentation revealed that the communication is based on messages consisting of an address field and a data field. The data transmission is initiated with a single pulse. The count of following pulses indicates the value that is being transmitted using simple linear encoding (Which seems to be similar to what [ChayD observed](https://github.com/Aircoookie/WLED/issues/1312#issuecomment-1012578561) in his string, so possibly the devices are indeeed the same). No binary encoding is used.
 
 Address and data field are separated by a short pause. A longer pause indicates that the message is complete and changes to the LED settings are latched after a certain time has passed.
 
-![Dataframe](dataframe.png)
+{{< figure src="dataframe.png" alt="Data frame timing diagram" class="bg-white rounded p-4" >}}
 
 My findings are summarized in the diagram above. The signal timing seems to be derived from minimum cycle timing of the 32.768kHz Crystal connected to the microcontroller, as one clock cycle equals ~31 us. Possibly the pulse timing can be shortened a bit, but then one also has to consider that the LED string is basically a huge antenna...
 
-**Address****Field****Function**0Unused / No Function1 ... 6Address one of six LED subgroubs (zones), writes datafield value into RGB Latch.7Address all LEDs at once (broadcast), adds datafield value to RGB latch content.**RGB Latch****Value****RGB encoding**0 (000)Turn LEDs off (Black)1  (001)Red2 (010)Green3 (011)Yellow (Red+Green)4 (100)Blue5 (101)Magenta (Red+Blue)6 (110)Cyan (Green+Blue)7 (111)White
+| Address Field | Function |
+|---------------|----------|
+| 0 | Unused / No Function |
+| 1 ... 6 | Address one of six LED subgroups (zones), writes datafield value into RGB Latch |
+| 7 | Address all LEDs at once (broadcast), adds datafield value to RGB latch content |
+
+
+| RGB Latch Value | RGB encoding |
+|-----------------|--------------|
+| 0 (000) | Turn LEDs off (Black) |
+| 1 (001) | Red |
+| 2 (010) | Green |
+| 3 (011) | Yellow (Red+Green) |
+| 4 (100) | Blue |
+| 5 (101) | Magenta (Red+Blue) |
+| 6 (110) | Cyan (Green+Blue) |
+| 7 (111) | White |
 
 The address field can take values between 1 and 7. A total of six different zones can be addressed with addresses 1 to 6.  The data that can be transmitted to the LED is fairly limited. It is only possible to turn the red, green and blue channels on or off, realizing 7 primary color combinations and "off". Any kind of intermediate color gradient has to be generated by quickly changing between color settings.
 
@@ -106,7 +124,7 @@ Implementing the control scheme in software is fairly simple. Below you can find
 
 The string is directly connected to a GPIO. Keep in mind that this is at the same time the power supply for the LEDs, so it only works with very short strings. For longer strings an additional power switch, possibly in push-pull configuration (e.g. MOSFET), is required.
 
-```
+```c
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -140,7 +158,7 @@ It seems to be perfectly possible to control the string without elaborate reset 
 
 ![Reset sequence](reset-trace.png)
 
-```
+```c
 // Emulation of reset sequence
 void resetstring(void) {
 	PORTB &= ~_BV(PB0);  // Long power off sequence
@@ -170,7 +188,9 @@ void resetstring(void) {
 }
 ```
 
-## Pulse Timing And Optical Measurements**Update:**To understand the receiver mechanism a bit more and deduce limits for pulse timing I spent some effort on additional measurements. I used a photodiode to measure the optical output of the LEDs.
+## Pulse Timing And Optical Measurements
+
+**Update:** To understand the receiver mechanism a bit more and deduce limits for pulse timing I spent some effort on additional measurements. I used a photodiode to measure the optical output of the LEDs.
 
 ![Optical Trace](optical-trace.png)
 
@@ -182,7 +202,7 @@ Taking a closer look at the exact timing of the update reveals that around 65us 
 
 To my surprise, I noticed that this delay value is actually dependent on the pulse timing. The timeout delay time is exactly twice as long as the previous "high" period, the time between the last two "low" pulses.
 
-![Dataframe2](dataframe2.png)
+{{< figure src="dataframe2.png" alt="Parametrized timing diagram" class="bg-white rounded p-4" >}}
 
 This is shown schematically in the parametrised timing diagram above.
 
@@ -192,7 +212,7 @@ The variable timeout is actually a very clever feature since it allows adjusting
 
 See below for an updated driver function  with variable pulse time setting.
 
-```
+```c
 #define basetime_us 10
 #define frameidle_us basetime_us*5  // cover worst case when data is zero
 									
