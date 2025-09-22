@@ -1,0 +1,26 @@
+{{- /*
+     Shortcode: archive-list
+     Renders a reverse-chronological list of blog posts with publish date and title.
+*/ -}}
+
+{{- $sections := slice "blog" "posts" -}}
+{{- $pages := where site.RegularPages "Type" "in" $sections -}}
+
+{{- if not (gt (len $pages) 0) -}}
+  {{- $pages = where site.RegularPages "Section" "in" $sections -}}
+{{- end -}}
+
+{{- $pages = sort (uniq $pages) "Date" "desc" -}}
+
+{{- if gt (len $pages) 0 -}}
+  <ul class="archive-list">
+    {{- range $pages }}
+      <li>
+        <span class="archive-date">{{ .Date.Format "2006-01-02" }}</span>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+    {{- end }}
+  </ul>
+{{- else -}}
+  <p>No posts found.</p>
+{{- end -}}

@@ -1,0 +1,15 @@
+# Hugo build artifacts
+public/
+resources/
+.hugo_cache/
+
+# Hugo lock file
+.hugo_build.lock
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
