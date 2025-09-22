@@ -24,6 +24,53 @@
    name = "Archive"
    pageRef = "/archive/"
    weight = 20
+[[main]]
+  name = "LED"
+  parent = "Archive"
+  pageRef = "/categories/led/"
+  weight = 21
+
+[[main]]
+  name = "Candles"
+  parent = "Archive"
+  pageRef = "/categories/candles/"
+  weight = 22
+
+[[main]]
+  name = "Computer Architecture"
+  parent = "Archive"
+  pageRef = "/categories/computer-architecture/"
+  weight = 23
+
+[[main]]
+  name = "Discrete Logic"
+  parent = "Archive"
+  pageRef = "/categories/discrete-logic/"
+  weight = 24
+
+[[main]]
+  name = "Microcontroller"
+  parent = "Archive"
+  pageRef = "/categories/microcontroller/"
+  weight = 25
+
+[[main]]
+  name = "ML & AI"
+  parent = "Archive"
+  pageRef = "/categories/ml--ai/"
+  weight = 26
+
+[[main]]
+  name = "Reverse Engineering"
+  parent = "Archive"
+  pageRef = "/categories/reverse-engineering/"
+  weight = 27
+
+[[main]]
+  name = "Science"
+  parent = "Archive"
+  pageRef = "/categories/science/"
+  weight = 28
 
 [[main]]
   pre = "github"
