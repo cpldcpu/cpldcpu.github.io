@@ -22,7 +22,7 @@ showTableOfContents: true
 
 What would it take to build an addressable LED like the WS2812 (aka Neopixel) using only discrete transistors? Time for a small "1960 style logic meets modern application" technology fusion project.
 
-![Transistorpixel](transistorpixel.gif)
+<img src="transistorpixel.gif" alt="Transistorpixel" />
 
 ## The Objective
 

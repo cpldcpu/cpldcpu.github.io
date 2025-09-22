@@ -29,7 +29,7 @@ Charlieplexing uses the tri-state property of microcontroller I/O pins. Only two
 
 Now, one has to wonder what happens when not two, but only one I/O is active? Nothing in the Charlieplexing scheme. But we can make use of it!
 
-![dice_circuit](dice_circuit.gif)
+<img src="dice_circuit.gif" alt="dice_circuit" />
 
 The circuit above shows how to connect LEDs in a different scheme. In addition to the antiparallel pair between the two I/O pins, as customary with charlieplexing, LEDs are also connected to VCC and GND. The sum of forward voltages of the four LEDs in series (LED1-4 and LED5-8) is higher than 5V, so that they will not light up when PB0 and PB2 are in high impedance (Z) state.
 
@@ -45,7 +45,7 @@ A quick test (LEDs not arranged in dice pattern) showed that the new multiplexin
 
 ![Dice_test](dice_test.jpg)
 
-![Mein Film 6](mein-film_6.gif)
+<img src="mein-film_6.gif" alt="Mein Film 6" />
 
 ![scaling](scaling1.png)
 
