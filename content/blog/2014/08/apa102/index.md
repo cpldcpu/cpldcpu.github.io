@@ -3,14 +3,14 @@ title: "APA102 aka \"Superled\""
 date: 2014-08-27T20:20:08Z
 lastmod: 2016-11-27T10:26:01Z
 slug: apa102
-url: /2014/08/27/apa102/
-aliases:
+  url: /2014/08/27/apa102/
+  aliases:
   # - /?p=357
 categories:
-  - Candles
+  # - Candles
   - LED
   # - Hardware
-summary: "Investigation the SPI based the APA102/APA102C LEDs, outlining their SPI protocol, global brightness control, and fast PWM behavior." 
+summary: "Investigating the SPI based the APA102/APA102C LED, outlining its SPI protocol, global brightness control, and fast PWM behavior." 
 tags:
   - Addressable RGB
   # - LED > Addressable RGB
