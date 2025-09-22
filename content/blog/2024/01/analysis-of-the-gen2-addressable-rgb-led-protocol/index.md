@@ -3,6 +3,7 @@ title: "Analysis of the Gen2 Addressable RGB LED Protocol"
 date: 2024-01-21T01:34:46Z
 lastmod: 2024-01-21T01:54:12Z
 slug: analysis-of-the-gen2-addressable-rgb-led-protocol
+draft: true
 url: /2024/01/21/analysis-of-the-gen2-addressable-rgb-led-protocol/
 aliases:
   # - /?p=1576
