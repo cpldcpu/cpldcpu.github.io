@@ -3,6 +3,7 @@ title: "Gluon - developing a bootloader for the ATtiny104"
 date: 2016-05-21T17:41:40Z
 lastmod: 2016-05-21T18:01:15Z
 slug: gluon-developing-a-bootloader-for-the-attiny104
+draft: true
 url: /2016/05/21/gluon-developing-a-bootloader-for-the-attiny104/
 aliases:
   # - /?p=547

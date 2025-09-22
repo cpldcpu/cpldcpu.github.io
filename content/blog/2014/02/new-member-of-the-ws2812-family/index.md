@@ -3,6 +3,7 @@ title: "New member of the WS2812 family"
 date: 2014-02-18T16:15:00Z
 lastmod: 2014-02-23T00:13:17Z
 slug: new-member-of-the-ws2812-family
+draft: true
 url: /2014/02/18/new-member-of-the-ws2812-family/
 aliases:
   # - /?p=4

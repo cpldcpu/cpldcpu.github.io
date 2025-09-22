@@ -2,6 +2,7 @@
 title: "A surprising IC in a LED light chain."
 date: 2024-11-25T19:23:29Z
 lastmod: 2024-11-25T19:25:36Z
+draft: true
 slug: a-surprising-ic-in-a-led-light-chain
 url: /2024/11/25/a-surprising-ic-in-a-led-light-chain/
 aliases:

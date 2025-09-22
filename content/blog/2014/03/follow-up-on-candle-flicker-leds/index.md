@@ -2,7 +2,7 @@
 title: "Follow-up on candle flicker LEDs"
 date: 2014-03-01T19:24:19Z
 lastmod: 2014-03-02T18:19:03Z
-slug: follow-up-on-candle-flicker-leds
+draft: true
 url: /2014/03/01/follow-up-on-candle-flicker-leds/
 aliases:
   # - /?p=198
