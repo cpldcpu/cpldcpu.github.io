@@ -1,5 +1,5 @@
 ---
-title: "Hacking a Candleflicker LED"
+title: "Reverse Engineering a Candleflicker LED"
 date: 2013-12-08T19:51:20Z
 lastmod: 2013-12-19T08:01:31Z
 slug: hacking-a-candleflicker-led

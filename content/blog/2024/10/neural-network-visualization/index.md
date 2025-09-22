@@ -8,7 +8,7 @@ aliases:
   # - /?p=1727
 categories:
   - machine learning
-summary: "Introduces a browser visualizer for the 8x8 MNIST networks used on the three-cent MCU, letting you sketch digits, explore layer activations, and grab the React source for further experiments."
+summary: "A browser based interactive application that visualizes simple multi-layer perception (MLP) neural networks for the inference of 8x8 pixel images."
 showTableOfContents: false
 ---
 ![](grafik.png)

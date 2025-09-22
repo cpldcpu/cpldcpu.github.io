@@ -18,7 +18,7 @@ tags:
   - Hardware
   - Light Emitting Diode
   - reverse engineering
-summary: "Dissects a timer-enabled candle flicker LED tea light from package to die microscope shots, revealing a PIC12-style OTP microcontroller bonded directly inside the LED can. Oscilloscope captures document the 1 MHz PWM drive and the persistent 240 µA sleep current, while activity traces and gallery photos chart the six-hour on, eighteen-hour off timer behavior. The measurements quantify the battery drain and show how a low-leakage MCU could extend runtime from roughly nine days to nearly thirteen."
+summary: "Analyzing a battery powered LED tea light with 24h timer functionality. Discovering that it is surprisingly based on a low-cost 8-bit microcontroller integrated into the LED package."
 showTableOfContents: true
 ---
 Years ago I spent some time [analyzing Candle-Flicker LEDs](/2013/12/08/hacking-a-candleflicker-led/) that contain an integrated circuit to mimic the flickering nature of real candles. Artificial candles have evolved quite a bit since then, now including magnetically actuated “flames”, an even better candle-emulation. However, at the low end, there are still simple candles with candle-flicker LEDs to emulate tea-lights.
