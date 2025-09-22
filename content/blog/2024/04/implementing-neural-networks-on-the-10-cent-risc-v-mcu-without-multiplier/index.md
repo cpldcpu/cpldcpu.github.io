@@ -1,5 +1,5 @@
 ---
-title: "Implementing Neural Networks on the “10-cent” RISC-V MCU without Multiplier"
+title: "BitNetMCU: Implementing Neural Networks on the “10-cent” RISC-V MCU without Multiplier"
 date: 2024-04-24T10:20:26Z
 lastmod: 2024-04-27T14:52:51Z
 slug: implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier
@@ -17,7 +17,7 @@ tags:
   - ML
   - MNIST
   - Optimization
-summary: "Documents a scratch-built inference stack for the ten-cent CH32V003 RISC-V MCU without hardware multiply, explaining quantization-aware training experiments, the fully connected topology, and code optimizations that reuse adds and shifts for 4-bit weights. Includes performance plots, inference console output, and photos of the target board, culminating in a 12 kB model hitting 99% MNIST accuracy and a smaller 1 kB variant still exceeding 94 percent accuracy."
+summary: "BitNetMCU is a project focused on the training and inference of low-bit quantized neural networks, designed to run efficiently on low-end microcontrollers like the CH32V003. Quantization aware training (QAT) and fine-tuning of model structure allowed surpassing 99% Test accuracy on a 16x16 MNIST dataset in only 2kb of RAM and 16kb of Flash."
 showTableOfContents: true
 ---
 I have been meaning for a while to establish a setup to implement neural network based algorithms on smaller microcontrollers. After [reviewing existing solutions](https://hackaday.io/project/193478-generative-ai-on-a-microcontroller/log/225316-tiny-inference-engines-for-mcu-deployment), I felt there is no solution that I really felt comfortable with. One obvious issue is that often flexibility is traded for overhead. As always, for a really optimized solution you have to roll your own. So I did. You can find the project [here](https://github.com/cpldcpu/BitNetMCU) and a detailed writeup [here](https://github.com/cpldcpu/BitNetMCU/blob/main/docs/documentation.md).
