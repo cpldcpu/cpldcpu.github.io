@@ -65,15 +65,15 @@ The implementation of a programmable current source in the SK9822 is actually a 
 
 # Summary
 
-At a first glance, the SK9822 looks like an identical clone of the APA102, but taking a closer look reveals plenty of differences, see table below.**APA102****SK9822****Update**Staggered
-Simultaneous**Update trigger**RGB data transmission
-Reset frame (0x00000000)**PWM Frequency**~19 kHz
-~4.7 kHz**Global brightness control**PWM at ~440 Hz
-Programmable current source**Chip size**
-~1 mm^2
-~0.65 mm^2
+At a first glance, the SK9822 looks like an identical clone of the APA102, but taking a closer look reveals plenty of differences, see table below.
 
-
+| Feature | APA102 | SK9822 |
+|---------|--------|---------|
+| **Update** | Staggered | Simultaneous |
+| **Update trigger** | RGB data transmission | Reset frame (0x00000000) |
+| **PWM Frequency** | ~19 kHz | ~4.7 kHz |
+| **Global brightness control** | PWM at ~440 Hz | Programmable current source |
+| **Chip size** | ~1 mm² | ~0.65 mm² |
 
 In conclusion, the SK9822 is not an exact clone of the APA102. It adds some interesting features. For example the programmable current source to control global brightness and a non-staggered update. But there are also some drawbacks like the protocol incompatibility and the lower PWM frequency. The incompatibility in the protocol can be worked around by using the unified protocol proposed above.
 

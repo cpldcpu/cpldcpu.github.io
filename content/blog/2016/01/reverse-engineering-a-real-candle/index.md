@@ -1,5 +1,5 @@
 ---
-title: "Reverse engineering a real candle"
+title: "\"Reverse engineering\" a real candle"
 date: 2016-01-05T22:56:21Z
 lastmod: 2023-10-25T08:49:18Z
 slug: reverse-engineering-a-real-candle
@@ -37,9 +37,9 @@ Each pulse leads to a quickly varying change in brightness ("flicker") above the
 
 ![Detail of candle response](disturbed_candle.png)The trace above shows the details of a single, representative, event. There are three distinct features, marked with A, B and C.
 
-- A) *Initial drop in brightness:*This seems to be associated with the arrival of the air pulse. Possibly the candle is depleted of flammable gasses here?
-- B) *Chaotic oscillations:*This could be due to turbulence of the in rushing air, which exerts varying force on the candle.
-- C) *Harmonic oscillations*: This seems to be an intrinsic process of the candle that was initiated by the external pulse. At this point, there is probably no additional external force acting on the flame. The oscillations are damped and die off after around 3 seconds.
+- A) *Initial drop in brightness:* This seems to be associated with the arrival of the air pulse. Possibly the candle is depleted of flammable gasses here?
+- B) *Chaotic oscillations:* This could be due to turbulence of the in rushing air, which exerts varying force on the candle.
+- C) *Harmonic oscillations:* This seems to be an intrinsic process of the candle that was initiated by the external pulse. At this point, there is probably no additional external force acting on the flame. The oscillations are damped and die off after around 3 seconds.
 
 This behavior is quite complex and even a purely empirical model is not easy to derive. Is there a chaotic oscillator that can be easily parametrized to behave in a similar way? Alternatively, one could simply ignore the chaotic oscillation in region B). Then the flickering could be simulated using a damped harmonic oscillator. It is quite possible that the visual difference is negligible.
 

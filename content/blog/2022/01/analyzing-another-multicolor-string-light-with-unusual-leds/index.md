@@ -16,11 +16,11 @@ tags:
 showTableOfContents: false
 ---
 
-![Bluebulb2](bluebulb2.jpg)
+<img src="bluebulb2.jpg" alt="One of the blue LEDs" style="max-width: 50%; height: auto; display: block; margin: 0 auto;" />
 
 After being amazed about [finding a really clever implementation of powerline controlled LEDs](https://cpldcpu.wordpress.com/2022/01/23/controlling-rgb-leds-with-only-the-powerlines-anatomy-of-a-christmas-light-string/) in a low cost RGB "copper string light", I bought a few other products in hope to find more LEDs with integrated ICs. At less than $4.00 including shipping, this was by far the cheapest LED string I bought. This one did not have any ICs inside, but I was still surprised about finding rather unusual phosphor converted LED technology in it.
 
-{{< figure src="vendorimage.jpg" caption="Vendor Image" width="70%" >}}
+<img src="vendorimage.jpg" alt="Vendor image of multicolor LED string" style="max-width: 50%; height: auto; display: block; margin: 0 auto;" />
 
  The delivery contained an LED string with attached USB controller and a remote control including battery, as seen in the lower part of the vendor image. The upper part seems to be an artistic impression that shows colors that can not be displayed by the string.
 
@@ -31,8 +31,8 @@ Each of the LEDs in the string has one of four fixed colours: Green, Red, Blue, 
 This can be easily achieved by connecting two groups of LEDs in antiparallel manner so that either polarity of the string will turn one group of LEDs on. Unlikely in the previous string, this does not require the integration of an integrated circuit into each LED.
 
 {{< gallery >}}
-<img src="20220126-230628-884.jpg" />
-<img src="20220126-230712-844.jpg" />
+<img src="20220126-230628-884.jpg" class="grid-w50"/>
+<img src="20220126-230712-844.jpg" class="grid-w50"/>
 {{< /gallery >}}
 
 The controller looks even more sparse than that of the previous light string. Besides an 8 pin microcontroller with PIC-pinout and the essential set of 32.768 kHz crystal and remote control receive there is only one additional IC on board. U1 is marked "H006" and appears to be a full bridge controller that allows to connect the LED string to power in either direction. I have not been able to identify this chip, but it seems to be quite useful. Two pins of the MCU are connected to it.
@@ -43,15 +43,15 @@ There is a tiny detail: How do we connect LEDs with different colors in parallel
 
 This is not the case here, so what is going on? Let's take a look at the LEDs.
 
-{{< gallery cols="4" spacing="small" hover="grow">}}
-<img src="20220126-210301-188-1.jpg" />
-<img src="20220126-210347-579-1.jpg" />
-<img src="20220126-210020-612-1.jpg" />
-<img src="20220126-210153-876-1.jpg" />
-<img src="20220126-210230-844.jpg" />
-<img src="20220126-210404-379.jpg" />
-<img src="20220126-210048-932.jpg" />
-<img src="20220126-210310-132.jpg" />
+{{< gallery >}}
+<img src="20220126-210301-188-1.jpg" alt="Red LED microscope view" class="grid-w25" />
+<img src="20220126-210347-579-1.jpg" alt="Green LED microscope view" class="grid-w25" />
+<img src="20220126-210020-612-1.jpg" alt="Blue LED microscope view" class="grid-w25" />
+<img src="20220126-210153-876-1.jpg" alt="White LED microscope view" class="grid-w25" />
+<img src="20220126-210230-844.jpg" alt="Red LED detail" class="grid-w25" />
+<img src="20220126-210404-379.jpg" alt="Green LED detail" class="grid-w25" />
+<img src="20220126-210048-932.jpg" alt="Blue LED detail" class="grid-w25" />
+<img src="20220126-210310-132.jpg" alt="White LED detail" class="grid-w25" />
 {{< /gallery >}}
 
 Above are microscope images of all the four LED colors in the string. It appears that standard LEDs in 0603 form factor have been directy connected to the copper wired without any additional integrated circuit or even forward resistor.

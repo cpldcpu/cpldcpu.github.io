@@ -47,9 +47,7 @@ There are some obvious commonalities: All devices are designed around an accumul
 
 Unfortunately, none of the vendors openly share details like instruction encoding or memory algorithms. Development for all device has to commence via vendor-provided IDEs.  With exception of Holtek, all devices rely on high voltage programming interface and are not easily programming in-circuit. Only Padauk and Holtek offer devices that can be programmed more than once.
 
-![3 Cent Mcu 1](3-cent-mcu-1.png)
-
-Summary of my findings. PDF version [here](https://cpldcpu.wordpress.com/wp-content/uploads/2019/08/10cent-mcu-overview-1.pdf).
+{{< figure src="3-cent-mcu-1.png" alt="Summary table of sub $0.10 microcontrollers" caption="Summary of my findings. PDF version [here](10cent-mcu-overview-1.pdf)." >}}
 
 ## Individual Findings
 

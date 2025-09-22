@@ -1,5 +1,5 @@
 ---
-title: "Power analysis probing WS2812 RGB LEDs"
+title: "Power analysis: Probing WS2812 RGB LEDs"
 date: 2020-12-19T19:11:33Z
 lastmod: 2020-12-19T19:13:42Z
 slug: power-analysis-probing-ws2812-rgb-leds
@@ -37,14 +37,22 @@ The WS2812 consists of two primary functional units:  The communication interfac
 
 The WS2812 receives and transmits data in a format where a logical "0" is encoded in a short pulse and a logical "1" in a long pulse. One way of looking at this protocol is by interpreting it as a "1N1" asynchronous serial protocol with one start bit and one data bit.
 
-![1n1 2](1n1-2.png)
+![1n1](1n1.jpg)
 
-Decoding this protol requires detecting the rising edge for the start condition and then sampling the "1" or "0" after 1.5 bit times. Depending on the state of the WS2812 (receiving or forwarding) it will regenerate the timing of the signal and reproduce it on the output.
+Decoding this protocol requires detecting the rising edge for the start condition and then sampling the "1" or "0" after 1.5 bit times. Depending on the state of the WS2812 (receiving or forwarding) it will regenerate the timing of the signal and reproduce it on the output.
 
 This model of the WS2812 line encoding also makes clear that the only relevant timing parameter is the time between the rising edge of the data line ("Sync") and the sampling time. Unlike the data sheet states, it does not matter if the symbol are spaced further apart than 1.25 us, as long as the reset time is not exceeded, and it also does not matter if the timing for a "1" is increased. One important parameter not mentioned in the datasheet is the minimum spacing of the signals, which is the timing of a zero times 5/2.
 
-- ![Zero](zero.png)
-- ![One](one.png)Data input and output during the transmission of a zero and a one
+{{< gallery >}}
+<figure class="grid-w50">
+<img src="zero.png" alt="Data input and output during transmission of a zero" />
+<figcaption>Transmission of a zero</figcaption>
+</figure>
+<figure class="grid-w50">
+<img src="one.png" alt="Data input and output during transmission of a one" />
+<figcaption>Transmission of a one</figcaption>
+</figure>
+{{< /gallery >}}
 
 The scope images above show the input and output of the WS2812 during the transmission of a one and a zero. I intentionally extended the timing of the "1" to avoid obscuring power signatures with I/O transients. It can be seen that the output signal is delayed and the timing is changed to conform to a 1:2 ratio between "0" and "1".
 
