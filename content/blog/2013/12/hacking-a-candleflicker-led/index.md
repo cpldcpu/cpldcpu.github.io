@@ -5,7 +5,7 @@ lastmod: 2013-12-19T08:01:31Z
 slug: hacking-a-candleflicker-led
 url: /2013/12/08/hacking-a-candleflicker-led/
 aliases:
-  - /?p=33
+  # - /?p=33
 categories:
   - Hack
   - LED

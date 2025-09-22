@@ -5,7 +5,7 @@ lastmod: 2020-01-30T19:40:14Z
 slug: a-led-candle-based-on-the-3-cent-mcu
 url: /2019/09/28/a-led-candle-based-on-the-3-cent-mcu/
 aliases:
-  - /?p=667
+  # - /?p=667
 categories:
   - candle
   - LED

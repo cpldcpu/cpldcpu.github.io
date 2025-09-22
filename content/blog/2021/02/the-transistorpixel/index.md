@@ -5,7 +5,7 @@ lastmod: 2021-02-27T15:44:35Z
 slug: the-transistorpixel
 url: /2021/02/27/the-transistorpixel/
 aliases:
-  - /?p=1108
+  # - /?p=1108
 categories:
   - Discrete Logic
   - Hardware

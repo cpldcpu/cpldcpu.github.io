@@ -5,7 +5,7 @@ lastmod: 2021-02-07T04:14:32Z
 slug: ultra-low-power-led-flasher
 url: /2021/02/07/ultra-low-power-led-flasher/
 aliases:
-  - /?p=1005
+  # - /?p=1005
 categories:
   - LED
   - Padauk

@@ -5,7 +5,7 @@ lastmod: 2019-09-14T06:31:27Z
 slug: the-terrible-3-cent-mcu
 url: /2019/08/12/the-terrible-3-cent-mcu/
 aliases:
-  - /?p=632
+  # - /?p=632
 categories:
   - Hardware
   - Padauk

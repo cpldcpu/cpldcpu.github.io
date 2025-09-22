@@ -5,7 +5,7 @@ lastmod: 2024-05-03T14:11:34Z
 slug: decapsulating-the-ch32v203-reveals-a-separate-flash-die
 url: /2024/05/01/decapsulating-the-ch32v203-reveals-a-separate-flash-die/
 aliases:
-  - /?p=1622
+  # - /?p=1622
 categories:
   - Hack
   - Hardware

@@ -5,7 +5,7 @@ lastmod: 2014-03-02T18:19:03Z
 slug: follow-up-on-candle-flicker-leds
 url: /2014/03/01/follow-up-on-candle-flicker-leds/
 aliases:
-  - /?p=198
+  # - /?p=198
 categories:
   - Hack
   - Hardware

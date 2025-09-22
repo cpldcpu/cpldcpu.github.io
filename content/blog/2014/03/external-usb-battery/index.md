@@ -5,7 +5,7 @@ lastmod: 2014-04-03T11:08:02Z
 slug: external-usb-battery
 url: /2014/03/31/external-usb-battery/
 aliases:
-  - /?p=288
+  # - /?p=288
 categories:
   - Hack
   - Reverse engineering

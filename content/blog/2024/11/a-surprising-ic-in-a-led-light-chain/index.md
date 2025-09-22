@@ -5,7 +5,7 @@ lastmod: 2024-11-25T19:25:36Z
 slug: a-surprising-ic-in-a-led-light-chain
 url: /2024/11/25/a-surprising-ic-in-a-led-light-chain/
 aliases:
-  - /?p=1734
+  # - /?p=1734
 categories:
   - Hardware
   - LED

@@ -5,7 +5,7 @@ lastmod: 2020-06-20T18:42:30Z
 slug: addressable-7-segment-display
 url: /2020/04/05/addressable-7-segment-display/
 aliases:
-  - /?p=720
+  # - /?p=720
 categories:
   - Hardware
   - Intelligent LED

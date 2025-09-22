@@ -5,7 +5,7 @@ lastmod: 2015-02-08T10:11:15Z
 slug: the-nanite-85
 url: /2014/04/25/the-nanite-85/
 aliases:
-  - /?p=182
+  # - /?p=182
 categories:
   - AVR
   - Hack

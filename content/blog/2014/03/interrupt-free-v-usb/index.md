@@ -5,7 +5,7 @@ lastmod: 2014-03-05T03:04:12Z
 slug: interrupt-free-v-usb
 url: /2014/03/02/interrupt-free-v-usb/
 aliases:
-  - /?p=171
+  # - /?p=171
 categories:
   - AVR
   - Hack

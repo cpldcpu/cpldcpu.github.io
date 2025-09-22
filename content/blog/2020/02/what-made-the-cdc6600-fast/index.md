@@ -5,7 +5,7 @@ lastmod: 2020-05-09T05:43:47Z
 slug: what-made-the-cdc6600-fast
 url: /2020/02/14/what-made-the-cdc6600-fast/
 aliases:
-  - /?p=623
+  # - /?p=623
 categories:
   - Discrete Logic
 summary: "Revisits the CDC6600’s resistor-transistor logic to explain how clever circuit tricks delivered 36 MHz performance." 

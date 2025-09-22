@@ -5,7 +5,7 @@ lastmod: 2014-01-25T07:11:46Z
 slug: light_ws2812-library-v2-0
 url: /2014/01/19/light_ws2812-library-v2-0/
 aliases:
-  - /?p=151
+  # - /?p=151
 categories:
   - AVR
   - LED

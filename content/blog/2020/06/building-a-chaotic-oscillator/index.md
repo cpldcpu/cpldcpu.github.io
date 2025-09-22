@@ -5,7 +5,7 @@ lastmod: 2025-08-19T18:20:22Z
 slug: building-a-chaotic-oscillator
 url: /2020/06/15/building-a-chaotic-oscillator/
 aliases:
-  - /?p=932
+  # - /?p=932
 categories:
   - Hardware
 summary: "Explores analog chaos with Schmitt triggers, filters, and feedback to create Chua-like oscillations on breadboard." 

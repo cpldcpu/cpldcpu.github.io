@@ -5,7 +5,7 @@ lastmod: 2016-12-11T13:01:24Z
 slug: plexingplus
 url: /2015/05/24/plexingplus/
 aliases:
-  - /?p=412
+  # - /?p=412
 categories:
   - AVR
   - Hack

@@ -5,7 +5,7 @@ lastmod: 2022-01-29T09:52:21Z
 slug: analyzing-another-multicolor-string-light-with-unusual-leds
 url: /2022/01/29/analyzing-another-multicolor-string-light-with-unusual-leds/
 aliases:
-  - /?p=1332
+  # - /?p=1332
 categories:
   - LED
   - Reverse engineering

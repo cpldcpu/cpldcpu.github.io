@@ -7,7 +7,7 @@ url: /2014/03/19/u-wire-usb-on-an-attiny-10/
 aliases:
   - /2014/03/19/%c2%b5-wire-usb-on-an-attiny-10/
   - /2014/03/19/u-wire-usb-on-an-attiny-10/
-  - /?p=269
+  # - /?p=269
 categories:
   - AVR
   - Hack

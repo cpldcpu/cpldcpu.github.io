@@ -5,7 +5,7 @@ lastmod: 2016-11-27T10:26:01Z
 slug: apa102
 url: /2014/08/27/apa102/
 aliases:
-  - /?p=357
+  # - /?p=357
 categories:
   - Hardware
   - LED

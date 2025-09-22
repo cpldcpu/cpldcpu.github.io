@@ -5,7 +5,7 @@ lastmod: 2015-12-13T07:49:11Z
 slug: timing-of-ws2812-clones-pd9823
 url: /2014/06/16/timing-of-ws2812-clones-pd9823/
 aliases:
-  - /?p=327
+  # - /?p=327
 categories:
   - Hardware
   - LED

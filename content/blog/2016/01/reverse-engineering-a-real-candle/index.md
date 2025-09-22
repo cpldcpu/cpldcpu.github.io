@@ -5,7 +5,7 @@ lastmod: 2023-10-25T08:49:18Z
 slug: reverse-engineering-a-real-candle
 url: /2016/01/05/reverse-engineering-a-real-candle/
 aliases:
-  - /?p=488
+  # - /?p=488
 categories:
   - LED
   - Reverse engineering

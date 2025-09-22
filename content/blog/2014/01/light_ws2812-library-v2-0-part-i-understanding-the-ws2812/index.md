@@ -5,7 +5,7 @@ lastmod: 2014-04-27T19:50:46Z
 slug: light_ws2812-library-v2-0-part-i-understanding-the-ws2812
 url: /2014/01/14/light_ws2812-library-v2-0-part-i-understanding-the-ws2812/
 aliases:
-  - /?p=85
+  # - /?p=85
 categories:
   - Hardware
   - LED

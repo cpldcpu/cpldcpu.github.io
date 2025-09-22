@@ -5,7 +5,7 @@ lastmod: 2024-10-18T03:54:23Z
 slug: machine-learning-mnist-inference-on-the-3-cent-microcontroller
 url: /2024/05/02/machine-learning-mnist-inference-on-the-3-cent-microcontroller/
 aliases:
-  - /?p=1674
+  # - /?p=1674
 categories:
   - Hack
   - Hardware

@@ -5,7 +5,7 @@ lastmod: 2022-08-15T22:24:00Z
 slug: does-the-ws2812-have-integrated-gamma-correction
 url: /2022/08/15/does-the-ws2812-have-integrated-gamma-correction/
 aliases:
-  - /?p=1380
+  # - /?p=1380
 categories:
   - Intelligent LED
   - LED

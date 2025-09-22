@@ -5,7 +5,7 @@ lastmod: 2020-12-19T19:13:42Z
 slug: power-analysis-probing-ws2812-rgb-leds
 url: /2020/12/19/power-analysis-probing-ws2812-rgb-leds/
 aliases:
-  - /?p=778
+  # - /?p=778
 categories:
   - Hack
   - Hardware

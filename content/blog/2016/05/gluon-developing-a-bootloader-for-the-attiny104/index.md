@@ -5,7 +5,7 @@ lastmod: 2016-05-21T18:01:15Z
 slug: gluon-developing-a-bootloader-for-the-attiny104
 url: /2016/05/21/gluon-developing-a-bootloader-for-the-attiny104/
 aliases:
-  - /?p=547
+  # - /?p=547
 categories:
   - Uncategorized
 summary: "Introducing the gluon bootloader work-in-progress for ATtiny104 parts, reusing Tiny Program Loader building blocks."

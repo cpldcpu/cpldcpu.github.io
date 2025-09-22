@@ -5,7 +5,7 @@ lastmod: 2016-12-14T17:43:39Z
 slug: sk9822-a-clone-of-the-apa102
 url: /2016/12/13/sk9822-a-clone-of-the-apa102/
 aliases:
-  - /?p=549
+  # - /?p=549
 categories:
   - Hardware
   - Intelligent LED

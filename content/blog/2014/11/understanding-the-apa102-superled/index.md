@@ -5,7 +5,7 @@ lastmod: 2016-11-27T10:26:01Z
 slug: understanding-the-apa102-superled
 url: /2014/11/30/understanding-the-apa102-superled/
 aliases:
-  - /?p=398
+  # - /?p=398
 categories:
   - Hardware
   - LED

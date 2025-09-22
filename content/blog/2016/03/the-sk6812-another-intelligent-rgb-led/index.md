@@ -5,7 +5,7 @@ lastmod: 2016-03-10T20:46:49Z
 slug: the-sk6812-another-intelligent-rgb-led
 url: /2016/03/09/the-sk6812-another-intelligent-rgb-led/
 aliases:
-  - /?p=480
+  # - /?p=480
 categories:
   - Uncategorized
 summary: "Analyzing a new addressable RGB LED: The SK6812."

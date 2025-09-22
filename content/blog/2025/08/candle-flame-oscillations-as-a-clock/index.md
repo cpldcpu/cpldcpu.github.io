@@ -5,7 +5,7 @@ lastmod: 2025-08-18T07:09:02Z
 slug: candle-flame-oscillations-as-a-clock
 url: /2025/08/13/candle-flame-oscillations-as-a-clock/
 aliases:
-  - /?p=1764
+  # - /?p=1764
 categories:
   - candle
   - Hack

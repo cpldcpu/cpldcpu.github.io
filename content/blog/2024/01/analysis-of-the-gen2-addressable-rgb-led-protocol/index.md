@@ -5,7 +5,7 @@ lastmod: 2024-01-21T01:54:12Z
 slug: analysis-of-the-gen2-addressable-rgb-led-protocol
 url: /2024/01/21/analysis-of-the-gen2-addressable-rgb-led-protocol/
 aliases:
-  - /?p=1576
+  # - /?p=1576
 categories:
   - Hardware
   - Intelligent LED

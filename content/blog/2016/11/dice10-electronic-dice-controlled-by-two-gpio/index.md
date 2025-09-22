@@ -5,7 +5,7 @@ lastmod: 2016-11-26T19:31:10Z
 slug: dice10-electronic-dice-controlled-by-two-gpio
 url: /2016/11/26/dice10-electronic-dice-controlled-by-two-gpio/
 aliases:
-  - /?p=557
+  # - /?p=557
 categories:
   - AVR
   - Hardware

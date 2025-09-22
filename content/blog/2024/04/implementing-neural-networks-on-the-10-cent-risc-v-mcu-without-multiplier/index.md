@@ -5,7 +5,7 @@ lastmod: 2024-04-27T14:52:51Z
 slug: implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier
 url: /2024/04/24/implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier/
 aliases:
-  - /?p=1591
+  # - /?p=1591
 categories:
   - Uncategorized
 tags:

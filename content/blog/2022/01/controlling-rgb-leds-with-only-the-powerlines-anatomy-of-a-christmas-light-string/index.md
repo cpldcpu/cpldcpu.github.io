@@ -5,7 +5,7 @@ lastmod: 2024-01-14T15:43:54Z
 slug: controlling-rgb-leds-with-only-the-powerlines-anatomy-of-a-christmas-light-string
 url: /2022/01/23/controlling-rgb-leds-with-only-the-powerlines-anatomy-of-a-christmas-light-string/
 aliases:
-  - /?p=1216
+  # - /?p=1216
 categories:
   - Hardware
   - Intelligent LED

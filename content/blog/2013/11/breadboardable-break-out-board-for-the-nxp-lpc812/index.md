@@ -5,7 +5,7 @@ lastmod: 2013-12-07T05:25:10Z
 slug: breadboardable-break-out-board-for-the-nxp-lpc812
 url: /2013/11/23/breadboardable-break-out-board-for-the-nxp-lpc812/
 aliases:
-  - /?p=6
+  # - /?p=6
 categories:
   - ARM
   - Hardware

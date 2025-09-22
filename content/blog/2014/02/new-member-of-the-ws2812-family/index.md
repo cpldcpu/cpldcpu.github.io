@@ -5,7 +5,7 @@ lastmod: 2014-02-23T00:13:17Z
 slug: new-member-of-the-ws2812-family
 url: /2014/02/18/new-member-of-the-ws2812-family/
 aliases:
-  - /?p=4
+  # - /?p=4
 categories:
   - AVR
   - LED

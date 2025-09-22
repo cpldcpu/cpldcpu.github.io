@@ -5,7 +5,7 @@ lastmod: 2024-01-31T17:49:22Z
 slug: revisiting-candle-flicker-leds-now-with-integrated-timer
 url: /2024/01/14/revisiting-candle-flicker-leds-now-with-integrated-timer/
 aliases:
-  - /?p=1547
+  # - /?p=1547
 categories:
   - candle
   - Hardware

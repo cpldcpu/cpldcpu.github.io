@@ -5,7 +5,7 @@ lastmod: 2024-10-31T15:46:41Z
 slug: neural-network-visualization
 url: /2024/10/31/neural-network-visualization/
 aliases:
-  - /?p=1727
+  # - /?p=1727
 categories:
   - machine learning
 summary: "Introduces a browser visualizer for the 8x8 MNIST networks used on the three-cent MCU, letting you sketch digits, explore layer activations, and grab the React source for further experiments."

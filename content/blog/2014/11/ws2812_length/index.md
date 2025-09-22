@@ -5,7 +5,7 @@ lastmod: 2014-11-19T18:05:45Z
 slug: ws2812_length
 url: /2014/11/16/ws2812_length/
 aliases:
-  - /?p=370
+  # - /?p=370
 categories:
   - Hardware
   - LED
