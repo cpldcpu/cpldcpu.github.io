@@ -9,7 +9,7 @@ aliases:
 categories:
   - LED
   # - Intelligent LED
-summary: "Quantifies WS2812 output vs. input code to determine whether internal gamma correction exists." 
+summary: "Taking a closer look at the PWM behavior of the WS2812: Why does it have 11 bit PWM resolution when only 8 bits are used for color data?" 
 showTableOfContents: true
 tags:
   - Addressable RGB
