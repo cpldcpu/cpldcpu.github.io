@@ -15,7 +15,7 @@ enableCodeCopy = false
 
 replyByEmail = false
 
-mainSections = ["blog"]
+mainSections = ["posts"]
 # robots = ""
 
 disableImageOptimization = false
@@ -37,7 +37,7 @@ giteaDefaultServer = "https://git.fsfe.org"
 forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [header]
-  layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
+  layout = "fixed-gradient" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
 
 [footer]
   showMenu = true
@@ -48,14 +48,14 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [homepage]
   layout = "background" # valid options: page, profile, hero, card, background, custom
-  #homepageImage = "IMAGE.jpg" # used in: hero, and card
+  homepageImage = "img/hero3.jpg" # used in: hero, and card
   showRecent = true
-  showRecentItems = 5
-  showMoreLink = false
+  showRecentItems = 3
+  showMoreLink = true
   showMoreLinkDest = "/posts/"
   cardView = false
   cardViewScreenWidth = false
-  layoutBackgroundBlur = false # only used when layout equals background
+  layoutBackgroundBlur = true # only used when layout equals background
   disableHeroImageFilter = false # only used when layout equals hero
 
 [article]
