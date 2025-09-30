@@ -78,7 +78,7 @@ The delay for a low to high transitition seems to be particularily high. I measu
 
 On the other hand, the H->L transition is much faster at 280ns.
 
-#### ![](3987911638704235667.png)
+![](3987911638704235667.png)
 
 #### Introducing a diode resistor network at the input
 
