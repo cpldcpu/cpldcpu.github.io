@@ -1,0 +1,40 @@
+<script>
+(function () {
+  try {
+    const { pathname } = window.location;
+    if (!pathname.startsWith('/projects/')) {
+      return;
+    }
+    const targets = Array.from(document.querySelectorAll('.single_hero_background'));
+    if (!targets.length) {
+      return;
+    }
+    const blurStart = 60;
+    const blurEnd = 220;
+    const fadeStart = 240;
+    const fadeEnd = 480;
+    const maxBlur = 16;
+    const clamp = (value) => Math.max(0, Math.min(1, value));
+    targets.forEach((el) => {
+      el.style.willChange = 'opacity, filter';
+    });
+    const applyEffects = () => {
+      const y = window.scrollY || window.pageYOffset;
+      const blurProgress = clamp((y - blurStart) / (blurEnd - blurStart));
+      const opacityProgress = clamp((y - fadeStart) / (fadeEnd - fadeStart));
+      const blurValue = (blurProgress * maxBlur).toFixed(2);
+      const opacityValue = (1 - opacityProgress).toFixed(3);
+      targets.forEach((el) => {
+        el.style.filter = `blur(${blurValue}px)`;
+        el.style.opacity = opacityValue;
+      });
+    };
+    applyEffects();
+    window.addEventListener('scroll', () => {
+      window.requestAnimationFrame(applyEffects);
+    }, { passive: true });
+  } catch (err) {
+    console.error('Hero fade script error', err);
+  }
+})();
+</script>
