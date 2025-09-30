@@ -1,0 +1,6 @@
+Export summary for https://hackaday.io/project/175015-discrete-nmos-logic-in-2020
+
+Imported 4 project logs.
+
+Failed to download the following assets (left as remote URLs):
+https://analog-staging.dw1.cosmocode.de/_media/university/courses/alm1ks/alm_labcmg_f1.png?w=300&tok=c96bc4

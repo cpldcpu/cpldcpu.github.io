@@ -1,7 +1,9 @@
 # Hugo build artifacts
 public/
 resources/
+# content/projects/
 .hugo_cache/
+*.pyc
 
 # Hugo lock file
 .hugo_build.lock
