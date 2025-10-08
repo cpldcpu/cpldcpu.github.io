@@ -4,6 +4,7 @@ date: 2020-12-19T19:11:33Z
 lastmod: 2020-12-19T19:13:42Z
 slug: power-analysis-probing-ws2812-rgb-leds
 url: /2020/12/19/power-analysis-probing-ws2812-rgb-leds/
+draft: True
 aliases:
   # - /?p=778
 categories:
