@@ -20,6 +20,7 @@ ML & AI
     Machine Learning
     Artificial Intelligence
     LLMs
+    BitNetMCU
 
 Reverse Engineering
 
