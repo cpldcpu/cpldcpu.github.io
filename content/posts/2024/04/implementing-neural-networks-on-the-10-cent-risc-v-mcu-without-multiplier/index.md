@@ -11,8 +11,9 @@ categories:
   - Microcontroller
   # - Uncategorized
 tags:
-  - Edge ML
-  - Machine Learning
+  - BitNetMCU
+  # - Edge ML
+  # - Machine Learning
   - RISC-V
   # - ML & AI > Edge ML
   # - ML & AI > Machine Learning

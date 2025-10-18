@@ -16,9 +16,8 @@ categories:
   # - PMS150C
   # - Uncategorized
 tags:
-  - Edge ML
-  - Machine Learning
   - Padauk
+  - BitNetMCU
   # - ML & AI > Edge ML
   # - ML & AI > Machine Learning
   # - Microcontroller > Padauk
