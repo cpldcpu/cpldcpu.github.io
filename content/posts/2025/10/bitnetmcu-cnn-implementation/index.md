@@ -1,5 +1,5 @@
 ---
-title: "BitNetMCU CNN Implementation: State-of-the-art MNIST accuracy on a low-end microcontroller"
+title: "BitNetMCU CNN Implementation: >99.5% MNIST accuracy on a low-end microcontroller"
 date: 2025-10-12T00:00:00Z
 lastmod: 2025-10-12T00:00:00Z
 slug: bitnetmcu-cnn-implementation
@@ -9,9 +9,9 @@ categories:
   - Microcontroller
 tags:
   - BitNetMCU
-summary: "Combining a deep-depthwise CNN architecture with variable quantization in BitNetMCU achieves >99.5% MNIST accuracy on a low-end 32-bit microcontroller with 4 kB RAM and 16 kB flash."
+summary: "Combining a deep-depthwise CNN architecture with variable quantization in BitNetMCU achieves state-of-the-art MNIST accuracy on a low-end 32-bit microcontroller with 4 kB RAM and 16 kB flash."
 showTableOfContents: true
-draft: true
+draft: false
 ---
 
 ## Introduction
@@ -164,7 +164,7 @@ The error rate is still among the [state-of-the-art for CNN-based MNIST](https:/
 
 Pushing the model further proved difficult, as shown below. Walking further down the path of increasing model capacity by increasing the input width beyond 64 and using ternary weight quantization in fc1 for stronger regularization improved test loss but did not improve accuracy significantly. Experiments with further data augmentation (elastic distortions, random erasing) did not improve the test error.
 
-| Configuration            | Width | BPW (fc1) | Epochs | Train Accuracy | Test Accuracy | Test Error | Model Size                  |
+| Configuration            | Width | BPW (fc1) | Ep. | Train Acc. | Test Acc. | Test Error | Model Size                  |
 |--------------------------|-------|-----------|--------|----------------|---------------|------------|-----------------------------|
 | 64-wide 2-bit            | 64    | 2-bit     | 60     | 99.40%         | 99.53%        | 0.47%      | 11.0 kB      |
 | 80-wide ternary          | 80    | Ternary   | 60     | 99.46%         | 99.52%        | 0.48%      | 11.42 kB    |
