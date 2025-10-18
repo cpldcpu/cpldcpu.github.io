@@ -1,5 +1,5 @@
 ---
-title: "State-of-the-art MNIST accuracy on a low-end microcontroller: BitNetMCU CNN Implementation"
+title: "BitNetMCU CNN Implementation: State-of-the-art MNIST accuracy on a low-end microcontroller"
 date: 2025-10-12T00:00:00Z
 lastmod: 2025-10-12T00:00:00Z
 slug: bitnetmcu-cnn-implementation
@@ -9,7 +9,7 @@ categories:
   - Microcontroller
 tags:
   - BitNetMCU
-summary: "Implementing a depthwise CNN architecture in BitNetMCU achiever >99.5% MNIST accuracy on a low-end 32-bit microcontroller with 4 kB RAM and 16 kB flash."
+summary: "Combining a deep-depthwise CNN architecture with variable quantization in BitNetMCU achieves >99.5% MNIST accuracy on a low-end 32-bit microcontroller with 4 kB RAM and 16 kB flash."
 showTableOfContents: true
 draft: true
 ---
@@ -20,9 +20,9 @@ I have [previously](https://cpldcpu.github.io/2024/04/24/implementing-neural-net
 
 My initial explorations focused on fully connected networks, which are simple to implement even on microcontrollers without hardware multipliers. However, purely fully connected networks have limitations in terms of accuracy, especially for image data. For image data, Convolutional Neural Networks (CNNs) are typically employed, which rely on more complex operations and require more complex memory management.
 
-In this post, I present the CNN implementation for BitNetMCU, which achieves state-of-the-art accuracy on the MNIST dataset while still fitting within the tight memory constraints of low-end microcontrollers. This comes just in time for the availability of the CH32V002 RISC-V RV32EmC MCU which finally offers a hardware multiplier. The die of the [CH32V002 is less than 1mm²](https://www.richis-lab.de/uC07.htm), a minuscule piece of silicon to run full CNN inference.
+In this post, I present the CNN implementation for BitNetMCU, which achieves state-of-the-art accuracy on the MNIST dataset while still fitting within the tight memory constraints of low-end microcontrollers. This comes just in time for the availability of the CH32V002 RISC-V RV32EmC MCU which finally offers a hardware multiplier. The silicon die in the [CH32V002 is less than 1mm²](https://www.richis-lab.de/uC07.htm), which includes program memory, processor core and IO, a minuscule piece of silicon to run full CNN inference.
 
-The CNN implementation represents a significant improvement over the previous fully connected approach, achieving **99.58% test accuracy** with a **0.42% error rate** - more than halving the error compared to the FC-only model.
+The CNN implementation achieves a significant improvement of **99.58% test accuracy** with a **0.42% error rate** - more than halving the error compared to the FC-only model.
 
 ## Convolutional Neural Networks
 
@@ -129,13 +129,13 @@ The first fully connected layer holds the most weights (256×96). Quantizing it 
 
 | Configuration        | Width | BPW (fc1) | Epochs | Train Accuracy | Test Accuracy | Test Error | Model Size             |
 |----------------------|-------|-----------|--------|----------------|---------------|------------|------------------------|
-| 16-wide 2-bit        | 16    | 2-bit     | 60     | 98.43%         | 99.06%        | 0.94%      | 42,880 bits (5.4 kB)   |
-| 32-wide 2-bit        | 32    | 2-bit     | 60     | 99.12%         | 99.28%        | 0.72%      | 58,624 bits (7.3 kB)   |
-| 48-wide 2-bit        | 48    | 2-bit     | 60     | 99.30%         | 99.44%        | 0.56%      | 74,368 bits (9.3 kB)   |
-| 64-wide 2-bit        | 64    | 2-bit     | 60     | 99.40%         | *99.53%*      | *0.47%*    | 90,112 bits (11.0 kB)  |
-| 64-wide 4-bit        | 64    | 4-bit     | 60     | 99.41%         | 99.44%        | 0.56%      | 100,864 bits (12.3 kB) |
-| 64-wide 2-bit (90ep) | 64    | 2-bit     | 90     | 99.47%         | **99.55%**    | **0.45%**  | 90,112 bits (11.0 kB)  |
-| 80-wide 2-bit (90ep) | 80    | 2-bit     | 90     | 99.51%         | 99.42%        | 0.58%      | 105,856 bits (13.2 kB) |
+| 16-wide 2-bit        | 16    | 2-bit     | 60     | 98.43%         | 99.06%        | 0.94%      |  5.4 kB  |
+| 32-wide 2-bit        | 32    | 2-bit     | 60     | 99.12%         | 99.28%        | 0.72%      |  7.3 kB  |
+| 48-wide 2-bit        | 48    | 2-bit     | 60     | 99.30%         | 99.44%        | 0.56%      |  9.3 kB  |
+| 64-wide 2-bit        | 64    | 2-bit     | 60     | 99.40%         | *99.53%*      | *0.47%*    |  11.0 kB |
+| 64-wide 4-bit        | 64    | 4-bit     | 60     | 99.41%         | 99.44%        | 0.56%      |  12.3 kB |
+| 64-wide 2-bit (90ep) | 64    | 2-bit     | 90     | 99.47%         | **99.55%**    | **0.45%**  |  11.0 kB |
+| 80-wide 2-bit (90ep) | 80    | 2-bit     | 90     | 99.51%         | 99.42%        | 0.58%      |  13.2 kB |
 
 The table above shows the results of different optimization and ablation experiments. Key findings are:
 
@@ -164,14 +164,14 @@ The error rate is still among the [state-of-the-art for CNN-based MNIST](https:/
 
 Pushing the model further proved difficult, as shown below. Walking further down the path of increasing model capacity by increasing the input width beyond 64 and using ternary weight quantization in fc1 for stronger regularization improved test loss but did not improve accuracy significantly. Experiments with further data augmentation (elastic distortions, random erasing) did not improve the test error.
 
-| Configuration            | Width | BPW (fc1) | Epochs | Train Accuracy | Test Accuracy | Test Loss  | Test Error | Model Size                  |
-|--------------------------|-------|-----------|--------|----------------|---------------|------------|------------|-----------------------------|
-| 64-wide 2-bit            | 64    | 2-bit     | 60     | 99.40%         | 99.53%        | 0.016605   | 0.47%      | 90,112 bits (11.0 kB)       |
-| 80-wide ternary          | 80    | Ternary   | 60     | 99.46%         | 99.52%        | 0.016433   | 0.48%      | 93,568.0 bits (11.42 kB)    |
-| 96-wide ternary          | 96    | Ternary   | 60     | 99.53%         | 99.58%        | 0.016243   | 0.42%      | 106,854.4 bits (13.04 kB)   |
-| 96-wide ternary (120 ep) | 96    | Ternary   | 120    | 99.56%         | **99.58%**    | **0.014558** | **0.42%**  | 106,854.4 bits (13.04 kB)   |
-| 96-wide tern. + elastic  | 96    | Ternary   | 120    | 99.10%         | 99.51%        | 0.014978   | 0.49%      | 106,854.4 bits (13.04 kB)   |
-| 128-wide ternary         | 128   | Ternary   | 60     | 99.51%         | 99.50%        | 0.015868   | 0.50%      | 133,427.2 bits (16.29 kB)   |
+| Configuration            | Width | BPW (fc1) | Epochs | Train Accuracy | Test Accuracy | Test Error | Model Size                  |
+|--------------------------|-------|-----------|--------|----------------|---------------|------------|-----------------------------|
+| 64-wide 2-bit            | 64    | 2-bit     | 60     | 99.40%         | 99.53%        | 0.47%      | 11.0 kB      |
+| 80-wide ternary          | 80    | Ternary   | 60     | 99.46%         | 99.52%        | 0.48%      | 11.42 kB    |
+| 96-wide ternary          | 96    | Ternary   | 60     | 99.53%         | 99.58%        | 0.42%      | 13.04 kB   |
+| 96-wide ternary (120 ep) | 96    | Ternary   | 120    | 99.56%         | **99.58%**    | **0.42%**  | 13.04 kB   |
+| 96-wide tern. + elastic  | 96    | Ternary   | 120    | 99.10%         | 99.51%        | 0.49%      | 13.04 kB   |
+| 128-wide ternary         | 128   | Ternary   | 60     | 99.51%         | 99.50%        | 0.50%      | 16.29 kB   |
 
 Additional experiments (not shown) with deeper fully connected layers, dropout, and 28×28 inputs did not meaningfully improve accuracy. Remaining errors appear to be out-of-distribution samples that would likely require either ensemble models or much larger models with different regularization schemes.
 
@@ -212,6 +212,8 @@ The plot above shows the trade-off between model size, accuracy, and inference t
 In conclusion, a very tedious manual architecture search allowed me to identify a CNN architecture that achieves state-of-the-art MNIST accuracy on a low-end microcontroller with tight memory constraints, orders of magnitude smaller than typical models.
 
 The key elements were the use of sequential depthwise convolutions with in-place processing, variable quantization, and simplified convolution operations. Regularization through strong quantization in the first fully connected layer played a crucial role in achieving high accuracy and is a topic worth further exploration.
+
+The code can be found in the [BitNetMCU GitHub repository](https://github.com/cpldcpu/bitnetmcu).
 
 ## References
 
