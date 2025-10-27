@@ -10,7 +10,7 @@ categories:
   - Computer Architecture
   - Discrete Logic
   - Science
-summary: "Revisits the CDC6600’s resistor-transistor logic to explain how clever circuit tricks delivered 36 MHz performance." 
+summary: "Explores the special transistors that enabled 10 Mhz clock speed in the 1960ies." 
 tags:
   # - Computer Architecture
   # - Discrete Logic
@@ -30,7 +30,7 @@ Besides the architectural progress, the CDC6600 was impressive for its clock spe
 
 ## How did they do it?
 
-The logic circuitry of the CDC6600 is based on resistor-transistor-logic (RTL).  The Thornton book calls it DCTL (Directly Coupled Transistor Logic), but due to  the presence of the base resistor it is obviosuly the same as RTL. Thornton himself refers to RTL in a[later publication](https://ieeexplore.ieee.org/document/4639400).
+The logic circuitry of the CDC6600 is based on resistor-transistor-logic (RTL).  The Thornton book calls it DCTL (Directly Coupled Transistor Logic), but due to  the presence of the base resistor it is obviosuly the same as RTL. Thornton himself refers to RTL in a [later publication](https://ieeexplore.ieee.org/document/4639400).
 
 ![Cdc6600 Inverter](cdc6600_inverter.png)
 
@@ -58,7 +58,7 @@ While there is not too much specific information about the CDC6600 transistors i
 
 The key to the high speed transistor he developed was to introduce a tiny amount of gold doping into the base area of the transistor (See [patent](https://patents.google.com/patent/US3184347) and also [patent notebook](https://archive.computerhistory.org/resources/access/text/2013/03/102722910-05-01-acc.pdf)). Gold is usually a highly undesirable contaminant in semiconductors because it leads to rapid minority carrier recombination. In this case, this is done on purpose is to avoid build up of charge in the transistor while it is in saturation. This so called saturation charge is what makes turning off bipolar transistors slow, because the charge needs to diffuse out of the base, which is a slow process. There are numerous circuit tricks to reduce buildup of saturation charge, the most famous being the [baker clamp](https://en.wikipedia.org/wiki/Baker_clamp). However, by using a transistor that does intrinsically not build up a high saturation charge, all of these complexities can be omitted at an even better performance.
 
-Curiously there do not seem to be many fast bipolar switching transistors around anymore. The 2N709 is, of course, long out of production. Some old reference tables list the AF66, BSX19, BSY18 and the 2N2369 as replacements. All of these are out of production as well, however the 2N2369 lives on as an SMD version in form of the [PMBT2369 (Nexperia)](https://www.nexperia.com/products/automotive-qualified-products-aec-q100-q101/automotive-bipolar-transistors/general-purpose-bipolar-transistors/switching-transistors-single-double/PMBT2369.html)or [MMBT2369 (Onsemi)](https://www.onsemi.com/pub/Collateral/MMBT2369LT1-D.PDF). Nexperia seems to be the only company that lists switching times for bipolar transistors in their product selector. Their [product selector](https://www.nexperia.com/products/bipolar-transistors/general-purpose-bipolar-transistors/switching-transistors-single-double/#/p=1,s=0,f=c3f7f2:20;240,c=,rpp=,fs=0,sc=,so=,es=) lists one additional fast switching transistor, the BSV52. However, the characteristics are very similar to the PMBT2369.
+Curiously, there do not seem to be many fast bipolar switching transistors around anymore. The 2N709 is, of course, long out of production. Some old reference tables list the AF66, BSX19, BSY18 and the 2N2369 as replacements. All of these are out of production as well, however the 2N2369 lives on as an SMD version in form of the [PMBT2369 (Nexperia)](https://www.nexperia.com/products/automotive-qualified-products-aec-q100-q101/automotive-bipolar-transistors/general-purpose-bipolar-transistors/switching-transistors-single-double/PMBT2369.html)or [MMBT2369 (Onsemi)](https://www.onsemi.com/pub/Collateral/MMBT2369LT1-D.PDF). Nexperia seems to be the only company that lists switching times for bipolar transistors in their product selector. Their [product selector](https://www.nexperia.com/products/bipolar-transistors/general-purpose-bipolar-transistors/switching-transistors-single-double/#/p=1,s=0,f=c3f7f2:20;240,c=,rpp=,fs=0,sc=,so=,es=) lists one additional fast switching transistor, the BSV52. However, the characteristics are very similar to the PMBT2369.
 
 ## Putting things to practice
 
