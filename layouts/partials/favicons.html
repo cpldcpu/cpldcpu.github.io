@@ -1,0 +1,12 @@
+{{/* Custom favicons generated from assets/img/icon.jpg */}}
+{{- $icon := resources.Get "img/icon.jpg" -}}
+{{- with $icon -}}
+  {{- $favicon32 := .Resize "32x32 png" -}}
+  {{- $favicon16 := .Resize "16x16 png" -}}
+  {{- $appleIcon := .Resize "180x180 png" -}}
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ $favicon32.RelPermalink }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ $favicon16.RelPermalink }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ $appleIcon.RelPermalink }}">
+  <link rel="shortcut icon" type="{{ .MediaType.Type }}" href="{{ .RelPermalink }}">
+  <meta name="theme-color" content="#ffffff">
+{{- end -}}
