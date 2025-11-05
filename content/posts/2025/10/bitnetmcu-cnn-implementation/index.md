@@ -3,7 +3,7 @@ title: "BitNetMCU with CNN: >99.5% MNIST accuracy on a low-end Microcontroller"
 date: 2025-10-12T00:00:00Z
 lastmod: 2025-10-12T00:00:00Z
 slug: bitnetmcu-cnn-implementation
-url: /2025/10/12/bitnetmcu-cnn-implementation/
+url: /2025/11/08/bitnetmcu-cnn-implementation/
 categories:
   - ML & AI
   - Microcontroller
@@ -11,14 +11,14 @@ tags:
   - BitNetMCU
 summary: "Combining a deep-depthwise CNN architecture with variable quantization in BitNetMCU achieves state-of-the-art MNIST accuracy on a low-end 32-bit microcontroller with 4 kB RAM and 16 kB flash."
 showTableOfContents: true
-draft: false
+draft: true
 ---
 
 ## Introduction
 
 [Previously](https://cpldcpu.github.io/2024/04/24/implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier/), I introduced [BitNetMCU](https://github.com/cpldcpu/BitNetMCU), my vehicle for exploring ultra-low-bit quantized neural networks aimed at low-end microcontrollers.
 
-The initial explorations focused on fully connected networks, which are simple to implement even on Microcontrollers without hardware multipliers. However, purely fully connected networks have limitations in terms of accuracy, especially for image data. For image data, Convolutional Neural Networks (CNNs) are typically employed, which rely on more complex operations and require more complex memory management.
+Initially, focused on fully connected networks, which are simple to implement even on Microcontrollers without hardware multipliers. However, purely fully connected networks have limitations in terms of accuracy for image data due to reduced capability for generalization. For image data, Convolutional Neural Networks (CNNs) are typically employed, which rely on more complex operations and require more complex memory management.
 
 In this post, I present the CNN implementation for BitNetMCU, which achieves state-of-the-art accuracy on the MNIST dataset while still fitting within the tight memory constraints of low-end microcontrollers. This comes just in time for the availability of the CH32V002 RISC-V RV32EmC MCU, a "smaller" brother of the CH32V003, which finally offers a hardware multiplier. The silicon die in the [CH32V002 is less than 1mm²](https://www.richis-lab.de/uC07.htm), which includes program memory, processor core, and IO, a minuscule piece of silicon to run full CNN inference.
 
