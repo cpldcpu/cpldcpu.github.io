@@ -14,6 +14,8 @@ showTableOfContents: true
 draft: false
 ---
 
+![feature](featured.png)
+
 ## Introduction
 
 [Previously](https://cpldcpu.github.io/2024/04/24/implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier/), I introduced [BitNetMCU](https://github.com/cpldcpu/BitNetMCU), my vehicle for exploring ultra-low-bit quantized neural networks aimed at low-end microcontrollers.
