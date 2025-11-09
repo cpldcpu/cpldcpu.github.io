@@ -9,8 +9,9 @@ tags:
   -  Artificial Intelligence
   -  LLMs
 showReadingTime: false
-build:
-  render: "false"
-  list: "local"
-type: 'sample'
+# build:
+#   render: "false"
+#   list: "local"
+showTableOfContents: true
+# type: 'sample'
 ---

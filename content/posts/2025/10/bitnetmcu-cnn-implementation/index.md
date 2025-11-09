@@ -1,9 +1,9 @@
 ---
 title: "BitNetMCU with CNN: >99.5% MNIST accuracy on a low-end Microcontroller"
-date: 2025-10-12T00:00:00Z
-lastmod: 2025-10-12T00:00:00Z
+date: 2025-11-09T00:00:00Z
+lastmod: 2025-11-09T00:00:00Z
 slug: bitnetmcu-cnn-implementation
-url: /2025/11/08/bitnetmcu-cnn-implementation/
+url: /2025/11/09/bitnetmcu-cnn-implementation/
 categories:
   - ML & AI
   - Microcontroller
@@ -11,7 +11,7 @@ tags:
   - BitNetMCU
 summary: "Combining a deep-depthwise CNN architecture with variable quantization in BitNetMCU achieves state-of-the-art MNIST accuracy on a low-end 32-bit microcontroller with 4 kB RAM and 16 kB flash."
 showTableOfContents: true
-draft: true
+draft: false
 ---
 
 ## Introduction

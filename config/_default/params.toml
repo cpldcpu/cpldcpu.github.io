@@ -6,7 +6,7 @@
 # https://blowfish.page/docs/configuration/#theme-parameters
 
 colorScheme = "ocean" # valid options: avocado, blue, brown, cyan, gray, green, indigo, lime, orange, pink, purple, red, teal, yellow
-# defaultAppearance = "dark" # valid options: light or dark
+defaultAppearance = "dark" # valid options: light or dark
 autoSwitchAppearance = true
 
 enableA11y = false
@@ -48,9 +48,9 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [homepage]
   layout = "background" # valid options: page, profile, hero, card, background, custom
-  # homepageImage = "img/hero3.jpg" # used in: hero, and card
+  homepageImage = "img/hero3.jpg" # used in: hero, and card
   showRecent = true
-  showRecentItems = 3
+  showRecentItems = 5
   showMoreLink = true
   showMoreLinkDest = "/posts/"
   cardView = false

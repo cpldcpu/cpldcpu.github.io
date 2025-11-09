@@ -1,5 +1,6 @@
 ---
-title: "Welcome to Blowfish! :tada:"
-description: "This page was built using the Blowfish theme for Hugo."
+title: "Recent Posts"
+url: "/posts/"
+layout: "archive"  # This line is important, it tells Hugo to use the correct layout
 ---
 

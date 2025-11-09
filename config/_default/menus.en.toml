@@ -15,10 +15,23 @@
    pageRef = "/posts/"
    weight = 10
 
-# [[main]]
-#    name = "Projects"
-#    pageRef = "/projects/"
-#    weight = 15
+ [[main]]
+    name = "Projects"
+    pageRef = "/projects/"
+    weight = 15
+
+[[main]]
+  name = "BitNetMCU"
+  parent = "Projects"
+  pageRef = "tags/bitnetmcu"
+  weight = 10
+
+[[main]]
+  name = "HaD.io Imports"
+  parent = "Projects"
+  pageRef = "/projects/"
+  weight = 15
+
 
 # [[main]]
 #  name = "Categories"
