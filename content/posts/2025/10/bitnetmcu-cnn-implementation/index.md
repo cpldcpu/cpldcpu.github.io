@@ -18,11 +18,13 @@ draft: false
 
 ## Introduction
 
-[Previously](https://cpldcpu.github.io/2024/04/24/implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier/), I introduced [BitNetMCU](https://github.com/cpldcpu/BitNetMCU), my vehicle for exploring ultra-low-bit quantized neural networks aimed at low-end microcontrollers.
+[Previously](https://cpldcpu.github.io/2024/04/24/implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier/), I introduced [BitNetMCU](https://github.com/cpldcpu/BitNetMCU), my vehicle for exploring ultra-low-bit quantized neural networks aimed at low-end microcontrollers. 
 
-Initially, focused on fully connected networks, which are simple to implement even on Microcontrollers without hardware multipliers. However, purely fully connected networks have limitations in terms of accuracy for image data due to reduced capability for generalization. For image data, Convolutional Neural Networks (CNNs) are typically employed, which rely on more complex operations and require more complex memory management.
+For testing, I used the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) dataset, also known as "Hello World" of deep learning. While it is relatively simple to train networks to above 90% accuracy for this dataset, things become progressively more difficult as we move beyond that. Initially, I focused on fully connected networks, which are simple to implement even on microcontrollers without hardware multipliers. I achieved 99.0% test accuracy, which is already a very respectable result for something running on a tiny MCU like the $0.10 CH32V003.
 
-In this post, I present the CNN implementation for BitNetMCU, which achieves state-of-the-art accuracy on the MNIST dataset while still fitting within the tight memory constraints of low-end microcontrollers. This comes just in time for the availability of the CH32V002 RISC-V RV32EmC MCU, a "smaller" brother of the CH32V003, which finally offers a hardware multiplier. The silicon die in the [CH32V002 is less than 1mm²](https://www.richis-lab.de/uC07.htm), which includes program memory, processor core, and IO, a minuscule piece of silicon to run full CNN inference.
+However, purely fully connected networks have limitations in terms of accuracy for image data due to reduced capability for generalization. For image data, Convolutional Neural Networks (CNNs) are typically employed, which rely on more complex operations and require more complex memory management.
+
+In this post, I present the CNN implementation for BitNetMCU, which achieves near state-of-the-art accuracy on the MNIST dataset while still fitting within the tight memory constraints of low-end microcontrollers. This comes just in time for the availability of the CH32V002 RISC-V RV32EmC MCU, a newer and "smaller" brother of the CH32V003, which finally offers a hardware multiplier. The silicon die in the [CH32V002 is less than 1mm²](https://www.richis-lab.de/uC07.htm), which includes program memory, a processor core, and IO, a minuscule piece of silicon to run full CNN inference.
 
 The CNN implementation achieves a significant improvement of **99.58% test accuracy** with a **0.42% error rate** - more than halving the error compared to the FC-only model.
 
