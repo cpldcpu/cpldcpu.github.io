@@ -20,7 +20,7 @@ draft: false
 
 [Previously](https://cpldcpu.github.io/2024/04/24/implementing-neural-networks-on-the-10-cent-risc-v-mcu-without-multiplier/), I introduced [BitNetMCU](https://github.com/cpldcpu/BitNetMCU), my vehicle for exploring ultra-low-bit quantized neural networks aimed at low-end microcontrollers. 
 
-For testing, I used the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) dataset, also known as "Hello World" of deep learning. While it is relatively simple to train networks to above 90% accuracy for this dataset, things become progressively more difficult as we move beyond that. Initially, I focused on fully connected networks, which are simple to implement even on microcontrollers without hardware multipliers. I achieved 99.0% test accuracy, which is already a very respectable result for something running on a tiny MCU like the $0.10 CH32V003.
+For testing, I used the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) dataset, also known as "Hello World" of deep learning. While it is relatively simple to train networks to above 90% accuracy for this dataset, things become progressively more difficult as we move beyond that. Initially, I focused on fully connected networks, which are easy to implement even on microcontrollers without hardware multipliers. I achieved 99.0% test accuracy, which is already a very respectable result for something running on a tiny MCU like the $0.10 CH32V003.
 
 However, purely fully connected networks have limitations in terms of accuracy for image data due to reduced capability for generalization. For image data, Convolutional Neural Networks (CNNs) are typically employed, which rely on more complex operations and require more complex memory management.
 
@@ -213,7 +213,7 @@ The plot above shows the trade-off between model size, accuracy, and inference t
 
 ## Conclusion
 
-In conclusion, a very tedious manual architecture search allowed me to identify a CNN architecture that achieves state-of-the-art MNIST accuracy on a low-end microcontroller with tight memory constraints, orders of magnitude smaller than typical models.
+In conclusion, a very tedious manual architecture search allowed to identify a CNN architecture that achieves state-of-the-art MNIST accuracy on a low-end microcontroller with tight memory constraints, orders of magnitude smaller than typical models.
 
 The key elements were the use of sequential depthwise convolutions with in-place processing, variable quantization, and simplified convolution operations. Regularization through strong quantization in the first fully connected layer played a crucial role in achieving high accuracy and is a topic worth further exploration.
 
