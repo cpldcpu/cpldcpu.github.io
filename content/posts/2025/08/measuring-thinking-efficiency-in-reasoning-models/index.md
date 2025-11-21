@@ -15,3 +15,5 @@ showReadingTime: false
 showTableOfContents: true
 # type: 'sample'
 ---
+
+[Guest article on the Nous Research blog](https://nousresearch.com/measuring-thinking-efficiency-in-reasoning-models-the-missing-benchmark/)
