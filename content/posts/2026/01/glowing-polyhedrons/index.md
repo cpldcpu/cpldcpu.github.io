@@ -237,29 +237,13 @@ However, all objects allow solutions where the filaments can be covered by short
 
 ### Case 2: Eulerian Circuits and Cycle Decomposition
 
-While the previous approach allows finding solutions that can light up all filaments, the current distribution is usually uneven due to branching current paths. To achieve uniform brightness, we need to find a set of feeding points that only light up 
+While the previous approach allows finding solutions that can light up all filaments, the brightness is usually uneven due to branching current paths. To achieve uniform brightness, we need a different strategy. One approach I found was to seek for objects that can be decomposed into circular loops, cycles. 
 
-//TODO finish section
+This is related to the famous [Seven Bridges of Königsberg](https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg) problem that Euler solved in 1736 and is usually cited as the birth of graph theory. An Eulerian path visits every edge exactly once, but only exists if the graph has exactly 0 or 2 odd-degree vertices. Most polyhedra fail this condition - the cube, for instance, has degree 3 at all vertices.
 
-Conditions here:
-- related to famous bridges of Königsberg problem
-- Eulerian cycle decomposition exists
-- length of cycle is equivalent to diameter -> prevents subcycles
-- all cycles have same length \(L\)
+Instead of one path covering all edges, we look for a set of cyclic paths that together cover all edges exactly once. For uniform brightness, these cycles must all have the same length \(L\). The number of feeding point pairs needed is then \(m = \frac{E}{L}\). A necessary condition is that all vertices have even degree (typically 4), and the cycle length should equal the polyhedrons diameter to prevent short circuits.
 
-Vertex degree must be even, usually 4.
-
-\(\frac{E}{L}=m\) feeding point pairs needed.
-
-L even
-
-**Eulerian** is a classical graph theory concept:
-- An **Eulerian path** visits every edge exactly once
-- Only exists if the graph has exactly 0 or 2 odd-degree vertices
-- Most polyhedra are **NOT Eulerian** (e.g., cube has all vertices of degree 3 = odd)
-- There are more solutions for cycles with chord, for example in even degress antiprisms. still useful, but subpaths lead to uneven brightness
-
-Cycle Decomposition with even brightness (5 solutions)
+These conditions can be easily tested for. Only 5 polyhedra support cycle decomposition with uniform brightness:
 
 | Name                      | \(V\)   | \(E\)   | \(deg(V)\) | \(L\)  | Taps
 |---------------------------|----|----|---------|----------|------|
@@ -269,37 +253,44 @@ Cycle Decomposition with even brightness (5 solutions)
 | triangular-orthobicupola  | 12 | 24 | 4       | 6        | 5    |
 | icosidodecahedron         | 30 | 60 | 4       | 10       | 6    |
 
+In addition, there are also some antiprisms that allow decomposition into cycles of equal length. However, in these the subcycles are overlapping which leads to uneven brightness. Still, they are interesting shapes to build.
 
-Name	V	E	Degrees	Diameter	g1(G)	DegreeCounts	Regularity	Bipartite	CycleDecomp	CycleDecomp2D
-square	4	4	2	2	2	02:04	2-regular	yes	yes	yes
-octahedron	6	12	4	2	4	04:06	4-regular	no	yes	yes
-cuboctahedron	12	24	4	3	4	04:12	4-regular	no	yes	yes
-triangular orthobicupola	12	24	4	3	5	04:12	4-regular	no	yes	yes
-icosidodecahedron	30	60	4	5	6	04:30	4-regular	no	yes	yes
+Below you can see the cuboctahedron and the hexagonal antiprism, both built using the cycle decomposition approach. The hexagonal antiprism decomposes into 3 cycles of length 8, which are color coded in the object below.
 
-TODO: link images from folder: cuboctahedron, hexagonal antiprism
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+  <img src="cuboctahedron_16_9.jpg" alt="Cuboctahedron" style="max-width: 90%;margin: 0;">
+</div>
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+  <img src="hexagonal antiprism 2.JPG" alt="Hexagonal antiprism" style="max-width: 90%;margin: 0;">
+</div>
 
 ### Case 3: Bipolar Driving
 
-//TODO finish section
+##todo
 
-- Scheme as function for the octahedron: Zigzag through the graph
-- Very nice as it enabled constant brightness with only two feeding points on branching graphs with "vertical" and "horizontal" layers
-- How to generalize? Wrote specific search, but found that only very few objects support this
-- Basic conditions is to have >=4 even paths, equator also even degress, no "diagonal" edges
+Recall how we drove the octahedron with bipolar (AC) driving: the current "zigzags" through the graph, with each polarity activating different edge sets. The middle edges act as a full-bridge rectifier, receiving current in both directions. This elegant scheme achieves constant time-averaged brightness with only two feeding points.
 
+Can we generalize this to other shapes? I wrote a specific search algorithm, but found that very few objects support this approach. The basic conditions are:
+- At least 4 parallel paths between the two feeding points
+- The "equator" vertices (middle layer) must have even degree
+- No "diagonal" edges that would create shortcuts between layers
 
-Bidirectional Path (4 solutions)
-================================
-  Name                         V   E  Degrees  Path Len  Taps
-  -----------------------------------------------------------
-  octahedron                   6  12  4               3     2
-  elongated-square-bipyramid  10  20  4               5     2
-  star-octahedron             10  16  2, 4            -     2
+These constraints turn out to be quite restrictive. Only 4 polyhedra support bidirectional driving:
 
-+ hexagonal bipyramid 
+| Name                       | \(V\) | \(E\) | \(deg(V)\) | Path Len | Taps |
+|----------------------------|-------|-------|------------|----------|------|
+| octahedron                 | 6     | 12    | 4          | 3        | 2    |
+| hexagonal bipyramid        | 8     | 18    | 4          | 4        | 2    |
+| elongated square bipyramid | 10    | 20    | 4          | 5        | 2    |
+| star octahedron            | 14    | 24    | 2, 4       | 4        | 2    |
 
-//TODO: link images from folder: star octahedron, elongated square bipyramid (elongated octahedron)
+Below you can see the elongated square bipyramid (also known as elongated octahedron) and the star octahedron.
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+  <img src="elongated octahedron.jpg" alt="Elongated square bipyramid" style="max-width: 45%;margin: 0;">
+  <img src="star octahedron 2.JPG" alt="Star octahedron" style="max-width: 45%;margin: 0;">
+</div>
 
 
 
@@ -313,21 +304,3 @@ Bidirectional Path (4 solutions)
 [^2]: Flash backs to CO342, arguably the least easy course I took, but also intellectually very rewarding.
 
 
-## Cuboctahedron
-
-The cuboctahedron (12 vertices, 24 edges) is one of the more complex builds.
-
-<div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0;">
-  <img src="../media/cuboctahedron_dark.jpg" alt="Cuboctahedron dark background" style="max-width: 45%;margin: 0;">
-  <img src="../media/cuboctahedron_light.jpg" alt="Cuboctahedron light background" style="max-width: 45%;margin: 0;">
-</div>
-
-
-![Cuboctahedron 16:9](../media/cuboctahedron_16_9.jpg)
-
-## Star Octahedron
-
-<div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0;">
-  <img src="../media/star%20octahedron%202.JPG" alt="Star octahedron" style="max-width: 45%;">
-  <img src="../media/star%20hand.JPG" alt="Star in hand" style="max-width: 45%;">
-</div>
