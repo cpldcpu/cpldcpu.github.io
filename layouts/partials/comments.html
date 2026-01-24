@@ -1,0 +1,39 @@
+<script>
+    function getGiscusTheme() {
+        return document.documentElement.classList.contains('dark') ? 'noborder_gray' : 'noborder_light';
+    }
+
+    function setGiscusTheme(theme) {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (iframe) {
+            iframe.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: theme } } },
+                'https://giscus.app'
+            );
+            return true;
+        }
+        return false;
+    }
+
+    // Watch for theme toggle changes
+    const observer = new MutationObserver(() => {
+        setGiscusTheme(getGiscusTheme());
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    // Poll for iframe and set initial theme
+    function syncInitialTheme() {
+        if (!setGiscusTheme(getGiscusTheme())) {
+            setTimeout(syncInitialTheme, 100);
+        }
+    }
+
+    // Start polling after a short delay to let Giscus load
+    setTimeout(syncInitialTheme, 500);
+</script>
+
+<script src="https://giscus.app/client.js" data-repo="cpldcpu/cpldcpu.github.io" data-repo-id="R_kgDOP0gHdQ"
+    data-category="Announcements" data-category-id="DIC_kwDOP0gHdc4Cvvjm" data-mapping="title" data-strict="0"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="noborder_gray"
+    data-lang="en" crossorigin="anonymous" async>
+    </script>
