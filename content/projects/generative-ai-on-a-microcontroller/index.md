@@ -380,9 +380,9 @@ Most of the early solutions for edge inference / TinyML are based on tensorflow 
 
 The issue is clearly that it is very hard to combine the requirements of easy deployment, flexibility and very small footprint into one. To optimize small models, they need to be trained taking the limitations of the inference code into account (quantization aware training). This means that training and inference cannot be implemented completely independently.
 
-An attractive workaround that seem to gain more traction is to use compilers that create specific infrence code, such as **microTVM** and **Glow.** Both of those seem to be used for slightly more powerful microcontrollers (CM4 and up).
+An attractive workaround that seems to gain more traction is to use compilers that create specific inference code, such as **microTVM** and **Glow.** Both of those seem to be used for slightly more powerful microcontrollers (CM4 and up).
 
-In terms of very small inference engines, **onnx2c**, **tinymaix** and **nnom** seem to be quite interesting. The last two are unfortunately based on tensorflow lite. **TinyEngine**seems to be the most optimized MCU inference engine, but is highly reliant on the ARM architecture.
+In terms of very small inference engines, **onnx2c**, **tinymaix** and **nnom** seem to be quite interesting. The last two are unfortunately based on tensorflow lite. **TinyEngine** seems to be the most optimized MCU inference engine, but is highly reliant on the ARM architecture.
 
 #### Plan/Next steps
 

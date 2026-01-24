@@ -85,7 +85,7 @@ How to solve this? Let's start with a simple 2D object. The photo below shows a 
   <img src="square.png" alt="Square graph from simulator" style="max-width: 45%;margin: 0;">
 </div>
 
-As shown on the right figure, the structure can be represented as a graph: Each junction corresponds to a **vertex**, and each filament corresponds to a connection between two vertices, a directed **edge**. Yellow markers indicate the feeding points where current is injected. This abstraction allows us to analyze the relationship between the geometry and its electrical properties using [graph theory](https://en.wikipedia.org/wiki/Graph_theory)[^2].
+As shown in the figure on the right, the structure can be represented as a graph: Each junction corresponds to a **vertex**, and each filament corresponds to a connection between two vertices, a directed **edge**. Yellow markers indicate the feeding points where current is injected. This abstraction allows us to analyze the relationship between the geometry and its electrical properties using [graph theory](https://en.wikipedia.org/wiki/Graph_theory)[^2].
 
 ### What do we actually want to achieve?
 
@@ -211,7 +211,7 @@ How do we screen for objects that support these driving schemes?
 
 Just to recap: We want to connect a positive terminal (anode) to one vertex and a negative terminal (cathode) to another vertex, so that all filaments (edges) lie on the current path between these two points. For all filaments to light up, every edge must lie on a shortest path between the two feeding points. We then try to identify such pairs of vertices, so that the shortest paths between them cover all edges. Note that this will result in a solution that allows all filaments to light up, but since there can (and will) be branching paths, the current distribution will be uneven.
 
-This (and it took me quite a while to figure this out) is known in graph theory as  **edge-geodesic cover problem**. Specifically, we want to screen polyhedral graphs for the existence of an *edge-geodetic set with an edge geodetic number of 2*. This means that there exist two vertices (s,t) such that every edge in the graph lies on some shortest path between s and t. A necessary precondition for this to be possible is that the graph is [bipartite](https://en.wikipedia.org/wiki/Bipartite_graph), which can be easily tested for. Essentially that states that the graph can be separated layer-by-layer without any dangling edges (filaments) between the layers.
+This (and it took me quite a while to figure this out) is known in graph theory as **edge-geodesic cover problem**. Specifically, we want to screen polyhedral graphs for the existence of an *edge-geodetic set with an edge geodetic number of 2*. This means that there exist two vertices (s,t) such that every edge in the graph lies on some shortest path between s and t. A necessary precondition for this to be possible is that the graph is [bipartite](https://en.wikipedia.org/wiki/Bipartite_graph), which can be easily tested for. Essentially, this states that the graph can be separated layer-by-layer without any dangling edges (filaments) between the layers.
 
 Only 6 out of the 122 polyhedra I analyzed support this property and allow driving all filaments from only two connections. They are listed in the table below.
 
@@ -302,5 +302,3 @@ Below you can see the elongated square bipyramid (also known as elongated octahe
 [^1]: Check out [Huy Vectors channel](https://www.youtube.com/@huyvector), he is building amazing electronic sculptures. I also learned that soldering ASMR is a thing now.
 
 [^2]: Flash backs to CO342, arguably the least easy course I took, but also intellectually very rewarding.
-
-

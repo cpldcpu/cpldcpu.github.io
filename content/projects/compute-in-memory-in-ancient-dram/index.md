@@ -15,16 +15,16 @@ layoutBackgroundBlur = false
 
 Compute-in-Memory (CIM) is a very active topic in current research, aiming to perform arithmetic operations directly on information stored in a memory array. There are two benefits to that: Firstly, it would enable massively parallel computation on a large amount of data at the same time. Secondly, it would save power that is usually associated with moving data through the memory hierarchy to a CPU or GPU.
 
-While there are a myriad of approaches to addressing this objective, there is a strong interest to stay close to existing memory technologies.  A few years ago, researchers have proposed a[method to implement parallel AND and OR operations in standard DRAM](https://users.ece.cmu.edu/~omutlu/pub/in-DRAM-bulk-AND-OR-ieee_cal15.pdf). Essentially, two or more rows of memory capacitors in a DRAM are connected so that their charge can equalize. This allows implementing several  logic operations in the analog domain without adding any additional circuitry to the DRAM array.
+While there are a myriad of approaches to addressing this objective, there is a strong interest to stay close to existing memory technologies. A few years ago, researchers have proposed a [method to implement parallel AND and OR operations in standard DRAM](https://users.ece.cmu.edu/~omutlu/pub/in-DRAM-bulk-AND-OR-ieee_cal15.pdf). Essentially, two or more rows of memory capacitors in a DRAM are connected so that their charge can equalize. This allows implementing several logic operations in the analog domain without adding any additional circuitry to the DRAM array.
 
-Curiously, another group found a way to implement these operations in **off-the-shelf DRAM**(["ComputeDRAM: In-Memory Compute Using Off-the-Shelf DRAMs"](https://parallel.princeton.edu/papers/micro19-gao.pdf)) by cleverly violating the timing parameters. Earlier it was also shown how to copy data within the DRAM wihtout leaving the chip ("[RowClone: Fast and Energy-Efficient
+Curiously, another group found a way to implement these operations in **off-the-shelf DRAM** (["ComputeDRAM: In-Memory Compute Using Off-the-Shelf DRAMs"](https://parallel.princeton.edu/papers/micro19-gao.pdf)) by cleverly violating the timing parameters. Earlier it was also shown how to copy data within the DRAM without leaving the chip ("[RowClone: Fast and Energy-Efficient
 In-DRAM Bulk Data Copy and Initialization](https://users.ece.cmu.edu/~omutlu/pub/rowclone_micro13.pdf)").
 
 Taking these building blocks, a more recent publication even implements parts of large language model (LLM) computations in memory using this approach. (["MVDRAM: Enabling GeMV Execution in Unmodified DRAM for Low-Bit LLM Acceleration"](https://arxiv.org/abs/2503.23817)).
 
 Now, if this isn't a glorious hack, what is?
 
-Now, of course working with modern DRAMs is not that easy, and this reasearch required a relatively advanced setup with a modern FPGA (["DRAM Bender"](https://github.com/CMU-SAFARI/DRAM-Bender))
+Now, of course working with modern DRAMs is not that easy, and this research required a relatively advanced setup with a modern FPGA (["DRAM Bender"](https://github.com/CMU-SAFARI/DRAM-Bender))
 
 *But, how about using an older, slow, DRAM and pair it with a modern microcontroller? Let's see how far we get.*
 
@@ -32,11 +32,11 @@ Now, of course working with modern DRAMs is not that easy, and this reasearch re
 ### 1) Experimental Set Up
 <small>2025-05-05 20:40</small>
 
-I will be experimenting with 4164 DRAMs chips which were used as main memory in many computers in the early 80ies. They are organized as 64k*1, so that eight chips are required for 64kbytes of RAM. Luckily I found a few from different vendors in my parts bin (I think I had more, but just kept one from each vendor.)
+I will be experimenting with 4164 DRAM chips which were used as main memory in many computers in the early 80s. They are organized as 64k*1, so that eight chips are required for 64kbytes of RAM. Luckily I found a few from different vendors in my parts bin (I think I had more, but just kept one from each vendor.)
 
-The 4164 required a single 5V supply. Their access times are rather slow, 200ns to 300ns for the devices I have. The generation rationale behind this experiment is that modern microcontrollers are vastily faster than these devices and can be used to generate timing violations required for compute-in-memory instead of having to use a FPGA.
+The 4164 required a single 5V supply. Their access times are rather slow, 200ns to 300ns for the devices I have. The generation rationale behind this experiment is that modern microcontrollers are vastly faster than these devices and can be used to generate timing violations required for compute-in-memory instead of having to use an FPGA.
 
-I am going to use a CH32V003 microcontroller. These are rather low cost devices, but they come with 48MHz system clock and a RISC-V core (RV32EC), which as able to execute instructions 100-150x faster than a 1MHz 6502 from the 80ies. In addition, they offer 5V I/O which greatly simplifies interfacing to the 4164.
+I am going to use a CH32V003 microcontroller. These are rather low cost devices, but they come with 48MHz system clock and a RISC-V core (RV32EC), which is able to execute instructions 100-150x faster than a 1MHz 6502 from the 80ies. In addition, they offer 5V I/O which greatly simplifies interfacing to the 4164.
 
 ![](2173811746399846201.jpg)
 

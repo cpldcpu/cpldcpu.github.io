@@ -19,9 +19,9 @@ tags:
 
 A while ago, I used [transient current analysis to understand the behavior of the WS2812](https://cpldcpu.wordpress.com/2020/12/19/power-analysis-probing-ws2812-rgb-leds/) a bit better (and to play around with my new oscilloscope). One intersting finding was that the translation of the 8 bit input value for the PWM register is mapped in a nonlinear way to the output duty cycle. This behavior is not documented in the data sheet or anywhere else. Reason enough to revisit this topic.
 
-![Grafik 14](grafik-14.png)Measured PWM duty cycle vs. set value for WS2812S
+![Grafik 14](grafik-14.png) Measured PWM duty cycle vs. set value for WS2812S
 
-The table and plot above show PWM pulse length of a WS2812S in dependence of the programmed 8 bit PWM set value, as measured previously by transient current analysis. Normally we would expect that the PWM set value is linearily transferred into a duty cycle. A setting of 1 should correspond to a duty cycle of 1/256=0.39%, a value of 64 to 64/256=25%. As seen in the table, the duty cycle is always lower than the expected value. This is especially true for small values. This is also evident from the log-log plot on the right - the dashed lines would be expected for a linear mapping.
+The table and plot above show PWM pulse length of a WS2812S in dependence of the programmed 8-bit PWM set value, as measured previously by transient current analysis. Normally we would expect that the PWM set value is linearly transferred into a duty cycle. A setting of 1 should correspond to a duty cycle of 1/256=0.39%, a value of 64 to 64/256=25%. As seen in the table, the duty cycle is always lower than the expected value. This is especially true for small values. This is also evident from the log-log plot on the right - the dashed lines would be expected for a linear mapping.
 
 ![Grafik 15](grafik-15.png)
 
@@ -128,13 +128,13 @@ This figure also reveals a difference between WS2812-V1 and V5: The V5 will only
 
 ![Grafik 16](grafik-16.png)
 
-This behavior is in contrast to earlier versions of the WS2812, where the LED current is instantly turned on (see image on top of article), and was most likely introduced to improve electromagnic interference issues (EMI). Unfortunately the loss of lower PWM setting was introduced as an undesireable side effect.
+This behavior is in contrast to earlier versions of the WS2812, where the LED current is instantly turned on (see image on top of article), and was most likely introduced to improve electromagnetic interference issues (EMI). Unfortunately the loss of lower PWM settings was introduced as an undesirable side effect.
 
 ## Summary and Conclusions
 
-The new optical measurements confirm that the WS2812 does**NOT** map the PWM settings linearily to intensity, and corroberate the observations from transient current analysis where I analyzed the duty cycle of the PWM waveform.
+The new optical measurements confirm that the WS2812 does **NOT** map the PWM settings linearly to intensity, and corroborate the observations from transient current analysis where I analyzed the duty cycle of the PWM waveform.
 
-This is most likely an intentionally introduced design feature in the digital control logic, that maps the 8 bit input value to a 11 bit output values that is fed to the PWM. The exponent of the mapping function is relatively low, therefore this feature cannont replace a true [gamma correction](https://en.wikipedia.org/wiki/Gamma_correction) step with an exponent of e.g. 2.2 or 2.9.
+This is most likely an intentionally introduced design feature in the digital control logic, that maps the 8-bit input value to an 11-bit output value that is fed to the PWM. The exponent of the mapping function is relatively low, therefore this feature cannot replace a true [gamma correction](https://en.wikipedia.org/wiki/Gamma_correction) step with an exponent of e.g. 2.2 or 2.9.
 
 What are the ramifications of this? The benefit of having a lower slope for low brightness values is to increase dimming resolution. The feature extends the dynamic range of the WS2812 to 1:2048, while the clones only support 1:256.
 

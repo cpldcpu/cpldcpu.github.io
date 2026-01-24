@@ -68,13 +68,13 @@ In essence: The trick is that there is a very delicate balance in how much fuel 
 
 ## Candle Triplet Oscillations
 
-Now, there is a particularly fascinating effect that has more recently been the subject of publications in scientific journals<sup><a href="#b458422a-9a0f-4f69-8194-c691d4a7194c" id="b458422a-9a0f-4f69-8194-c691d4a7194c-link">1</a><a href="#674c9670-40b1-4765-90d3-ca63ebe5d7a4" id="674c9670-40b1-4765-90d3-ca63ebe5d7a4-link">2</a></sup> : When several candles are brought close to each other, they start to "communicate" and their behavior synchronizes. The simplest demonstration is to bundle three candles together; they will behave like a single large flame.
+Now, there is a particularly fascinating effect that has more recently been the subject of publications in scientific journals<sup><a href="#b458422a-9a0f-4f69-8194-c691d4a7194c" id="b458422a-9a0f-4f69-8194-c691d4a7194c-link">1</a><a href="#674c9670-40b1-4765-90d3-ca63ebe5d7a4" id="674c9670-40b1-4765-90d3-ca63ebe5d7a4-link">2</a></sup>: When several candles are brought close to each other, they start to "communicate" and their behavior synchronizes. The simplest demonstration is to bundle three candles together; they will behave like a single large flame.
 
 So, what happens with our bundle of three candles? It will basically undo millennia of candle technology optimization to avoid candle flicker. If left alone in motionless air, the flames will suddenly start to rapidly change their height and begin to flicker. The image below shows two states in that cycle.
 
 {{< figure src="candleosc.jpg" alt="Two states of the oscillation cycle in bundled candles" caption="Two states of the oscillation cycle in bundled candles" >}}
 
-We can also record the brightness variation over time to understand this process better. In this case, a high-resolution ambient light sensor was used to sample the flicker over time. (This was part of more comprehensive set experiments of conducted a while ago, which are still unpublished)
+We can also record the brightness variation over time to understand this process better. In this case, a high-resolution ambient light sensor was used to sample the flicker over time. (This was part of a more comprehensive set of experiments conducted a while ago, which are still unpublished)
 
 Plotting the brightness evolution over time shows that the oscillations are surprisingly stable, as shown in the image below. We can see a very nice sawtooth-like signal: the flame slowly grows larger until it collapses and the cycle begins anew. You can see a video of this behavior [here](https://youtube.com/shorts/2N9h_YpQUy4). (Which, unfortunately cannot embed properly due to WordPress...)
 
@@ -84,15 +84,15 @@ On the right side of the image, you can see the power spectral density plot of t
 
 This is very curious. Wouldn't you expect more chaotic behavior, considering that everything else about flames seems so random?
 
-The phenomenon of flame oscillations has baffled researchers for a long time. Curiously, they found that**the oscillation frequency of a candle flame**(or rather a*"wick-stabilized buoyant diffusion flame"*)**depends mainly on just two variables: gravity and the dimension of the fuel source.**A comprehensive review can be found in Xia et al.<sup><a href="#797415ff-39e2-466b-b67e-b26e19613a76" id="797415ff-39e2-466b-b67e-b26e19613a76-link">3</a></sup>.
+The phenomenon of flame oscillations has baffled researchers for a long time. Curiously, they found that **the oscillation frequency of a candle flame** (or rather a *"wick-stabilized buoyant diffusion flame"*) **depends mainly on just two variables: gravity and the dimension of the fuel source.** A comprehensive review can be found in Xia et al.<sup><a href="#797415ff-39e2-466b-b67e-b26e19613a76" id="797415ff-39e2-466b-b67e-b26e19613a76-link">3</a></sup>.
 
-Now that is interesting: gravity is rather constant (on Earth) and the dimensions of the fuel source are defined by the size (diameter) of the candles and possibly their proximity.**This leaves us with a fairly stable source of oscillation, or timing, at approximately 10Hz.**Could we use the 9.9 Hz oscillation to derive a time base?
+Now that is interesting: gravity is rather constant (on Earth) and the dimensions of the fuel source are defined by the size (diameter) of the candles and possibly their proximity. **This leaves us with a fairly stable source of oscillation, or timing, at approximately 10Hz.** Could we use the 9.9 Hz oscillation to derive a time base?
 
 ## Sensing Candle Frequencies with a Phototransistor
 
-Now that we have a source of stable oscillations-remind you,**FROM FIRE**-we need to convert them into an electrical signal.
+Now that we have a source of stable oscillations - remind you, **FROM FIRE** - we need to convert them into an electrical signal.
 
-The previous investigation of candle flicker was based an I²C-based light sensor to sample the light signal. This provides very high SNR, but is comparatively complex and adds latency.
+The previous investigation of candle flicker was based on an I²C-based light sensor to sample the light signal. This provides very high SNR, but is comparatively complex and adds latency.
 
 A phototransistor provides a simpler option. Below you can see the setup with a phototransistor in a 3mm wired package (arrow). Since the phototransistor has internal gain, it provides a much higher current than a photodiode and can be easily picked up without additional amplification.
 
@@ -210,6 +210,6 @@ All data and code is published in [this repository](https://github.com/cpldcpu/C
 
 ## References
 
-1.  Okamoto, K., Kijima, A., Umeno, Y. & Shima, H. "Synchronization in flickering of three-coupled candle flames." *Scientific Reports* 6, 36145 (2016). [↩︎](#b458422a-9a0f-4f69-8194-c691d4a7194c-link)
-2.  Chen, T., Guo, X., Jia, J. & Xiao, J. "Frequency and Phase Characteristics of Candle Flame Oscillation." *Scientific Reports* 9, 342 (2019). [↩︎](#674c9670-40b1-4765-90d3-ca63ebe5d7a4-link)
-3.  J. Xia and P. Zhang, "Flickering of buoyant diffusion flames," *Combustion Science and Technology*, 2018. [↩︎](#797415ff-39e2-466b-b67e-b26e19613a76-link)
+1.  <a id="b458422a-9a0f-4f69-8194-c691d4a7194c"></a>Okamoto, K., Kijima, A., Umeno, Y. & Shima, H. "Synchronization in flickering of three-coupled candle flames." *Scientific Reports* 6, 36145 (2016). [↩︎](#b458422a-9a0f-4f69-8194-c691d4a7194c-link)
+2.  <a id="674c9670-40b1-4765-90d3-ca63ebe5d7a4"></a>Chen, T., Guo, X., Jia, J. & Xiao, J. "Frequency and Phase Characteristics of Candle Flame Oscillation." *Scientific Reports* 9, 342 (2019). [↩︎](#674c9670-40b1-4765-90d3-ca63ebe5d7a4-link)
+3.  <a id="797415ff-39e2-466b-b67e-b26e19613a76"></a>J. Xia and P. Zhang, "Flickering of buoyant diffusion flames," *Combustion Science and Technology*, 2018. [↩︎](#797415ff-39e2-466b-b67e-b26e19613a76-link)

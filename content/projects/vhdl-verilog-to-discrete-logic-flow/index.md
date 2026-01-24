@@ -95,7 +95,7 @@ Let's go through it step-by-step. Normal text is the OpenLane flow, italics are 
   3. `pdn` - Generates the power distribution network
   4. `tapcell` - Inserts welltap and decap cells in the floorplan
 
-*The floorplan prepares the area where the synthesized logic goes and creates the power network. As a first step I will treat the power network as a normal net, which should be acceptable if performance is not a goal. A big question is wether the tools can be repurposed resued in any way.*
+*The floorplan prepares the area where the synthesized logic goes and creates the power network. As a first step I will treat the power network as a normal net, which should be acceptable if performance is not a goal. A big question is whether the tools can be repurposed and reused in any way.*
 
 - **Placement**
   1. `RePLace` - Performs global placement

@@ -38,7 +38,7 @@ After outlining an idea how to implement powerline control with an ATtiny10 in t
 
 ![](5298631643575382078.jpg)
 
-My test setup is shown above. The top is a breakout board with an ATMega328P and USB to serial converter (Sometime also known as "Arduino Nano Clone"). The bottom breadboard contains the target circuit with an ATtiny10, a capacitor, LED and series resistor.
+My test setup is shown above. The top is a breakout board with an ATMega328P and USB to serial converter (sometimes also known as "Arduino Nano Clone"). The bottom breadboard contains the target circuit with an ATtiny10, a capacitor, LED and series resistor.
 
 Note that there are only two connections to the lower board: **VLED** (connected to PB0/D8 of the ATMega328) and **GND**.
 
@@ -46,7 +46,7 @@ Note that there are only two connections to the lower board: **VLED** (connected
 
 The full circuit of the lower board is shown above. Notice the mistake? There is no connection to the power input pin VCC!
 
-Well, of course this is the "Nasty Hack". The ATtiny10 has an internal diode connecting PB2 to VCC (shown in red). The purpose of this diode is to short ESD pulses to the power rail. It is also the reason why you are not supposed to apply voltages higher than VCC+0.5V to any input pin. Operating the MCU like this can have nasty side effects, and I am pretty certain that Atmel Microchip will not endorse it at all.
+Well, of course this is the "Nasty Hack". The ATtiny10 has an internal diode connecting PB2 to VCC (shown in red). The purpose of this diode is to short ESD pulses to the power rail. It is also the reason why you are not supposed to apply voltages higher than VCC+0.5V to any input pin. Operating the MCU like this can have nasty side effects, and I am pretty certain that Atmel/Microchip will not endorse it at all.
 
 When VLED is larger than VCC plus the diode voltage, it will charge the parallel capacitor. When VLED is pulled low, the diode will be in reverse direction and the microcontroller can be supplied from the capacitor.
 
@@ -133,7 +133,7 @@ As a first test, I connected an additional power line to VCC of the ATtiny10 to 
 The yellow trace ("vsig") on top corresponds to VLED. We can see that it is mostly in Hi state with short low pulses. Every pulse toggles the state of the LED, as intended. The voltage at VCC is 4.6V - apparently there is some voltage drop in the ATMega328 board and/or the USB port that is used to power it.
 ![](2719791643576745953.png)
 
-Repeating the same experiment without the connection to VCC releals exactly the same behavior. The ATtiny10 is powered only by the parasitic supply through PB2 and the capacitor now. Yay, it works!
+Repeating the same experiment without the connection to VCC reveals exactly the same behavior. The ATtiny10 is powered only by the parasitic supply through PB2 and the capacitor now. Yay, it works!
 
 The voltage on VDD dropped to 3.8V now, corresponding to a ~0.8V voltage drop in the ESD circuit, the internal diode. 
 
@@ -143,13 +143,13 @@ Zooming a bit further in, we can see that the voltage on VCC is dropping when VL
 
 The voltage drop on the 100nF capacitor is around ~75mV for the entire 10uS pulse.
 
-Since Ivcc = (C * DeltaV) / t we get 100 nF * 75 mV / 10 uS=**Ivcc = 0.75 mA.**This is reasonably close to the datasheet value for the current consumption of the ATtiny10, which is 0.6mA for 5V. It may be advisable to reduce the clock speed of the ATtiny10 further to minimize current draw from the capacitor.
+Since Ivcc = (C * DeltaV) / t we get 100 nF * 75 mV / 10 uS = **Ivcc = 0.75 mA.** This is reasonably close to the datasheet value for the current consumption of the ATtiny10, which is 0.6mA for 5V. It may be advisable to reduce the clock speed of the ATtiny10 further to minimize current draw from the capacitor.
 
-If the control signal consists of pulse trains with equal High and Low timing, then the capactior should be recharged faster than it is discharged. Right now, recharging takes around 25us, which is still too long.
+If the control signal consists of pulse trains with equal High and Low timing, then the capacitor should be recharged faster than it is discharged. Right now, recharging takes around 25us, which is still too long.
 
 ![](4993971643577706619.png)
 
-Trying the same without external capacitor failed. We can see that VCC quickly drops down to approximately 1V, where the ATtiny 10 stops operation. Understandibly, the remaining parasitic capacitance in the micrcontroller is not able to supply a current of 0.75mA for very long. The MCU may be able to operate without external capacitor when reducing the current draw, by lowering clock speed, and reducing the maximum allowable pulse time to the minimum. The minimum pulse time still needs to be longer than one IO clock cycle, as otherwise the interrupt logic will not be able to latch the rising edge, though.
+Trying the same without external capacitor failed. We can see that VCC quickly drops down to approximately 1V, where the ATtiny 10 stops operation. Understandably, the remaining parasitic capacitance in the microcontroller is not able to supply a current of 0.75mA for very long. The MCU may be able to operate without external capacitor when reducing the current draw, by lowering clock speed, and reducing the maximum allowable pulse time to the minimum. The minimum pulse time still needs to be longer than one IO clock cycle, as otherwise the interrupt logic will not be able to latch the rising edge, though.
 
 #### Conclusions
 

@@ -107,7 +107,7 @@ The testbench will show the output of the executed programs directly in the shel
 
 The number in brackets shows the number of executed program cycles, the output shows the content of the accumulator when the "OUT" instruction in the machine code is executed.
 
-[![grafik](188921127-461e2d08-ba10-4bcb-b11b-6f22f69dc238.png)](https://user-images.githubusercontent.com/4086406/188921127-461e2d08-ba10-4bcb-b11b-6f22f69dc238.png)Prime number sieve:
+[![grafik](188921127-461e2d08-ba10-4bcb-b11b-6f22f69dc238.png)](https://user-images.githubusercontent.com/4086406/188921127-461e2d08-ba10-4bcb-b11b-6f22f69dc238.png) Prime number sieve:
 
 ```cpp
 ;    divisor=2;    

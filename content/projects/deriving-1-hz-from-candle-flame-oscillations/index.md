@@ -77,7 +77,7 @@ There was this 1 Hz competition? So, why don't we use our flame oscillator refer
 ### 3) Detecting Flame Oscillations with a Wire
 <small>2025-08-12 18:27</small>
 
-Now that we have a source of stable oscillations-remind you, **FROM FIRE**-we need to convert them into an electrical signal.
+Now that we have a source of stable oscillations - remind you, **FROM FIRE** - we need to convert them into an electrical signal.
 
 For my original investigations, I used an I^2C-based light sensor to sample the light signal. This provides very high SNR, but is comparatively complex.
 

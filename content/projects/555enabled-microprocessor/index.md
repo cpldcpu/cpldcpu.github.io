@@ -92,7 +92,7 @@ Multiple diodes can be used to add further inputs. The choice of the pull up res
 
 The new contraption works nicely, as seen in the scope picture above. Channel 2 (on top) shows the voltage levels directly at the input of the NE555 (TRIG/THRES). We can see, that the L->H transition at the input is now much slower, since the 10kohm resistor alone as to pull up the node. The H->L transition is fairly quick as the diode has a low impedance.
 
-The inverter still works nicely. Curiously the timing was changed quite significantly to the stand-alone schmitt trigger. The delay fro the L->H transistion on the input is now only 1us, while the delay for the H->L transition is 1.65uS. The difference is a bit puzzling and understanding it requires digging into the NE555 circuit. But for now it should be fine, NE555-Logic will never be a speed demon anyways.
+The inverter still works nicely. Curiously the timing was changed quite significantly to the stand-alone schmitt trigger. The delay for the L->H transition on the input is now only 1us, while the delay for the H->L transition is 1.65uS. The difference is a bit puzzling and understanding it requires digging into the NE555 circuit. But for now it should be fine, NE555-Logic will never be a speed demon anyways.
 
 #### Conclusions
 

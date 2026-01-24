@@ -52,9 +52,9 @@ To avoid having to add a resistor for each segment, I decided to only use a sing
 
 The PCB design is shown above. The 7 segment display is attached to the rear side. Angled connecters are used to connect the individual segments of the display. Originally I planned to use the right connector for programming, however it turned out to be much easier to use a SOIC8 clamp to directly connect to the microcontroller.
 
-![Display Rear](display_rear.jpg)Rear side
+![Display Rear](display_rear.jpg) Rear side
 
-![Display Front](display_front.jpg)Front side
+![Display Front](display_front.jpg) Front side
 
 Two assembled displays are shown above. As you can see they neatly align.
 
@@ -78,15 +78,15 @@ Items 2-7 are simplifying things a lot and are very similar to the well-known [W
 
 ### Data frame
 
-![1n1 2](1n1-2.png)The "1N1" serial protocol used by the WS2812
+![1n1 2](1n1-2.png) The "1N1" serial protocol used by the WS2812
 
-In a single wire asynchronous protocol, each transmission typically consists of a start condition and a payload of 1...n bits. One way of looking at the [WS2812 protocol](/2014/01/19/light_ws2812-library-v2-0/) is illustrated by the image above: The transmission start with a low-high transition as the start bit followed by a single data bit and one stop bit. This would correspond to a "1N1" protocol in positive logic when using the standard UART notation. **Ts**denotes the duration of one bit, which is the inverse of the baud rate. For the WS2812 Ts is approximately 450 ns, which corresponds to 2.2 Mbaud. The main reason you cannot directly connect a WS2812 to a standard UART output is that the signal is inverted.
+In a single-wire asynchronous protocol, each transmission typically consists of a start condition and a payload of 1...n bits. One way of looking at the [WS2812 protocol](/2014/01/19/light_ws2812-library-v2-0/) is illustrated by the image above: The transmission starts with a low-high transition as the start bit followed by a single data bit and one stop bit. This would correspond to a "1N1" protocol in positive logic when using the standard UART notation. **Ts** denotes the duration of one bit, which is the inverse of the baud rate. For the WS2812 Ts is approximately 450 ns, which corresponds to 2.2 Mbaud. The main reason you cannot directly connect a WS2812 to a standard UART output is that the signal is inverted.
 
 It's clear that a 1N1 protocol wastes a lot of bandwidth on overhead. Only a third of the transmission is used for actual data.
 
-![8n1 1](8n1-1.png)Standard 8N1 asynchronous serial protocol
+![8n1 1](8n1-1.png) Standard 8N1 asynchronous serial protocol
 
-Serial transmissions typically rely on an 8N1 protocol as is shown above. Here, 8 data bits are followed the start bit, so that 80% of the transmission is actually used for data.
+Serial transmissions typically rely on an 8N1 protocol as is shown above. Here, 8 data bits are followed by the start bit, so that 80% of the transmission is actually used for data.
 
 The challenge is that timing accuracy requirements are getting more strict the more bits are following the start bit. Assuming we are sampling in the center of a bit, the maximum clock deviation needs to be less than 50% of one bit timing. One can show that this is met when the maximum relative clock deviation is less than delta<1/(2*(n+0.5)), where n is the number of bits. (Slightly more complex derivation [here](https://www.allaboutcircuits.com/technical-articles/the-uart-baud-rate-clock-how-accurate-does-it-need-to-be/)).
 

@@ -115,7 +115,7 @@ Of course, there are numerous imperfections in this set up, including leakage cu
 ### 4) Capacitive Soil Moisture Sensor
 <small>2020-09-14 23:32</small>
 
-One curious type of sensor that can be realized with simple means is a soil moisture sensor to monitor wether plants need to be watered. A simple way of achieving this is to measure the soil resistivity with two electrodes. Unfortunately that is not very reliable due to corrosion of the electrodes.
+One curious type of sensor that can be realized with simple means is a soil moisture sensor to monitor whether plants need to be watered. A simple way of achieving this is to measure the soil resistivity with two electrodes. Unfortunately that is not very reliable due to corrosion of the electrodes.
 
 A much better approach is a capacitive sensor, for example as shown [here](https://www.switchdoc.com/2020/06/tutorial-capacitive-moisture-sensor-grove/). The sensing principle exploits the fact that water has a much higher (~80) relative dielectric constant than dry sol or air (~1). The sensing element consists of a planar capacitor that is directly inserted into the soil. This can be very easily realized by copper traces on a PCB that is insulated with solder resist. Coincidentally I found a sensing element that I designed years ago. The layout is shown here:
 

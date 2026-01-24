@@ -52,13 +52,13 @@ Running the PFS154 at such a low clock will already reduce the power consumption
 
 The PFS154 supports two sleep modes: "STOPSYS" and "STOPEXE".
 
-**STOPSYS**completely halts the core and all oscillators. The only way to wake up from  this state is by a pin change.**STOPEXE**halts the core, but the low frequency oscillator remains active and can be used to clock the timers. The core can be woken up by pin change or timer event. It appears that, although not clearly states in the datasheet, both the 8 bit timers and the 16 bit timer can generate wake-up events. Note that the watchdog timer is also halted during STOPEXE. This is on contrast to the behavior on other microcontrollers.
+**STOPSYS** completely halts the core and all oscillators. The only way to wake up from this state is by a pin change. **STOPEXE** halts the core, but the low frequency oscillator remains active and can be used to clock the timers. The core can be woken up by pin change or timer event. It appears that, although not clearly stated in the datasheet, both the 8-bit timers and the 16-bit timer can generate wake-up events. Note that the watchdog timer is also halted during STOPEXE. This is in contrast to the behavior on other microcontrollers.
 
 ![Grafik 1](grafik-1.png)
 
  As a first step I used my multimeter to verify the current consumption vs supply voltage during the sleep modes as shown above. I was basically able to reproduce the curves from the datasheet, which confirms that the datasheet is correct and that my handheld multimeter is actually able to accurately measure currents as low as a few 100 nA! Not something I had expected, to be honest.
 
-During this I found one peculiar behavor of the PFS154. The pin change wakeup is always enabled by default after reset. It appears that very low changes on the pins can generate a wakeup. If they are left floating, it is sufficient to touch a pin to wake up the core. Interestingly this even applied to pins that were not routed outside of the package put still existed as pads on the die. By touching the surface of the IC it was possible to generate a wake up event! Unless you are interested in building a hacky touch sensor it is therefore adviced to disable all pins as a wakeup source.
+During this I found one peculiar behavior of the PFS154. The pin change wakeup is always enabled by default after reset. It appears that very low changes on the pins can generate a wakeup. If they are left floating, it is sufficient to touch a pin to wake up the core. Interestingly this even applied to pins that were not routed outside of the package but still existed as pads on the die. By touching the surface of the IC it was possible to generate a wake up event! Unless you are interested in building a hacky touch sensor it is therefore advised to disable all pins as a wakeup source.
 
 ### Implementation of timer wakeup
 

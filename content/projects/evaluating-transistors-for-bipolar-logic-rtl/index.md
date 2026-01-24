@@ -102,7 +102,7 @@ Furthermore, although many different variants are listed, not all of those are a
 
 ![](3124651585744722171.png)
 
-The candidates are listed above. What is alarming about these devices is that basically no information about transient behavior and switching applications is listed. A few devices liste transistion frequencies, which are rather unimpressive.
+The candidates are listed above. What is alarming about these devices is that basically no information about transient behavior and switching applications is listed. A few devices list transition frequencies, which are rather unimpressive.
 
 ![](9855351585745200702.png)
 

@@ -35,7 +35,7 @@ RTL is the simpler of the two, but it suffers from many issues: The L->H thresho
 
 DTL addresses these shortcoming by introducing additional diodes: When the input is high, all the base current will be supplied by the base resistor (R5) and there is no current flowing into the gate. When the input is low, current is sourced from the gate, which is sunk into the transistor of the preceding gate. Since the transistor is fairly low-ohmic when it is turned on, there is much less limitation in fan-out. Furthermore, it is not necessary to adjust gate resistors depending on fan-out. This allows using the same resistor values throughout the entire circuit.
 
-A second improvment in DTL is to lift the L->H threshold to a higher voltage. It is now defined by Vbe+Vd2+Vd1-Vd3, which is roughly 1.3V depending on the compenents used.
+A second improvement in DTL is to lift the L->H threshold to a higher voltage. It is now defined by Vbe+Vd2+Vd1-Vd3, which is roughly 1.3V depending on the components used.
 
 #### From DTL to LTL
 
@@ -54,17 +54,17 @@ But what is the impact on the circuit behavior? Usually we would like to use fas
 
 The base diode is, however, never in reverse operation. Therefore the bad switching properties of the LED are not an issue. In addition, the higher capacitance helps to pull down the base potential quicker if the transistor is to be turned off. You sometimes see intentional reach-through capacitors in parallel to the base diode in DTL gates.
 
-Some attention has to be paid to the terminal between D1 and Q1 base. If the transistor is turned off, this terminal is pulled to negative voltage and is basically floating, since the base-emitter diode is reverse biased. I found that this can lead to a shift of switching voltage depending on duty cycle and frequency of the incoming signal. It may be advised to use a bleeder resistor to conntect this node to the ground. Due to simplicity, I omitted this and made sure to design glitch free logic instead...
+Some attention has to be paid to the terminal between D1 and Q1 base. If the transistor is turned off, this terminal is pulled to negative voltage and is basically floating, since the base-emitter diode is reverse biased. I found that this can lead to a shift of switching voltage depending on duty cycle and frequency of the incoming signal. It may be advised to use a bleeder resistor to connect this node to the ground. Due to simplicity, I omitted this and made sure to design glitch-free logic instead...
 
 ![](8520671581762484590.png)
 
 I spent quite some time optimizing the basic gate in LTspice. To measure switching speed, I simulated a 5 stage ring oscillator. One crucial choice was to pick the right transistor, as I also outlined in [greater detail here](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/).
 
-You can see simulation results for several different configurations above. I also tried various configurations with reach through caps and baker clamps but found that chosing the right transistor, the PMBT2369, yielded much better results that all other options. The PMBT2369 is available in a SOT23 SMD package for around $0.02, so there is really no reason to use the  BC847 or MMBT3904 over it.
+You can see simulation results for several different configurations above. I also tried various configurations with reach through caps and baker clamps but found that choosing the right transistor, the PMBT2369, yielded much better results than all other options. The PMBT2369 is available in a SOT23 SMD package for around $0.02, so there is really no reason to use the BC847 or MMBT3904 over it.
 
 ![](7633061581763149381.png)
 
-Final parameters of the simulated inverter are shown above. The relatively high L->H delay is owed to the use of a relatively large collector resistor. Note that the threshold voltages are almost centered between the 5V supply and ground, maximizing noise marging and making the gate compatible to CMOS logic levels.
+Final parameters of the simulated inverter are shown above. The relatively high L->H delay is owed to the use of a relatively large collector resistor. Note that the threshold voltages are almost centered between the 5V supply and ground, maximizing noise margin and making the gate compatible to CMOS logic levels.
 
 ### 3) Characterizing a NAND2 gate
 <small>2020-02-15 16:03</small>
@@ -102,11 +102,11 @@ I built two versions of the ring oscillator: One with red LED and one with green
 
 ![](6214961581788137029.png)
 
-The scope screenshot shows the input (yellow) and output (turquoise) waveform of one inverter in the ring oscillator (green led). The falling edge is steep since it is actively pulled down by the transistor. The rising edge is, again, separated into two regions depending on wether only collector resistor or base and collector resistor are involved in pulling up the node.
+The scope screenshot shows the input (yellow) and output (turquoise) waveform of one inverter in the ring oscillator (green LED). The falling edge is steep since it is actively pulled down by the transistor. The rising edge is, again, separated into two regions depending on whether only collector resistor or base and collector resistor are involved in pulling up the node.
 
 ![](245451581788804703.png)
 
-The diagram above shows measurements of ring oscillator frequencies versus supply voltages. The blue line corresponds to the inverter with green LED, the orange line to a red LED. There is a clear trend towards higher frequency for higher supply, which can be explained by the availability of more switching current. The red LED LTL gate has a lower threshold voltage and does therefore switch earlier and faster.  Since this design is based on the PMBT2369 switching transistors, no dominant influence of base saturation is observered. LTL gates with normal small signal transistores should exhibit a speed-supply relationship similar to [what I observed with RTL](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/).
+The diagram above shows measurements of ring oscillator frequencies versus supply voltages. The blue line corresponds to the inverter with green LED, the orange line to a red LED. There is a clear trend towards higher frequency for higher supply, which can be explained by the availability of more switching current. The red LED LTL gate has a lower threshold voltage and does therefore switch earlier and faster. Since this design is based on the PMBT2369 switching transistors, no dominant influence of base saturation is observed. LTL gates with normal small signal transistors should exhibit a speed-supply relationship similar to [what I observed with RTL](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/).
 
 ![](3478621581789987578.png)
 
@@ -139,7 +139,7 @@ Test waveforms for the NAND2 gate are shown above - nothing peculiar. There is a
 
 ![](6383091581879695266.jpg)
 
-Next is the **NOR2 gate**. This can be easily realized by a wired AND of two LTL inverters. A minor but very important detail: If a gate uses a wired AND at the output, neither of the LEDs will be representative of the output signal. In practice this means that additonal indicator-LEDs may have to be added to monitor certain nodes.
+Next is the **NOR2 gate**. This can be easily realized by a wired AND of two LTL inverters. A minor but very important detail: If a gate uses a wired AND at the output, neither of the LEDs will be representative of the output signal. In practice this means that additional indicator-LEDs may have to be added to monitor certain nodes.
 
 ![](4929651581879851674.jpg)
 

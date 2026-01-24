@@ -95,7 +95,7 @@ The performance looks quite good with fast switching times. Unfortunately these 
 
 **BSS83**
 
-Not to be mixed up with the BSS83**P**, the BSS83 is a single n-channel mosfet with separate bulk connection in a small SOT23-like SMD package (SOT143). The switching time is <5ns and the input capacatiance only 1.5pF. A very suitable device that was once made by Infineon and Nexperia. But alas, it is out of production...
+Not to be mixed up with the BSS83**P**, the BSS83 is a single n-channel mosfet with separate bulk connection in a small SOT23-like SMD package (SOT143). The switching time is <5ns and the input capacitance only 1.5pF. A very suitable device that was once made by Infineon and Nexperia. But alas, it is out of production...
 
 ![](6419761601113107276.png)
 
@@ -177,7 +177,7 @@ t_{pd}^{\mathrm{HL}} \approx C_{gs}\,R_{\mathrm{DS(on)}}
 $$
 Propagation delay high-to-low [s]
 
-Firstly, it is obvious that there is a speed/power tradeoff when chosing the load resistors R1. I picked 1.8 kOhm since I used this before. This leads to a static consumption of about 3 mA, which is only acceptable for small designs (or when you build a 60ies style supercomputer).
+Firstly, it is obvious that there is a speed/power tradeoff when choosing the load resistors R1. I picked 1.8 kOhm since I used this before. This leads to a static consumption of about 3 mA, which is only acceptable for small designs (or when you build a 60ies style supercomputer).
 
 Typical values for Vth are 1-2 V. Therefore we want out output low level to be significantly below this. For VDD=5V, it follows that 10 * RDSON < R1. Hence RDSON should be lower than 180 Ohm, which is quite high.
 

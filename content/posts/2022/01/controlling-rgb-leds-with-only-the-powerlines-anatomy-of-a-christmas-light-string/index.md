@@ -28,13 +28,13 @@ showTableOfContents: true
 
 ---
 
-![Wiremess](wiremess.jpg)The RGB curtain predictably turns into a mess of wires when not used according to instructions.
+![Wiremess](wiremess.jpg) The RGB curtain predictably turns into a mess of wires when not used according to instructions.
 
 As should be obvious from this blog, I am somewhat drawn to clever and minimalistic implementations of consumer electronics. Sometimes quite a bit of  ingeniosity is going into making something "cheap". The festive season is a boon to that, as we are bestowed with the latest innovation in animated RGB Christmas lights. I was obviously intrigued, when I learned from [a comment on GitHub](https://github.com/Aircoookie/WLED/issues/1312#issuecomment-1007035316) about a new type of RGB light chain that was controlled using only the power lines. I managed to score a similar product to analyze it.
 
 The product I found is shown below. It is a remote controlled RGB curtain. There are many similar products out there. What is special about this one, is that there are groups of LEDs with individual color control, allowing not only to set the color globally but also supporting animated color effects. The control groups are randomly distributed across the curtain.
 
-![vendor_image](vendor_image.jpg)Remote controlled RGB curtain (vendor image)
+![vendor_image](vendor_image.jpg) Remote controlled RGB curtain (vendor image)
 
 The same type of LEDs also seems to be used in different products, like "rope-light" for outside usage. A common indication for this LED type seems to be the type of remote control being used, that has both color and animation options (see above).
 

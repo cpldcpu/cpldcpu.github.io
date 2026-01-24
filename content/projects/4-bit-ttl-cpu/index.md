@@ -17,7 +17,7 @@ layoutBackgroundBlur = false
 
 A few years ago I purchased a large quantity of old LS-TTL chips in an internetauction. Wanting to put them to use, I started to design a CPU around them.
 
-I decided to go with a 4 bit datapath to reduce the circuit size. The CPUuses seperated program and data memory, a harvard architecture. The width of theprogram memory is 8 bit. A side effect is, that there is no way to write to theprogram memory. This forbids self modifying code and renders constructs like subroutinesvery difficult. The data memory consists of 32 4-bit "registers". All operations are performed on a single accumulator. Actually, the general idea behindthe architecture can be very well compared to the Microchip PIC. See below for an instruction reference.
+I decided to go with a 4 bit datapath to reduce the circuit size. The CPUuses separated program and data memory, a Harvard architecture. The width of theprogram memory is 8-bit. A side effect is, that there is no way to write to theprogram memory. This forbids self-modifying code and renders constructs like subroutinesvery difficult. The data memory consists of 32 4-bit "registers". All operations are performed on a single accumulator. Actually, the general idea behindthe architecture can be very well compared to the Microchip PIC. See below for an instruction reference.
 
 The CPU circuit was designed on paper and built on three veroboards. It is difficultto believe, but the circuit worked on the first power up. A few photos of thismess are displayed at the bottom of this page.
 

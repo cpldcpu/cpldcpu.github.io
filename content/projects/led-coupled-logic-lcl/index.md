@@ -70,7 +70,7 @@ The two trace above show the ring oscillator at VDD=2.7V, the minimum voltage wh
 | 4.5     | 42       | 3.38     | 2.9      | 3.85     | 0.95      | 115        | 0.86     |
 | 5       | 47       | 3.82     | 3.08     | 4.54     | 1.46      | 100        | 1        |
 
-Detailed measuremt results are shown in the table above. A minimum of 2.7V is needed for the oscillator to start oscillating. This seems to be governed by the forward voltage of the (red) LEDs. At this supply voltage there is very little voltage swing at the summing node of the differential pair, meaning that the inverter essentially works as a common emitter amplifier. At 450 ps, the extracted tdp is quite low, but it's arguable wether we are seeing digital switching. The output looks like a clean sine. One issue may be that the impedance of the scope probe is too low at the harmonics and is remove any edges. I need to look into an impedance matched set up.
+Detailed measurement results are shown in the table above. A minimum of 2.7V is needed for the oscillator to start oscillating. This seems to be governed by the forward voltage of the (red) LEDs. At this supply voltage there is very little voltage swing at the summing node of the differential pair, meaning that the inverter essentially works as a common emitter amplifier. At 450 ps, the extracted tdp is quite low, but it's arguable whether we are seeing digital switching. The output looks like a clean sine. One issue may be that the impedance of the scope probe is too low at the harmonics and is removing any edges. I need to look into an impedance-matched set up.
 
 Going to higher frequencies we see an increase in output voltage swing, but a reduction of frequency. At 5V the tpd is still at a respectable 1000 ps.
 
