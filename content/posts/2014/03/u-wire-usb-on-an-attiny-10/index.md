@@ -30,7 +30,7 @@ tags:
   # - WS2812
 ---
 
-Atmels AVR [ATtiny10](http://www.atmel.com/devices/attiny10.aspx) are surprisingly powerful devices that come in an extremely tiny SOT23 package with only 6 pins. The have 1kb of flash, 32 bytes of SRAM and use the reduced AVR core which only supports 16 instead of 32 register. It seems like Atmels idea of these devices is to use them as [an advanced blinker](http://atmelcorporation.wordpress.com/2013/09/17/avr-attiny10-runs-led-blinker-for-6-months/), and to replace tiny logic circuits. But other people have shown that much more is possible. For example the [noiseplug](https://github.com/dop3j0e/noiseplug) [(video)](http://vimeo.com/47380710), a chiptune player, and a [Simon Says game](http://hackaday.com/2011/09/24/attiny-hacks-attiny10-game-doing-more-with-less/).
+Atmel's AVR [ATtiny10](http://www.atmel.com/devices/attiny10.aspx) devices are surprisingly powerful and come in an extremely tiny SOT23 package with only 6 pins. They have 1kb of flash, 32 bytes of SRAM and use the reduced AVR core which only supports 16 instead of 32 registers. It seems like Atmel's idea of these devices is to use them as [an advanced blinker](http://atmelcorporation.wordpress.com/2013/09/17/avr-attiny10-runs-led-blinker-for-6-months/), and to replace tiny logic circuits. But other people have shown that much more is possible. For example the [noiseplug](https://github.com/dop3j0e/noiseplug) [(video)](http://vimeo.com/47380710), a chiptune player, and a [Simon Says game](http://hackaday.com/2011/09/24/attiny-hacks-attiny10-game-doing-more-with-less/).
 
 I previously used the ATtiny10 in the [TinyTouchbutton](https://github.com/cpldcpu/TinyTouchButton), a touchbutton controlled light with WS2812 LEDs. This time I aimed higher: Is it possible to turn the ATtiny10 into a USB compatible device? My goal was to implement a subset of the [little-wire](http://littlewire.cc/) functionality to control a WS2812 LED by USB. This takes 3 I/O lines, which is exactly the number of free pins on the ATtiny10.
 
@@ -50,7 +50,7 @@ A main step towards reducing the memory footprint was to switch to an [interrupt
 
 ### AVR-GCC issues
 
-One major annoyance during this project was AVR-GCC. Even though I used the newest versions of Atmels toolchain (4.8.1), the ATtiny10 support is still quite buggy. The ATtiny 4/5/9/10 come with a "reduced" AVR CPU core. One change is the introduction of different memory access instructions. Instead of 2 word LDS/STS, a 1 word LDS/STS is supported, which allows single cycle access to the SRAM. Unfortunately, AVR-GCC simply does not generate these instructions. Instead, indirect memory access via the Z-Register is used.
+One major annoyance during this project was AVR-GCC. Even though I used the newest versions of Atmel's toolchain (4.8.1), the ATtiny10 support is still quite buggy. The ATtiny 4/5/9/10 family comes with a "reduced" AVR CPU core. One change is the introduction of different memory access instructions. Instead of 2-word LDS/STS, a 1-word LDS/STS is supported, which allows single cycle access to SRAM. Unfortunately, AVR-GCC simply does not generate these instructions. Instead, indirect memory access via the Z-Register is used.
 
 What I want:
 
@@ -88,11 +88,11 @@ uint8_t value0;     LDS(value0,rq->wValue.bytes[0]); // 2 bytes
 
 Further measures to reduce code size:
 
-- I clocked the controller at 12 MHz using the internal RC oscillator and calibrated from the USB bus timing. The 12 MHz V-USB implementation is much smaller than the recommended 12.8 MHz version, but it does not come with an internal phase locked loop to cope with the more inaccurate RC-oscillator timing. Surprisingly I did not observe any timing errors.
-- Since the reduced core AVR only support 16 registers, I had to manually remap numerous registers in V-USB to avoid collisions with GCC.
-- I removed all handling of the reset signal on the USB-Bus. This means the device will not properly re-enumerate when a bus reset is issued. But this is not a problem if you plug it in after the PC was turned on.
-- V-USB was completely gutted and integrated into the main loop. It only support SETUP requests to a single endpoint now. All additional functions have been removed.  This also reduces stack usage as fewer subroutine calls are required.
-- I removed the code to support replies from the SRAM. Data can only be sent from flash. This is possible since only single byte-replies are required to implement the protocol, apart from the fixed USB configuration replies which are stored in the flash.
+- I clocked the controller at 12 MHz using the internal RC oscillator and calibrated from the USB bus timing. The 12 MHz V-USB implementation is much smaller than the recommended 12.8 MHz version, but it does not come with an internal phase-locked loop to cope with the more inaccurate RC-oscillator timing. Surprisingly I did not observe any timing errors.
+- Since the reduced core AVR only supports 16 registers, I had to manually remap numerous registers in V-USB to avoid collisions with GCC.
+- I removed all handling of the reset signal on the USB bus. This means the device will not properly re-enumerate when a bus reset is issued. But this is not a problem if you plug it in after the PC was turned on.
+- V-USB was completely gutted and integrated into the main loop. It only supports SETUP requests to a single endpoint now. All additional functions have been removed. This also reduces stack usage as fewer subroutine calls are required.
+- I removed the code to support replies from the SRAM. Data can only be sent from flash. This is possible since only single-byte replies are required to implement the protocol, apart from the fixed USB configuration replies which are stored in the flash.
 
 ## Final Stats
 
@@ -101,7 +101,7 @@ Further measures to reduce code size:
 
 This is most likely the most complex firmware ever loaded into an ATtiny10!
 
-You can find all the code in the [Github repository.](https://github.com/cpldcpu/u-wire)
+You can find all the code in the [GitHub repository.](https://github.com/cpldcpu/u-wire)
 
 ## Bonus
 

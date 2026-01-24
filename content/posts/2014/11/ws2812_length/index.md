@@ -11,7 +11,7 @@ categories:
   - LED
   - Microcontroller
   # - Hardware
-summary: "How to estimate WS2812 string length by measuring supply-voltage sag from the LEDs' current draw." 
+summary: "How to estimate WS2812 string length by measuring supply-voltage sag from the LEDs' current draw."
 tags:
   - Addressable RGB
   - AVR
@@ -27,7 +27,7 @@ showTableOfContents: false
 
 ---
 
-Recently, I encountered an interesting problem: How do you measure the length of a WS2812 programmable RGB-LED string electronically? That is, just using signals that are already there. This can be useful if you want a LED controller to adapt its pattern according to the string that is connected to it, or simply for diagnostic reasons.
+Recently, I encountered an interesting problem: How do you measure the length of a WS2812 programmable RGB-LED string electronically? That is, just using signals that are already there. This can be useful if you want an LED controller to adapt its pattern according to the string that is connected to it, or simply for diagnostic reasons.
 
 WS2812 strings are usually controlled by using one serial output signal only. The LEDs are daisy chained and you simply push out data for all LEDs without any feedback. If there are fewer LEDs on the string, the data for the last LEDs is ignored.
 
@@ -35,11 +35,11 @@ An intuitive approach to counting the number of LEDs is to feed the output of th
 
 While this works nicely, it has the disadvantage of requiring another wire. Can we do it without introducing any additional connections?
 
-I accidentally stumbled upon another way: When the WS2812 LEDS are set to the brightest level of white (255,255,255) they draw around 60 mA of current. This leads to a measurable voltage drop on the power rails. So we can get a good idea of the number of LEDs connected to a power source by setting it to a known pattern and measuring the resulting voltage drop.
+I accidentally stumbled upon another way: When the WS2812 LEDs are set to the brightest level of white (255,255,255) they draw around 60 mA of current. This leads to a measurable voltage drop on the power rails. So we can get a good idea of the number of LEDs connected to a power source by setting it to a known pattern and measuring the resulting voltage drop.
 
 Many microcontrollers actually allow using their internal ADC to measure the supply voltage. If the MCU is connected to the same power supply as the LED string, it can determine the current draw of the WS2812 LEDs without any additional hardware.
 
-I tried this on an ATtiny841. The code below uses the internal ADC to measure the band gap voltage (1.1 V) using VCC as reference. From this, it is possible to calculate the actual supply voltage. It is necessary to average a number of measurements due to noise introduced into the power rail by the WS2812 pulse width modulation.
+I tried this on an ATtiny841. The code below uses the internal ADC to measure the bandgap voltage (1.1 V) using VCC as reference. From this, it is possible to calculate the actual supply voltage. It is necessary to average a number of measurements due to noise introduced into the power rail by the WS2812 pulse width modulation.
 
 ```c
 /*Measures the supply voltage internally using the ADC.
@@ -73,7 +73,7 @@ uint16_t MeasureVCC(void)
 }
 ```
 
-I used a loop to turn on one led after another, measure the power supply voltage after each step and print the number of LEDs and ADC output:
+I used a loop to turn on one LED after another, measure the power supply voltage after each step and print the number of LEDs and ADC output:
 
 ```c
 uint8_t i,k;
@@ -105,4 +105,4 @@ It is easily noticeable that there are only 16 LEDs in the string as no further 
 
 The image above compares the behavior of several USB power sources. The USB battery has the lowest internal resistance, as indicated by the flat slope. In this case it becomes more difficult to resolve the contribution of individual LEDs and it is only possible to get an estimate of the string lengths.
 
-In conclusion, even though it is a bit hacky, measuring the supply voltage allows to get a good estimate of the length of a WS2812 string without any additional connections.
+In conclusion, even though it is a bit hacky, measuring the supply voltage allows us to get a good estimate of the length of a WS2812 string without any additional connections.

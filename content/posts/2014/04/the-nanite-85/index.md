@@ -23,13 +23,13 @@ tags:
   # - Micronucleus
 ---
 
-*Possibly the smallestest ATtiny85 based 'duino derivative.*
+*Possibly the smallest ATtiny85 based 'duino derivative.*
 
-Recently, Olimex [anncounced the Olimexino 85s](http://olimex.wordpress.com/2014/02/21/new-product-in-stock-worlds-smallest-arduino-ever-16-9-x-12-7-mm/), claimed to be the "[World's smallest Arduino ever](http://olimex.wordpress.com/2014/02/21/new-product-in-stock-worlds-smallest-arduino-ever-16-9-x-12-7-mm/)". Now, that looks like a challenge. I guess it is about time to show off what has been on my desk since some time last year: The**Nanite**, pictured below.
+Recently, Olimex [announced the Olimexino 85s](http://olimex.wordpress.com/2014/02/21/new-product-in-stock-worlds-smallest-arduino-ever-16-9-x-12-7-mm/), claimed to be the "[World's smallest Arduino ever](http://olimex.wordpress.com/2014/02/21/new-product-in-stock-worlds-smallest-arduino-ever-16-9-x-12-7-mm/)". Now, that looks like a challenge. I guess it is about time to show off what has been on my desk since some time last year: The **Nanite**, pictured below.
 
 ![nanite-pic1](nanite-pic1.jpg)
 
-I designed this board for fun after the Digispark and, subsequentally, the Adafruit Trinket were announced. The motivation was to have my own ATtiny85 based development board based on a USB bootloader and optimized for the ubiquitous 170 point mini-breadboards. In contrast to the Digispark it even sports a reset button. However, it lacks an integrated voltage converter as it is supposed to be powered by USB.
+I designed this board for fun after the Digispark and, subsequently, the Adafruit Trinket were announced. The motivation was to have my own ATtiny85 based development board based on a USB bootloader and optimized for the ubiquitous 170 point mini-breadboards. In contrast to the Digispark it even sports a reset button. However, it lacks an integrated voltage converter as it is supposed to be powered by USB.
 
 As you can see below, the Nanite is very narrow, wasting no space on the breadboard. It is only 0.4" wide in contrast to the 0.5" or 0.6" of the Trinket or Olimexino. In fact the pin configuration is exactly the same as that of a DIP ATtiny85. You can use the board for development and replace it with a DIP ATtiny85 when you are done.
 
