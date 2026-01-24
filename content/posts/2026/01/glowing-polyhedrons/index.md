@@ -1,9 +1,9 @@
 ---
 title: "Glowing Polyhedrons"
-date: 2026-01-06T11:16:42Z
-lastmod: 2025-08-18T07:09:02Z
+date: 2026-01-24T11:16:42Z
+lastmod: 2026-01-24T07:09:02Z
 slug: glowing-polyhedrons
-url: /2026/01/10/glowing-polyhedrons/
+url: /2026/01/24/glowing-polyhedrons/
 aliases:
 categories:
   # - Candles
@@ -29,7 +29,7 @@ tags:
   # - electronics
   # - science
   # - writing
-summary: "Wireframe polyhedra made from LED filaments, using graph theory to optimize connection and driving strategies."
+summary: "Building wireframe polyhedra made from LED filaments, using graph theory to devise geometry and driving strategies."
 showTableOfContents: true
 draft: true
 ---
@@ -42,11 +42,10 @@ draft: true
 
 
 <div style="display: flex; gap: 0rem; flex-wrap: wrap; justify-content: center; margin: 0.25rem 0;">
-  <img src="hexagonal prism hand.JPG" alt="hexagonal prism" style="max-width: 90%; margin: 0;">
+  <img src="hexagonal prism hand.JPG" alt="hexagonal prism" style="max-width: 100%; margin: 0;">
 </div>
 
-
-*Wireframe polyhedra made entirely from LED filaments, using graph theory to optimize connection and driving strategies.*
+*Building wireframe polyhedra made from LED filaments, using graph theory to devise geometry and driving strategies..*
 
 It all began with [a video by Huy Vector](https://www.youtube.com/watch?v=zocqV4TZ4qI)[^1] that someone posted on cnlohr's Discord server: A brass wire cube with a battery and four white LED filaments. I was immediately fascinated by the idea of building objects out of LED filaments. 
 
@@ -71,9 +70,9 @@ The LED filaments commonly found in asian online market places typically measure
 </div>   -->
 
 
-The filaments are diodes: Current can only flow in one direction, from anode to cathode. When a forward voltage of about 3V is applied, the filament lights up, with brightness proportional to the current flowing through it (typically 10-100 mA). When multiple filaments are connected in series, their forward voltages add up. Connecting them in parallel divides the current among them. I stored a more detailed characterization [here](../filaments/).
+The filaments are diodes: Current can only flow in one direction, from anode to cathode. When a forward voltage of about 3V is applied, the filament lights up, with brightness proportional to the current flowing through it (typically 10-100 mA). When multiple filaments are connected in series, their forward voltages add up. Connecting them in parallel divides the current among them. I stored a more detailed characterization [here](https://github.com/cpldcpu/GlowPoly/tree/master/hardware/filaments).
 
-## Building Wireframe Shapes and Formalizing the Problem
+## Building Wireframe Shapes 
 
 With some care (and a lot of patience), the metal ends of the filaments can be soldered together to form complex 2D and 3D shapes. This can be used to build amazing glowing objects. The challenge is that also the electrical circuit is defined by how the filaments are connected in the object; a mesh that results in a mechanically stable and visually interesting structure may not necessarily represent a circuit that allows all filaments to light up properly. 
 
@@ -85,9 +84,9 @@ How to solve this? Let's start with a simple 2D object. The photo below shows a 
   <img src="square.png" alt="Square graph from simulator" style="max-width: 45%;margin: 0;">
 </div>
 
-As shown in the figure on the right, the structure can be represented as a graph: Each junction corresponds to a **vertex**, and each filament corresponds to a connection between two vertices, a directed **edge**. Yellow markers indicate the feeding points where current is injected. This abstraction allows us to analyze the relationship between the geometry and its electrical properties using [graph theory](https://en.wikipedia.org/wiki/Graph_theory)[^2].
+As shown in the figure on the right, the structure can be represented as a graph: Each junction corresponds to a **vertex**, and each filament corresponds to a connection between two vertices, a directed **edge**. Yellow markers indicate the feeding points where current is injected. This abstraction allows us to analyze the relationship between the geometry and its electrical properties using [graph theory](https://en.wikipedia.org/wiki/Graph_theory).
 
-### What do we actually want to achieve?
+### What do we want to achieve?
 
 Given a wireframe object made from LED filaments, what do we actually want to achieve? Some straightforward objectives:
 
@@ -176,18 +175,18 @@ The four edges in the middle of the path (5->3,5->2,4->2,4->3) are part of both 
 
 ## Driver Board
 
-Now that we moved beyond simple DC driving schemes, the question arises: How to implement this in hardware? I designed a driver board based on a CH32V003 MCU and multiple H-bridge ICs (motor driver), that can drive up to 12 feedpoints with configurable Anode, Cathode, or High-Z states at voltages up to 10V and beyond. [More details here](https://github.com/cpldcpu/GlowPoly/tree/master/hardware). Below you can see the driver board next to an Octahedron illuminated with bipolar driving.
+How to implement this in hardware? I designed a driver board based on a CH32V003 MCU and multiple H-bridge ICs (motor driver), that can drive up to 12 feedpoints with configurable Anode, Cathode, or High-Z states at voltages up to 10V and beyond. [More details here](https://github.com/cpldcpu/GlowPoly/tree/master/hardware). Below you can see the driver board next to an Octahedron illuminated with bipolar driving.
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
   <img src="driverboard.jpg" alt="Octahedron graph (L=3)" style="max-width: 40%;margin: 0;">
   <img src="octahedron.jpg" alt="Octahedron Schlegel diagram (L=3)" style="max-width: 45%;margin: 0;">
 </div>
 
-## Which other filament objects can we build?
+## Identifying other shapes
 
 The examples above were found through intuition and manual exploration. But what about more complex objects? Which are eligible and how to orient edges so that we can optimize the driving scheme?
 
-A [polyhedron](https://en.wikipedia.org/wiki/Polyhedron) (plural: polyhedra) is a three-dimensional solid with flat polygonal faces and straight edges. The simplest examples are the five Platonic solids: tetrahedron, cube, octahedron, dodecahedron, and icosahedron. Beyond these there are hundreds polyhedra that have been catalogues by mathematician. The [Polyhedra Viewer by Nat Alison](https://polyhedra.tessera.li/) provides a nice interactive catalog, and is also a good source of [3D object files](https://github.com/tesseralis/polyhedra-viewer/tree/canon/src/data/polyhedra). 
+A [polyhedron](https://en.wikipedia.org/wiki/Polyhedron) (plural: polyhedra or polyhedrons) is a three-dimensional solid with flat polygonal faces and straight edges. The simplest examples are the five Platonic solids: tetrahedron, cube, octahedron, dodecahedron, and icosahedron. Beyond these there are hundreds polyhedra that have been catalogues by mathematician. The [Polyhedra Viewer by Nat Alison](https://polyhedra.tessera.li/) provides a nice interactive catalog, and is also a good source of [3D object files](https://github.com/tesseralis/polyhedra-viewer/tree/canon/src/data/polyhedra). 
 
  For our purposes, each polyhedron defines a filament object: vertices become electrical junctions, edges become LED filaments. 
  
@@ -199,7 +198,7 @@ However, I had to learn that a randomized search is not sufficient to find good 
 
 Instead, it is necessary to reduce the search space by limiting the number of options looked at. I found the most feasible approach was to assume certain driving schemes, as identified in the manual search above, and try to identify eligible objects for it.
 
-Based on the exploration of the Octahedron and Cube above, we can observe three different configurations of filaments that allow driving an entire polyhedron from a few vertices:
+Based on the exploration of the Octahedron and Cube above, we can observe three different configurations of filaments that allow driving an entire polyhedron with only few feeding points:
 
 1. DC from two feeding points, ignoring brightness variation (as seen in the cube)
 2. Multiplexing several DC paths to achieve constant brightness (as seen in the octahedron)
@@ -253,13 +252,14 @@ These conditions can be easily tested for. Only 5 polyhedra support cycle decomp
 | triangular-orthobicupola  | 12 | 24 | 4       | 6        | 5    |
 | icosidodecahedron         | 30 | 60 | 4       | 10       | 6    |
 
-In addition, there are also some antiprisms that allow decomposition into cycles of equal length. However, in these the subcycles are overlapping which leads to uneven brightness. Still, they are interesting shapes to build.
 
-Below you can see the cuboctahedron and the hexagonal antiprism, both built using the cycle decomposition approach. The hexagonal antiprism decomposes into 3 cycles of length 8, which are color coded in the object below.
+Below you can see the cuboctahedron based on the cycle decomposition approach. 
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
   <img src="cuboctahedron_16_9.jpg" alt="Cuboctahedron" style="max-width: 90%;margin: 0;">
 </div>
+
+In addition, there are also some antiprisms that allow decomposition into cycles of equal length. However, in these the subcycles are overlapping which leads to uneven brightness. Still, they are interesting shapes to build. The hexagonal antiprism decomposes into 3 cycles of length 8, which are color coded in the object below.
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
   <img src="hexagonal antiprism 2.JPG" alt="Hexagonal antiprism" style="max-width: 90%;margin: 0;">
@@ -267,16 +267,13 @@ Below you can see the cuboctahedron and the hexagonal antiprism, both built usin
 
 ### Case 3: Bipolar Driving
 
-##todo
+As described above, at was possible to drive all edges of the octahedron at constant brightness with only two feeding points using bipolar (AC) driving. Can we generalize this to other shapes? I implemented a specific search algorithm to identify objects that support this driving scheme. The constraints are:
 
-Recall how we drove the octahedron with bipolar (AC) driving: the current "zigzags" through the graph, with each polarity activating different edge sets. The middle edges act as a full-bridge rectifier, receiving current in both directions. This elegant scheme achieves constant time-averaged brightness with only two feeding points.
-
-Can we generalize this to other shapes? I wrote a specific search algorithm, but found that very few objects support this approach. The basic conditions are:
 - At least 4 parallel paths between the two feeding points
 - The "equator" vertices (middle layer) must have even degree
 - No "diagonal" edges that would create shortcuts between layers
 
-These constraints turn out to be quite restrictive. Only 4 polyhedra support bidirectional driving:
+These constraints turn out to be quite restrictive. Only 3 polyhedra support bidirectional driving:
 
 | Name                       | \(V\) | \(E\) | \(deg(V)\) | Path Len | Taps |
 |----------------------------|-------|-------|------------|----------|------|
@@ -285,20 +282,30 @@ These constraints turn out to be quite restrictive. Only 4 polyhedra support bid
 | elongated square bipyramid | 10    | 20    | 4          | 5        | 2    |
 | star octahedron            | 14    | 24    | 2, 4       | 4        | 2    |
 
-Below you can see the elongated square bipyramid (also known as elongated octahedron) and the star octahedron.
+The *elongated square bipyramid* is basically an extended octahedron. In principle it would be possible to extend it further to create even longer objects.
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-  <img src="elongated octahedron.jpg" alt="Elongated square bipyramid" style="max-width: 45%;margin: 0;">
-  <img src="star octahedron 2.JPG" alt="Star octahedron" style="max-width: 45%;margin: 0;">
+  <img src="elongated octahedron.jpg" alt="Elongated square bipyramid" style="max-width: 80%;margin: 0;">
 </div>
 
+The *star octahedron* is not really a polyhedron. It's based on an octahedron where 4 edges are extended outwards to create a star shape. You can see it in all its glory below - my favorite star-like object!
 
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+  <img src="star octahedron 2.JPG" alt="Star octahedron" style="max-width: 80%;margin: 0;">
+</div>
 
 ## Summary
 
+This concludes my exploration of *glowing polyhedrons* - a seemingly simple idea that consumed way more brain cycles than I had anticipated. I hope someone finds a better way to implement a general solver as my current approaches still appear unsatisfactory.
 
-## References and Comments
+You can find all my exploration results in the [GlowPoly repository](https://github.com/cpldcpu/GlowPoly)
+
+And finally, I also 'vibe coded' a great interactive web viewer that allows you to explore all solutions I found for the 122 polyhedra in the database. [You can find it here](https://cpldcpu.github.io/GlowPoly/).
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+    <img src="webviewer.png" alt="Webviewer interface" style="max-width: 80%;margin: 0;"> 
+</div>
+
+## References 
 
 [^1]: Check out [Huy Vectors channel](https://www.youtube.com/@huyvector), he is building amazing electronic sculptures. I also learned that soldering ASMR is a thing now.
-
-[^2]: Flash backs to CO342, arguably the least easy course I took, but also intellectually very rewarding.
