@@ -368,3 +368,4 @@ I also created an interactive web viewer that allows you to explore all solution
 </div>
 
 [^1]: Check out [Huy Vector's channel](https://www.youtube.com/@huyvector); he's building amazing electronic sculptures. I also learned that soldering ASMR is a thing now.
+[^2]: I am well aware that "polyhedrons" is a less academically correct plural form of "polyhedron". However, "glowing polyhedra" sounds a bit odd to me.
