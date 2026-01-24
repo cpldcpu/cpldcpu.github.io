@@ -161,7 +161,7 @@ No solution exists for a simple DC driving scheme where bias is applied to only 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
   <img src="octahedron_dc_L2.png" alt="Octahedron graph (L=2)" style="max-width: 30%;margin: 0;">
   <img src="octahedron_dc_l2_planar.png" alt="Octahedron Schlegel diagram (L=2)" style="max-width: 30%;margin: 0;">
-  <img src="octahedron_dc_l2_4fp_planar.png" alt="Octahedron Schlegel diagram (L=2, 4 feeding points)" style="max-width: 30%;margin: 0;">
+  <img src="octahedron_dc_L2_4fp_planar.png" alt="Octahedron Schlegel diagram (L=2, 4 feeding points)" style="max-width: 30%;margin: 0;">
 </div>
 
 <h3> Multiplexed DC Driving with 4 feeding points </h3>
