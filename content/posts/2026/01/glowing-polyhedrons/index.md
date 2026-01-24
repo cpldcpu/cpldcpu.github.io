@@ -46,7 +46,7 @@ draft: false
   <img src="hexagonal prism hand.JPG" alt="hexagonal prism" style="max-width: 100%; margin: 0;">
 </div>
 
-*Building wireframe polyhedra made from LED filaments, using graph theory to devise geometry and driving strategies.*
+*Building wireframe polyhedra[^2] made from LED filaments, using graph theory to devise geometry and driving strategies.*
 
 It all began with [a video by Huy Vector](https://www.youtube.com/watch?v=zocqV4TZ4qI)[^1] that someone posted
 on cnlohr's Discord server: a brass wire cube with a battery and four white LED filaments. I was immediately
