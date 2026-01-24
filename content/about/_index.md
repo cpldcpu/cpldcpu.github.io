@@ -5,6 +5,7 @@ type: "background"
 layout: "single"
 showAuthor: false
 sharingLinks: false
+showComments: false
 date: "2025-10-23T00:00:00Z"
 lastmod: "2025-10-23T00:00:00Z"
 slug: "about"
