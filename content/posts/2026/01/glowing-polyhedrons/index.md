@@ -187,7 +187,7 @@ Interestingly, there is another solution that allows driving all edges with only
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
   <img src="octahedron3d.png" alt="Octahedron graph (L=3)" style="max-width: 40%;margin: 0;">
-  <img src="octahedron_ac_l3_planar.png" alt="Octahedron Schlegel diagram (L=3)" style="max-width: 40%;margin: 0;">
+  <img src="octahedron_ac_L3_planar.png" alt="Octahedron Schlegel diagram (L=3)" style="max-width: 40%;margin: 0;">
 </div>
 
 The images above show how this approach works. The path length is \(L=3\), and the two feeding points are connected to opposite vertices of the octahedron. The table below shows the paths that are activated during each cycle of the alternating current driving scheme.
