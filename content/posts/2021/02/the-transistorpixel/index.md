@@ -59,7 +59,7 @@ The schematic above shows the top level architecture of the TransistorPixel. The
 2. **Data Director**: This block is a basic multiplexer that, depending on the state signal, decides whether the data on the input is directed to the protocol decoder or the data output.
 3. **Protocol Decoder and Data latch**: This block receives input signals that belong to this Pixel and will turn the LED on or off depending on encoded state. There is just a single input.
 
-The basic logic style for the circuit is [Resistor-Transistor-Logic (RTL)](https://hackaday.io/project/170697-evaluating-transistors-for-bipolar-logic-rtl). This was the very first transistor based logic style and was, for example, used in the [CDC6600 super computer](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/). A benefit of this logic style is that it is very simple and therefore well suitable for small discrete logic designs. There are some drawbacks though, that led to numerous other logic styles being developed in later years.
+The basic logic style for the circuit is [Resistor-Transistor-Logic (RTL)](https://hackaday.io/project/170697-evaluating-transistors-for-bipolar-logic-rtl). This was the very first transistor based logic style and was, for example, used in the [CDC6600 super computer](/2020/02/14/what-made-the-cdc6600-fast/). A benefit of this logic style is that it is very simple and therefore well suitable for small discrete logic designs. There are some drawbacks though, that led to numerous other logic styles being developed in later years.
 
 The entire design was first implemented and simulated in LTSpice. You can download the design files from the [Hackaday.io project page.](https://hackaday.io/project/177881-the-transistorpixel)
 

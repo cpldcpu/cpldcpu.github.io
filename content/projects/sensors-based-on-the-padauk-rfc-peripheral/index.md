@@ -15,7 +15,7 @@ layoutBackgroundBlur = false
 ### 1) Identifying Undocumented I/O Registers
 <small>2020-09-14 22:38</small>
 
-Padauk is a Taiwanese supplier of ultra-low cost microcontrollers, notorious for the ["3 cent MCU"](https://cpldcpu.wordpress.com/2019/08/12/the-terrible-3-cent-mcu/). The supplier itself only offers a closed tool chain with a proprietary C-style language. In the mean time, an [open sourced and independently created tool-chai](https://free-pdk.github.io/)n, partially based on reverse engineering, became available.
+Padauk is a Taiwanese supplier of ultra-low cost microcontrollers, notorious for the ["3 cent MCU"](/2019/08/12/the-terrible-3-cent-mcu/). The supplier itself only offers a closed tool chain with a proprietary C-style language. In the mean time, an [open sourced and independently created tool-chai](https://free-pdk.github.io/)n, partially based on reverse engineering, became available.
 
 There are still some areas that are not completely understood. One topic is the initial state of the I/O registers. The behavior of the real device is somewhat inconsistent to the datasheet, which may be due to an errata or due to different behavior of the proprietary and open toolchain.
 

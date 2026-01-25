@@ -58,7 +58,7 @@ Some attention has to be paid to the terminal between D1 and Q1 base. If the tra
 
 ![](8520671581762484590.png)
 
-I spent quite some time optimizing the basic gate in LTspice. To measure switching speed, I simulated a 5 stage ring oscillator. One crucial choice was to pick the right transistor, as I also outlined in [greater detail here](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/).
+I spent quite some time optimizing the basic gate in LTspice. To measure switching speed, I simulated a 5 stage ring oscillator. One crucial choice was to pick the right transistor, as I also outlined in [greater detail here](/2020/02/14/what-made-the-cdc6600-fast/).
 
 You can see simulation results for several different configurations above. I also tried various configurations with reach through caps and baker clamps but found that choosing the right transistor, the PMBT2369, yielded much better results than all other options. The PMBT2369 is available in a SOT23 SMD package for around $0.02, so there is really no reason to use the BC847 or MMBT3904 over it.
 
@@ -106,7 +106,7 @@ The scope screenshot shows the input (yellow) and output (turquoise) waveform of
 
 ![](245451581788804703.png)
 
-The diagram above shows measurements of ring oscillator frequencies versus supply voltages. The blue line corresponds to the inverter with green LED, the orange line to a red LED. There is a clear trend towards higher frequency for higher supply, which can be explained by the availability of more switching current. The red LED LTL gate has a lower threshold voltage and does therefore switch earlier and faster. Since this design is based on the PMBT2369 switching transistors, no dominant influence of base saturation is observed. LTL gates with normal small signal transistors should exhibit a speed-supply relationship similar to [what I observed with RTL](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/).
+The diagram above shows measurements of ring oscillator frequencies versus supply voltages. The blue line corresponds to the inverter with green LED, the orange line to a red LED. There is a clear trend towards higher frequency for higher supply, which can be explained by the availability of more switching current. The red LED LTL gate has a lower threshold voltage and does therefore switch earlier and faster. Since this design is based on the PMBT2369 switching transistors, no dominant influence of base saturation is observed. LTL gates with normal small signal transistors should exhibit a speed-supply relationship similar to [what I observed with RTL](/2020/02/14/what-made-the-cdc6600-fast/).
 
 ![](3478621581789987578.png)
 
@@ -114,7 +114,7 @@ The supply current shows a linear relationship with supply voltage, as expected 
 
 ![](144201581790113514.png)
 
-The table above summarizes the charactization of the LTL gates. There is a tradeoff between high noise margin (green LED) and speed (red LED). All in all, the propagation delay looks very acceptable for discrete logic. At tp=6.9ns, the red LTL gate is almost as fast as the [RTL gate in a CDC6600](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/) and still much faster than the BC847 based DTL gates used in the [MT-15](http://www.6502.org/users/dieter/mt15a/mt15a_3.htm), while maintaining full 5V CMOS/TTL logic level compatibility.
+The table above summarizes the charactization of the LTL gates. There is a tradeoff between high noise margin (green LED) and speed (red LED). All in all, the propagation delay looks very acceptable for discrete logic. At tp=6.9ns, the red LTL gate is almost as fast as the [RTL gate in a CDC6600](/2020/02/14/what-made-the-cdc6600-fast/) and still much faster than the BC847 based DTL gates used in the [MT-15](http://www.6502.org/users/dieter/mt15a/mt15a_3.htm), while maintaining full 5V CMOS/TTL logic level compatibility.
 
 Did I mention that each gate comes with its own blinkenlight?
 

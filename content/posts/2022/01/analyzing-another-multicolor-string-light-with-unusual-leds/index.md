@@ -23,7 +23,7 @@ showTableOfContents: false
 
 <img src="bluebulb2.jpg" alt="One of the blue LEDs" style="max-width: 50%; height: auto; display: block; margin: 0 auto;" />
 
-After being amazed about [finding a really clever implementation of powerline controlled LEDs](https://cpldcpu.wordpress.com/2022/01/23/controlling-rgb-leds-with-only-the-powerlines-anatomy-of-a-christmas-light-string/) in a low cost RGB "copper string light", I bought a few other products in hope to find more LEDs with integrated ICs. At less than $4.00 including shipping, this was by far the cheapest LED string I bought. This one did not have any ICs inside, but I was still surprised about finding rather unusual phosphor converted LED technology in it.
+After being amazed about [finding a really clever implementation of powerline controlled LEDs](/2022/01/23/controlling-rgb-leds-with-only-the-powerlines-anatomy-of-a-christmas-light-string/) in a low cost RGB "copper string light", I bought a few other products in hope to find more LEDs with integrated ICs. At less than $4.00 including shipping, this was by far the cheapest LED string I bought. This one did not have any ICs inside, but I was still surprised about finding rather unusual phosphor converted LED technology in it.
 
 <img src="vendorimage.jpg" alt="Vendor image of multicolor LED string" style="max-width: 50%; height: auto; display: block; margin: 0 auto;" />
 

@@ -13,7 +13,7 @@ layoutBackgroundBlur = false
 
 ## Details
 
-I highlighted [the importance of the choice of the transistor](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/) for bipolar discrete saturation logic before. The relevant parameters were already well understood in the 1960ies and devices like the 2N709 were devised, based on the technology that was available back then.
+I highlighted [the importance of the choice of the transistor](/2020/02/14/what-made-the-cdc6600-fast/) for bipolar discrete saturation logic before. The relevant parameters were already well understood in the 1960ies and devices like the 2N709 were devised, based on the technology that was available back then.
 
 What about 2020, sixty years later? Clearly, discrete logic is not within the focus of any transistor manufacturer anymore, so we have to pick what is available. What are important criteria (to me)?
 
@@ -56,7 +56,7 @@ The image above shows a smaple measurement from the article i linked above. By c
 ### 2) Fast switching transistors: PMBT2369 vs. MMBT2369
 <small>2020-04-01 06:15</small>
 
-As [outlined earlier](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/) there are still two fast switching transistor types on the market: The PMBT/MMBT2369 and the BVS52. Both are offered by Nexperia and On Semi.
+As [outlined earlier](/2020/02/14/what-made-the-cdc6600-fast/) there are still two fast switching transistor types on the market: The PMBT/MMBT2369 and the BVS52. Both are offered by Nexperia and On Semi.
 
 ![](6741201585720685220.png)
 
@@ -199,7 +199,7 @@ Things get much more interesting when plotting the ring oscillator frequency ver
 
 Calculating the propagation delay from the ring oscillator frequency shows that a minimum tpd of around 3.5 ns is achived at around 30 mA of supply. Since RTL gates only draw current when their input is "high", only half of the six gates (5 ringo + 1 buffer) are active at any time. This means that the bias current per gate is approximately 30mA/(6/2) = ~ 10mA.
 
-It appears that this is smack dab on the operating point settings that are used in the [CDC6600](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/): It sits at Ic=10mA, Ib=1mA with a maximum tpd target of 5ns. The CDC6600 uses a supply of 6V and apparantly Rb=150 Ohm, Rc=680 Ohm for fan-out of 1. This is in between the resistor settings in Sample 2 and Sample 3.
+It appears that this is smack dab on the operating point settings that are used in the [CDC6600](/2020/02/14/what-made-the-cdc6600-fast/): It sits at Ic=10mA, Ib=1mA with a maximum tpd target of 5ns. The CDC6600 uses a supply of 6V and apparantly Rb=150 Ohm, Rc=680 Ohm for fan-out of 1. This is in between the resistor settings in Sample 2 and Sample 3.
 
 So, in conclusion: It seems we can recreate the timing properties of the ancient CDC6600 using components that are still available today. However, this also requires bias current settings as high as those used back in the 60ies...
 

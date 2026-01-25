@@ -49,7 +49,7 @@ draft: false
 *Building wireframe polyhedra[^2] made from LED filaments, using graph theory to devise geometry and driving strategies.*
 
 It all began with [a video by Huy Vector](https://www.youtube.com/watch?v=zocqV4TZ4qI)[^1] that someone posted
-on cnlohr's Discord server: a brass wire cube with a battery and four white LED filaments. I was immediately
+on a Discord server: a brass wire cube with a battery and four white LED filaments. I was immediately
 fascinated by the idea of building objects out of LED filaments.
 
 But of course, in my mind, this quickly turned into a logic puzzle: why only four filaments when a cube actually
@@ -117,7 +117,11 @@ Given a wireframe object made from LED filaments, what do we actually want to ac
 3) The path length for all circuits between feeding points shall be exactly \(L\) edges. 
 
 The third condition is needed to ensure driving with a constant voltage supply. The voltage drop between feeding
-points will then be \(V_{tot} = L \cdot V_f \approx 3V \cdot L\).
+points will then be:
+
+$$
+V_{tot} = L \cdot V_f \approx 3V \cdot L
+$$
 
 The square above meets the first condition with two feeding points and the path length is \(L=2\). Things get quickly more complicated when we move to more complex objects. 
 
@@ -166,7 +170,7 @@ No solution exists for a simple DC driving scheme where bias is applied to only 
 
 <h3> Multiplexed DC Driving with 4 feeding points </h3>
 
-However, as shown in the rightmost image, if we allow four feeding points and drive them alternately, all edges can
+However, as shown in the rightmost image above, if we allow four feeding points and drive them alternately, all edges can
 be made to light up. The table below shows which circuits are activated by applying a voltage to the vertices.
 Since vertices 0/1 feed four current paths in parallel, we need either twice the current (relative to 2/3) or twice
 the on-time.
@@ -240,7 +244,7 @@ However, I had to learn that a randomized search is not sufficient to find good 
 
 Instead, it is necessary to reduce the search space by limiting the number of options looked at. I found the most feasible approach was to assume certain driving schemes, as identified in the manual search above, and try to identify eligible objects for it.
 
-Based on the exploration of the Octahedron and Cube above, we can observe three different configurations of filaments that allow driving an entire polyhedron with only few feeding points:
+Based on the exploration of the octahedron and cube above, we can observe three different configurations of filaments that allow driving an entire polyhedron with only few feeding points:
 
 1. DC from two feeding points, ignoring brightness variation (as seen in the cube)
 2. Multiplexing several DC paths to achieve constant brightness (as seen in the octahedron)
@@ -280,7 +284,7 @@ I built two of those objects: The hexagonal prism and the truncated octahedron. 
   <img src="truncated octahedron.JPG" alt="Truncated octahedron" style="max-width: 30%;margin: 0;">
 </div>
 
-However, all objects allow solutions where the filaments can be covered by shortest paths between multiple
+However, many objects allow solutions where the filaments can be covered by shortest paths between multiple
 combinations of feeding point pairs. This allows for DC solutions with multiplexing. I found that many objects
 require 4 taps, while the maximum I found was 8. You can explore further geodesic cover solutions in the
 [interactive web viewer](https://cpldcpu.github.io/GlowPoly/).
@@ -316,7 +320,7 @@ Below you can see the cuboctahedron based on the cycle decomposition approach.
 </div>
 
 In addition, there are also some antiprisms that allow decomposition into cycles of equal length. However, in these
-the subcycles overlap, which leads to uneven brightness. Still, they are interesting shapes to build. The
+the subcycles overlap, which can lead to uneven brightness. Still, they are interesting shapes to build. The
 hexagonal antiprism decomposes into 3 cycles of length 8, which are color coded in the object below.
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">

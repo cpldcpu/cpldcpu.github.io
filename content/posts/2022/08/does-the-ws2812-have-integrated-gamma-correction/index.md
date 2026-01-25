@@ -17,7 +17,7 @@ tags:
   # - LED
 ---
 
-A while ago, I used [transient current analysis to understand the behavior of the WS2812](https://cpldcpu.wordpress.com/2020/12/19/power-analysis-probing-ws2812-rgb-leds/) a bit better (and to play around with my new oscilloscope). One intersting finding was that the translation of the 8 bit input value for the PWM register is mapped in a nonlinear way to the output duty cycle. This behavior is not documented in the data sheet or anywhere else. Reason enough to revisit this topic.
+A while ago, I used [transient current analysis to understand the behavior of the WS2812](/2020/12/19/power-analysis-probing-ws2812-rgb-leds/) a bit better (and to play around with my new oscilloscope). One intersting finding was that the translation of the 8 bit input value for the PWM register is mapped in a nonlinear way to the output duty cycle. This behavior is not documented in the data sheet or anywhere else. Reason enough to revisit this topic.
 
 ![Grafik 14](grafik-14.png) Measured PWM duty cycle vs. set value for WS2812S
 
@@ -103,7 +103,7 @@ I picked four different LEDs to investigate; two versions of the WS2812B and two
 
 1. Worldsemi WS2812B-V1: one of the first versions of the WS2812B, purchased in 2013
 2. Worldsemi WS2812B-B-V5: version 5 of the WS2812B. This is the most recent version listed on [Worldsemi](http://www.world-semi.com/)s homepage and has various improvements in quality and robustness over V1. The functionality is supposedly identical, though. The second B stands for "black" and is referring to the black frame.
-3. TONYU DY-S505016/RGBC/6812: Third party packaged device based on a recent version of the SK6812 controller IC that is often used by [Opsco Optoelectronics](https://www.opscoled.com/).  This is a well-known clone of the WS2812 IC, I reviewed an earlier version [here](https://cpldcpu.wordpress.com/2016/03/09/the-sk6812-another-intelligent-rgb-led/).
+3. TONYU DY-S505016/RGBC/6812: Third party packaged device based on a recent version of the SK6812 controller IC that is often used by [Opsco Optoelectronics](https://www.opscoled.com/).  This is a well-known clone of the WS2812 IC, I reviewed an earlier version [here](/2016/03/09/the-sk6812-another-intelligent-rgb-led/).
 4. TCWIN TC5050RGB-3CJH-TX1812CXA: Third party device based on a new controller IC apparently named TX1812, which replicates the WS2812 functionality. This is an astonishingly small IC (as you can see in the photo above) and therefore most likely cheaper than the original.
 
 Generally, it appears that the design houses who provide the controller ICs are somewhat independent from the component assembly companies, who combine the  IC with LED chips in a package and ship the product. Therefore the same ICs may appear in product of  a number of different LED companies.

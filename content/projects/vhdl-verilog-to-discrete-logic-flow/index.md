@@ -197,7 +197,7 @@ end;
 
 This is where things get a bit more interesting. I was concerned that it was quite difficult to coerce Yosys into using my custom gate libraries, but in fact it was rather easy.
 
-The "cmos" example proved to be an excellent blueprint to creating a custom library. My logic family of choice is Resistor-Transistor-Logic (RTL), which is based only on resistors and transistors. Coincidentally, this is the same logic family that is used in the famous [CDC6600 supercompute](https://cpldcpu.wordpress.com/2020/02/14/what-made-the-cdc6600-fast/)r. The basic logic element of RT-Logic is a NOR gate. Hence our design has to be implemented using inverters and NOR gates only. In addition, a storage element, a D-Flipflop, is needed.
+The "cmos" example proved to be an excellent blueprint to creating a custom library. My logic family of choice is Resistor-Transistor-Logic (RTL), which is based only on resistors and transistors. Coincidentally, this is the same logic family that is used in the famous [CDC6600 supercompute](/2020/02/14/what-made-the-cdc6600-fast/)r. The basic logic element of RT-Logic is a NOR gate. Hence our design has to be implemented using inverters and NOR gates only. In addition, a storage element, a D-Flipflop, is needed.
 
 Description of the logic cell has to be provided in the [Liberty format](https://media.c3d2.de/mgoblin_media/media_entries/659/Liberty_User_Guides_and_Reference_Manual_Suite_Version_2017.06.pdf). This format is quite comprehensive and usually also  contains information about timing, area and wire loading. Luckily this information can simply be omitted which allows the library to be rather short and simple. The listing below shows the description of a NOR2 cell and a D-FF. The area line holds the number of transistors that are being used in this particular cell, hence the optimizer will try to reduce the number of transistors in the circuit. (In a real IC you don't care about the number of transistors, but mostly silicon area. For a discrete circuit on a PCB the number of transistors is more relevant)
 
@@ -655,7 +655,7 @@ Lesson 1: Using 5mm pitch instead of 0.2"" is quite annoying if you want to atta
 
 #### 15T-DFF Resistor Transistor Logic Counter
 
-The counter using 15 transistor D-Flip Flops is shown below. It uses 65 transistors and 130 resistors in total. I used a relative high load and bias resistance of 4.7k and the lowest cost transistors I could find, MMBT3904 clones from a chinese supplier. These transistors are only 0.0075 USD/pc for 200+, but have a rather long storage time, as I already realized in my [Transistor Pixel](https://cpldcpu.wordpress.com/2021/02/27/the-transistorpixel/) project.
+The counter using 15 transistor D-Flip Flops is shown below. It uses 65 transistors and 130 resistors in total. I used a relative high load and bias resistance of 4.7k and the lowest cost transistors I could find, MMBT3904 clones from a chinese supplier. These transistors are only 0.0075 USD/pc for 200+, but have a rather long storage time, as I already realized in my [Transistor Pixel](/2021/02/27/the-transistorpixel/) project.
 
 ![](9393461637190525234.jpg)
 
