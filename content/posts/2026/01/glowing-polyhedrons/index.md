@@ -114,10 +114,9 @@ Given a wireframe object made from LED filaments, what do we actually want to ac
 
 1) All edges shall light up.
 2) We want to minimize the number of feeding points \(P\), the vertices where we connect the power supply.
-3) The path length for all circuits between feeding points shall be exactly \(L\) edges. 
+3) The minium path length for all circuits between feeding points shall be exactly \(L\) edges. 
 
-The third condition is needed to ensure driving with a constant voltage supply. The voltage drop between feeding
-points will then be:
+The third condition is needed to ensure that all paths light up. The current will only flow through the shortest connection(s) due to the diode I-V behavior of the filaments. The voltage drop between feeding points will then be:
 
 $$
 V_{tot} = L \cdot V_f \approx 3V \cdot L
