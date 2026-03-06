@@ -14,6 +14,7 @@ showReadingTime: false
 #   list: "local"
 showTableOfContents: true
 # type: 'sample'
+draft: true
 ---
 
 [Guest article on the Nous Research blog](https://nousresearch.com/measuring-thinking-efficiency-in-reasoning-models-the-missing-benchmark/)
