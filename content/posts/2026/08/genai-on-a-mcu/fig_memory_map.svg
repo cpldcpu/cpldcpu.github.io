@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" font-family="DejaVu Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="900" height="660" fill="#fcfcfb"/>
+
+  <!-- ===== FLASH bar: 4096 KB over y 90..600 (0.1245 px/KB) ===== -->
+  <text x="190" y="84" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">flash · 4 MB</text>
+  <g stroke="#8a8a90" stroke-width="0.8">
+    <rect x="120" y="90" width="140" height="25" fill="#c3c2b7"/>
+    <rect x="120" y="115" width="140" height="198" fill="#2a78d6"/>
+    <rect x="120" y="313" width="140" height="92" fill="#86b6ef"/>
+    <rect x="120" y="405" width="140" height="15" fill="#1baf7a"/>
+    <rect x="120" y="420" width="140" height="3" fill="#eda100"/>
+    <rect x="120" y="423" width="140" height="177" fill="#f0efec"/>
+  </g>
+  <text x="190" y="107" font-size="10.5" fill="#0b0b0b" text-anchor="middle">firmware ~200 KB</text>
+  <text x="190" y="200" font-size="11" fill="#fcfcfb" text-anchor="middle" font-weight="600">DiT weights · 1.59 MB</text>
+  <text x="190" y="216" font-size="9.5" fill="#dce9fb" text-anchor="middle">int8 &#183; execution order</text>
+  <text x="190" y="230" font-size="9.5" fill="#dce9fb" text-anchor="middle">(sequential streaming reads)</text>
+  <text x="190" y="355" font-size="10.5" fill="#0b0b0b" text-anchor="middle">conditioning tables · 0.74 MB</text>
+  <text x="190" y="370" font-size="9" fill="#26374f" text-anchor="middle">5 classes × 8 steps · +7.5 KB/w CFG</text>
+  <text x="270" y="416" font-size="10" fill="#2a3d24">VAE decoder · 115 KB</text>
+  <text x="270" y="429" font-size="10" fill="#7a5c2e">POS · exp/act LUTs · ~10 KB</text>
+  <text x="190" y="520" font-size="10.5" fill="#52514e" text-anchor="middle">free · ~1.4 MB</text>
+  <path d="M 264 412 H 268 M 264 421 H 268" stroke="#8a8a90" stroke-width="0.8" fill="none"/>
+  <!-- model.bin bracket -->
+  <path d="M 112 115 H 104 V 423 H 112" stroke="#0b0b0b" stroke-width="1.2" fill="none"/>
+  <text x="96" y="272" font-size="10.5" fill="#0b0b0b" text-anchor="middle" transform="rotate(-90 96 272)">model.bin · 2.57 MB</text>
+
+  <!-- ===== SRAM bar: 520 KB over y 90..600 (0.98 px/KB) ===== -->
+  <text x="590" y="84" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">SRAM · 520 KB</text>
+  <g stroke="#8a8a90" stroke-width="0.8">
+    <rect x="520" y="90" width="140" height="126" fill="#86b6ef"/>
+    <rect x="520" y="216" width="140" height="126" fill="#9ec5f4"/>
+    <rect x="520" y="342" width="140" height="71" fill="#1baf7a"/>
+    <rect x="520" y="413" width="140" height="41" fill="#eda100"/>
+    <rect x="520" y="454" width="140" height="39" fill="#c3c2b7"/>
+    <rect x="520" y="493" width="140" height="107" fill="#f0efec"/>
+  </g>
+  <text x="590" y="140" font-size="10.5" fill="#0b0b0b" text-anchor="middle">arena[0] · 128 KB</text>
+  <text x="590" y="155" font-size="9" fill="#26374f" text-anchor="middle">weight staging: fc1 64 K · fc2 64 K</text>
+  <text x="590" y="170" font-size="9" fill="#26374f" text-anchor="middle">(decoder ping-pong in the VAE phase)</text>
+  <text x="590" y="268" font-size="10.5" fill="#0b0b0b" text-anchor="middle">arena[1] · 128 KB</text>
+  <text x="590" y="283" font-size="9" fill="#26374f" text-anchor="middle">qkv 48 K · proj 16 K · emb 4 K · final 4 K</text>
+  <text x="590" y="368" font-size="10.5" fill="#fcfcfb" text-anchor="middle" font-weight="600">token buffers · ~72 KB</text>
+  <text x="590" y="383" font-size="8.5" fill="#e2f4ec" text-anchor="middle">res 16 K · qkv 24 K · misc 24 K</text>
+  <text x="590" y="396" font-size="8.5" fill="#e2f4ec" text-anchor="middle">z 4 K + z_prev 4 K (the CFG tax)</text>
+  <text x="590" y="431" font-size="9.5" fill="#0b0b0b" text-anchor="middle">framebuffer spill + DMA rings ~42 KB</text>
+  <text x="590" y="446" font-size="8.5" fill="#5c4a1e" text-anchor="middle">rings ~10 K · 43 spill rows</text>
+  <text x="590" y="478" font-size="9.5" fill="#0b0b0b" text-anchor="middle">stacks · USB · misc ~40 KB</text>
+  <text x="590" y="552" font-size="10.5" fill="#52514e" text-anchor="middle">free ~50 KB</text>
+
+  <!-- framebuffer alias bracket -->
+  <path d="M 668 90 H 676 V 413 H 668" stroke="#d03b3b" stroke-width="1.6" fill="none"/>
+  <text x="694" y="200" font-size="11" font-weight="600" fill="#d03b3b">the 288 KB framebuffer</text>
+  <text x="694" y="217" font-size="10" fill="#52514e">384 × 384 RGB555 for the VGA scanout</text>
+  <text x="694" y="233" font-size="10" fill="#52514e">ALIASES the two arenas (idle while an</text>
+  <text x="694" y="249" font-size="10" fill="#52514e">image is displayed) plus a 43-row static</text>
+  <text x="694" y="265" font-size="10" fill="#52514e">spill of ~32 KB.</text>
+  <text x="694" y="290" font-size="10" fill="#52514e">It exists only between generations:</text>
+  <text x="694" y="306" font-size="10" fill="#52514e">while generating, the display shows the</text>
+  <text x="694" y="322" font-size="10" fill="#52514e">live 16&#215;16 latent preview instead.</text>
+</svg>

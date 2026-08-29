@@ -145,18 +145,24 @@ Cortex-M33 intrinsics are used where possible (e.g. SMLAD for parallel multiplic
 
 The diffusion model is controlled via a virtual COM port on the USB port using a simple custom protocol.
 
-In addition, images are shown on a VGA monitor after generation. Floyd-Steinberg dithering is used to reduce banding on the 12-bit VGA output. During generation a low-resolution preview of the latents is shown; it is rendered purely via DMA with a small memory footprint, so it barely affects inference.
+In addition, images are shown on a VGA monitor after generation. Floyd-Steinberg dithering is used to reduce banding on the 12-bit VGA output. During generation a low-resolution preview of the latents is shown; it is rendered purely via DMA with a small memory footprint, so it barely affects inference. The SRAM used by the framebuffer is used as activiation and weight scratchpad during inference. 
 
 <figure>
-   <img src="kw_deepD_seed5.png" alt="Example" >
-  <figcaption>Number of steps k vs. guidance weight w for seed 5</figcaption>
+   <img src="fig_memory_map.svg" alt="Memory map" >
+  <figcaption>Memory map for flash and SRAM</figcaption>
 </figure>
+
 
 ## Conclusions
 
 This was quite an exhilarating project with many nightly training runs heating my office. I am quite pleased with the outcome. There are still plenty opportunities to optimize it further: AdaLN-single, full quantization aware training, optimizing the model architecture. 
 
 Test it on your on RP2350, [the repo is here](https://github.com/cpldcpu/pico-faces).
+
+<figure>
+   <img src="kw_deepD_seed5.png" alt="Example" >
+  <figcaption>Number of steps k vs. guidance weight w for seed 5</figcaption>
+</figure>
 
 [^1]: R. Rombach, A. Blattmann, D. Lorenz, P. Esser, B. Ommer, *High-Resolution Image Synthesis with Latent Diffusion Models*, CVPR 2022. arXiv:2112.10752.
 [^2]: R. Zhang, P. Isola, A. A. Efros, E. Shechtman, O. Wang, *The Unreasonable Effectiveness of Deep Features as a Perceptual Metric*, CVPR 2018. arXiv:1801.03924.
