@@ -18,9 +18,9 @@ draft: false
 {{< katex >}}
 
 
-Almost three years ago, buoyed by the excitement of emerging AI, I set myself the challenge of implementing a [Generative AI image model on a microcontroller](/projects/generative-ai-on-a-microcontroller/). I got pretty far and prototyped a basic diffusion model and conditional VAE, but I never got around to implementing it on an actual microcontroller. 
+A long time ago, buoyed by the excitement of emerging AI, I set myself the challenge of implementing a [Generative AI image model on a microcontroller](/projects/generative-ai-on-a-microcontroller/). I got pretty far and prototyped a basic diffusion model and conditional VAE, but I never got around to implementing it on an actual microcontroller. 
 
-Recently, I finally revisited the project and, success, implemented a **Generative AI image model on a $1 RP2350 microcontroller**, as used in the Raspberry Pi Pico 2. The model and inference code are less than 4 MB and run on the dual-core Cortex-M33 in 520 KB of RAM.
+I finally revisited the project and, success, implemented a **Generative AI image model on a $1 RP2350 microcontroller**, as used in the Raspberry Pi Pico 2. The model and inference code are less than 4 MB and run on the dual-core Cortex-M33 in 520 KB of RAM.
 
 [Checkout the repo here](https://github.com/cpldcpu/pico-faces).
 
