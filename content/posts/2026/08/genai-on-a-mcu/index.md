@@ -30,13 +30,13 @@ The hardware is an RP2350 microcontroller on a Waveshare RP2350-Plus board, plug
 <div align="center">
    <img src="vga-board.jpg" alt="Board">
 </div>
+
 Below you can see a video of the device generating and displaying an image on a monitor. The model generates 128×128 RGB images of human faces in 10–20 s each and displays them on a VGA monitor or streams them over USB. 
-<!-- <div style="display: flex; justify-content: center; margin: 2rem 0;"> -->
-  <video controls autoplay muted loop>
-    <source src="pico_faces_monitor.mp4" type="video/mp4">
-  </video>
-<!-- </div> -->
- The model implements a latent flow diffusion transformer (DiT), similar to what is used in diffusion models like Flux. There are two variants at 2.9 and 1.7 million parameters, roughly 4000x fewer than Flux. It supports conditional generation in 5 classes: four combinations of gender × smile plus an unconditional class. The model was trained on the [FFHQ dataset](https://github.com/nvlabs/ffhq-dataset).
+ <video controls autoplay muted loop>
+   <source src="pico_faces_monitor.mp4" type="video/mp4">
+</video>
+
+ The model implements a latent flow diffusion transformer (DiT), similar to what is used in diffusion models like Flux. There are two variants at 2.9 and 1.7 million parameters, roughly 4000x fewer than Flux. It supports conditional generation in 5 classes: four combinations of gender and smile plus an unconditional class. The model was trained on the [FFHQ dataset](https://github.com/nvlabs/ffhq-dataset).
 
 It is more than astonishing that a model this small is able to generate complex images at all. Many MNIST toy diffusion projects use far more parameters and are barely able to generate anything coherent. The image below shows the 5 classes that the model can generate for a fixed seed.
 
@@ -111,7 +111,7 @@ Architectural details are shown below. The fast model has 8 layers, the quality 
 
 ### AdaLN-Zero
 
-The model uses AdaLN-Zero to apply time step and class conditions[^9], which is a strikingly simple approach that applies a learned bias and scale to the normalization functions. Since only relatively few combinations of timesteps (8) and classes (5) are needed, it is possible to discard the trained AdaLN MLP and simply store the biases in a lookup table. Unfortunately, I learned too late about adaLN-single[^10], which would allow reducing the table size even further.
+The model uses AdaLN-Zero to apply time step and class conditions[^9], which is a strikingly simple approach that applies a learned bias and scale to the normalization functions. Since only relatively few combinations of timesteps (8) and classes (5) are needed, it is possible to discard the trained AdaLN MLP and simply store the biases in a lookup table. Unfortunately, I learned too late about AdaLN-single[^10], which would allow reducing the table size even further.
 
 ### Quantization
 
@@ -154,7 +154,7 @@ In addition, images are shown on a VGA monitor after generation. Floyd-Steinberg
 
 ## Conclusions
 
-This was quite an exhilarating project with many nightly training runs heating my office. I am quite pleased with the outcome. There are still plenty opportunities to optimize it further: adaLN-single, full quantization aware training, optimizing the model architecture. 
+This was quite an exhilarating project with many nightly training runs heating my office. I am quite pleased with the outcome. There are still plenty opportunities to optimize it further: AdaLN-single, full quantization aware training, optimizing the model architecture. 
 
 Test it on your on RP2350, [the repo is here](https://github.com/cpldcpu/pico-faces).
 
