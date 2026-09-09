@@ -15,6 +15,8 @@ tags:
   - Addressable RGB
   # - LED > Addressable RGB
   # - LED
+
+draft: true
 ---
 
 A while ago, I used [transient current analysis to understand the behavior of the WS2812](/2020/12/19/power-analysis-probing-ws2812-rgb-leds/) a bit better (and to play around with my new oscilloscope). One intersting finding was that the translation of the 8 bit input value for the PWM register is mapped in a nonlinear way to the output duty cycle. This behavior is not documented in the data sheet or anywhere else. Reason enough to revisit this topic.
