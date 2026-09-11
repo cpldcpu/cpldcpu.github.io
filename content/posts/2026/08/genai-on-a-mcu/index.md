@@ -18,7 +18,7 @@ draft: false
 {{< katex >}}
 
 
-A long time ago, buoyed by the excitement of emerging AI, I set myself the challenge of implementing a [Generative AI image model on a microcontroller](/projects/generative-ai-on-a-microcontroller/). I got pretty far and prototyped a basic diffusion model and conditional VAE, but I never got around to implementing it on an actual microcontroller. 
+A long time ago, motivated by the excitement of emerging AI, I set myself the challenge of implementing a [Generative AI image model on a microcontroller](/projects/generative-ai-on-a-microcontroller/). I got pretty far and prototyped a basic diffusion model and conditional VAE, but I never got around to implementing it on an actual microcontroller. 
 
 I finally revisited the project and, success, implemented a **Generative AI image model on a $1 RP2350 microcontroller**, as used in the Raspberry Pi Pico 2. The model and inference code are less than 4 MB and run on the dual-core Cortex-M33 in 520 KB of RAM.
 
@@ -46,7 +46,7 @@ It is more than astonishing that a model this small is able to generate complex 
 
 ## How does it work?
 
-Even though Claude Code with Fable 5 did a lot of the grunt work of implementing the code, the development of this took the better part of two weeks of ablations and nightly training runs on an RTX 5090. What was quite astonishing to me is that most of the optimizations that helped large models were also necessary to make this micro-model work.
+Even though Claude Code with Fable 5 did a lot of the grunt work of implementing the code, the development of this took the better part of two weeks of ablation studies, optimization experiments and nightly training runs on an RTX 5090. What was quite astonishing to me is that most of the optimizations that helped large models were also necessary to make this micro-model work.
 
 ### Latent Diffusion
 
@@ -66,7 +66,7 @@ Two VAEs were trained, one with 115k parameters and one with 494k parameters, fo
 
 ### Flow-based Diffusion Model
 
-Diffusion models are often packaged in unnecessarily complex mathematical language (DDPM, DDIM…), even though they are relatively simple. I used a flow-matching[^3][^4] objective to train the diffusion transformer. I cannot recommend Heitz et al.[^5] and this video[^6] enough, which use a rather intuitive approach to arrive at the same mathematical formulation. 
+Diffusion models are often packaged in unnecessarily complex mathematical language (see DDPM, DDIM…), even though they are relatively easy to understand. I used a flow-matching[^3][^4] objective to train the diffusion transformer. I cannot recommend Heitz et al.[^5] and this video[^6] enough, which use a rather intuitive approach to arrive at the same mathematical formulation. 
 
 What does it do? We train a model that takes a partially noisy image \(x_t\), a linear interpolation between pure noise \(x_0\) and a clean image \(x_1\) at time \(t \in [0,1]\),
 
@@ -85,11 +85,11 @@ At inference, instead of jumping directly to the target image \(x_1\), the sampl
 
 ### Classifier Free Guidance 
 
-One very significant improvement was the introduction of classifier free guidance[^7] (CFG). The idea is rather simple: The model output (velocity) is evaluated once conditioned with the target class and once with an unconditioned (null) class:
+One very significant improvement was the introduction of classifier free guidance[^7] (CFG). The idea is rather simple: The model output (velocity) is evaluated once conditioned with the target class and once with an unconditioned (null) class. Then the applied velocity is calculated as:
 
 $$v = v_{\text{null}} + w \cdot (v_{\text{cond}} - v_{\text{null}})$$
 
-Essentially, directions towards the target class are isolated and amplified. This doubles the processing time, but the results have been quite impressive as shown in the image below.
+Essentially, directions towards the target class are isolated and amplified with the weight \(w\). This doubles the processing time, but the results have been quite impressive as shown in the image below.
 
 <figure>
    <img src="kw_deepD_seed3.png" alt="Example" >
@@ -98,7 +98,7 @@ Essentially, directions towards the target class are isolated and amplified. Thi
 
 ### Diffusion Transformer
 
-Initially I tried a classical convnet-based U-Net as I expected this to perform better on a tiny device, but it turned out a transformer model was the cleaner and better-performing choice. The latent encoding of the image is 'patchified' into 8×8=64 tokens of dimension 128 by applying an embedding matrix to each 2×2×8 patch of latents. A sinusoidal positional embedding is applied to each patch (learned embedding did not perform well).
+Initially, I tried a classical convnet-based U-Net as I expected this to perform better on a tiny device, but it turned out a transformer model was the cleaner and better-performing choice. The latent encoding of the image is 'patchified' into 8×8=64 tokens of dimension 128 by applying an embedding matrix to each 2×2×8 patch of latents. A sinusoidal positional embedding is applied to each patch (learned embedding did not perform well).
 
 One notable modification was to introduce a ReLU² activation function[^8] in the dense blocks. This increases activation sparsity, which the inference engine exploits to reduce inference time by ~15%. 
 
@@ -115,7 +115,7 @@ The model uses AdaLN-Zero to apply time step and class conditions[^9], which is 
 
 ### Quantization
 
-The model was trained in floating point and post-training quantization was applied to store the weights in int8. I had quite a few scaling issues. Especially the larger model suffered from notable quantization damage. Some of it could be healed by quantization-aware self-distillation after quantization. There is a lot of room for improvement here by training the model in a more quantization-friendly way, and controlling the activation distribution better.
+The model was trained in floating point and post-training quantization was applied to store the weights in int8. I had quite a few scaling issues. Especially the larger model suffered from notable quantization damage. Some of it could be healed by quantization-aware self-distillation after quantization. There is a lot of room for improvement here by training the model in a more quantization-friendly way, and controlling the distribution of weights and activations better.
 
 <figure>
    <img src="fig_qat_journey.png" alt="QAT">
