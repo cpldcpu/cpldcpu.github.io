@@ -100,17 +100,13 @@ All devices are based on Padauks MCU architecture, which is significantly extend
 
  One interesting and very unique aspect is that Padauks architecture is geared toward synchronous multithreading, allowing to execute more than one program in parallel on the same MCU core using a time-slicing scheme. They call this concept "Field Programmable Processor Array" (FPPA). A similar concept is used in the [XCore Architecture](https://en.wikipedia.org/wiki/XCore_Architecture) by XMOS. One useful application of multithreading in small MCUs is to create virtual periphery, e.g. UART, I^2C, that is operated in parallel with the main program.
 
-I picked three representative products in
-an SOP8 package: The PMS150C, the PFS154 and the PFS173. All of these only have
-single FPPA unit and therefore do not support multithreading.
+I picked three representative products in an SOP8 package: The PMS150C, the PFS154 and the PFS173. All of these only have single FPPA unit and therefore do not support multithreading.
 
 The PMS150C is their lowest cost offer at $0.033, the original "3 cent MCU". This device comes with 1 kiloword of one-time programmable memory and 64 bytes of RAM. The periphery is notably extended over many of the competing parts, offering a 16 Bit timer, an 8 Bit timer with PWM, LF oscillator and an analog comparator with 4 Bit reference voltage DAC that can be used to implement simple ADC functionality. All of this is sufficient to implement simple sensing and controlling functions.
 
 The PFS154 comes at almost twice the cost. However, in contrast to the PMS150 it offers 2kW flash memory and can be programmed multiple times, which is much more convenient for actual development. The periphery has been extended with 3x11 bit PWM units, which look well suited to control RGB LEDs.
 
-Finally, the PFS173 is an incremental
-improvement over the PFS154, adding an 8-bit ADC and extending flash to 3
-kilowords and RAM to 256 bytes.
+Finally, the PFS173 is an incremental improvement over the PFS154, adding an 8-bit ADC and extending flash to 3 kilowords and RAM to 256 bytes.
 
 Padauk provides an IDE supporting
 development in Assembler and a somewhat cryptic dialect of C ("Mini-C"). They
@@ -118,7 +114,7 @@ provide excellent datasheets in both English and Chinese as well as a bilingual
 website. Programming of the devices is accomplished by a 5 or 6 wire high
 voltage protocol, which makes in-circuit programming challenging.
 
-###### Open source toolchain
+#### Open source toolchain
 
 Following the discussion on EEVblog, a small community has formed around the Padauk MCU with the goal of creating an open source toolchain for the device. Most of the activities are covered in [this thread](https://www.eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/).
 
