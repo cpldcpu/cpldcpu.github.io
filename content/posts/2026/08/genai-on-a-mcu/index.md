@@ -46,7 +46,7 @@ It is more than astonishing that a model this small is able to generate complex 
 
 ## How does it work?
 
-Even though Claude Code with Fable 5 did a lot of the grunt work of implementing the code, the development of this took the better part of two weeks of ablation studies, optimization experiments and nightly training runs on an RTX 5090. What was quite astonishing to me is that most of the optimizations that helped large models were also necessary to make this micro-model work.
+Even though Claude Code with Fable 5 did a lot of the grunt work of implementing the code, the development of this took the better part of two weeks of ablation studies, hyperparameter optimization experiments and nightly training runs on an RTX 5090. What was quite astonishing to me is that most of the optimizations that helped large models were also necessary to make this micro-model work.
 
 ### Latent Diffusion
 
