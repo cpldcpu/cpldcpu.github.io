@@ -28,7 +28,7 @@ showTableOfContents: true
 
 ---
 
-![Wiremess](wiremess.jpg) The RGB curtain predictably turns into a mess of wires when not used according to instructions.
+![Wiremess](wiremess.jpg) 
 
 As should be obvious from this blog, I am somewhat drawn to clever and minimalistic implementations of consumer electronics. Sometimes quite a bit of  ingeniosity is going into making something "cheap". The festive season is a boon to that, as we are bestowed with the latest innovation in animated RGB Christmas lights. I was obviously intrigued, when I learned from [a comment on GitHub](https://github.com/Aircoookie/WLED/issues/1312#issuecomment-1007035316) about a new type of RGB light chain that was controlled using only the power lines. I managed to score a similar product to analyze it.
 

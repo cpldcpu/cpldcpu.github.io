@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:cpldcpu.github.io)",
+      "WebFetch(domain:cpldcpu.com)",
+      "PowerShell(@\\(Get-Content \"d:\\\\Blog\\\\cpldcpu.github.io\\\\assets\\\\css\\\\custom.css\"\\))"
+    ]
+  }
+}
