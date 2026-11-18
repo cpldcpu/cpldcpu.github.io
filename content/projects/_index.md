@@ -4,7 +4,7 @@ url = "/projects/"
 summary = "Hackaday.io imports."
 
 [[cascade]]
-  [cascade._target]
+  [cascade.target]
     kind = "page"
   showHero = true
   heroStyle = "background"
