@@ -120,7 +120,11 @@ Then I asked it to write the [firmware](https://github.com/cpldcpu/TouchSynth/bl
 
 According to the logs, the design took 19 hours from first prompt until ordering. Most of the time was spent on Freerouting runs that did not require any interaction.
 
-| Time | Step | Result |
+<figure>
+   <img src="dev_flow_light.svg" alt="development flow" >
+</figure>
+
+<!-- | Time | Step | Result |
 | --- | --- | --- |
 | Sat 20:59 | First prompt | General KiCad/JLCPCB flow |
 | 21:09 | Parts lists | Found the JSON API and saved 1,586 parts as CSV |
@@ -130,7 +134,7 @@ According to the logs, the design took 19 hours from first prompt until ordering
 | 23:24–23:39 | Schematic |  KiCad sheets generated |
 | 00:01–10:48 | PCB, 2 layers | Freerouting never fully routed |
 | 10:48–15:18 | PCB, 4 layers | New stack-up and floorplan, fully routed, DRC clean |
-| 16:04 | Order | Gerbers, BOM and placement file generated |
+| 16:04 | Order | Gerbers, BOM and placement file generated | -->
 
 ## Bring-up
 
